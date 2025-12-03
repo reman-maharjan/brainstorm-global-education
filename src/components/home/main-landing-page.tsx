@@ -1,14 +1,14 @@
 'use client';
 
 import Hero from "./landing-page/Hero"
-import WhyChooseUs from "../about-us/about/WhyChooseUs"
-import Stats from "../stats/Stats"
-import Blog from "../blog/Blog"
+import WhyChooseUs from "../pages/about-us/about/WhyChooseUs"
+import Stats from "../pages/stats/Stats"
+import Blog from "../pages/blog/Blog"
 import Features from "../features/features";
-import CountryCarousel from "../country/countryCarousel";
+import CountryCarousel from "../pages/country/CountryCarousel";
 import VisaCategory from "../visaCategory/VisaCategory";
-import TestimonialsPage from "../testimonial/TestimonialsPage";
-import SimpleContactForm from "../contact/contact-us";
+import TestimonialsPage from "../pages/testimonial/TestimonialsPage";
+import SimpleContactForm from "../pages/contact/contact-us";
 
 export function LandingPage(){
     return(

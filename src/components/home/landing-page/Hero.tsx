@@ -4,12 +4,12 @@ import Image from 'next/image';
 
 const Hero: React.FC = () => {
   return (
-    <div className="relative bg-[#013D2F] overflow-hidden min-h-[600px] lg:min-h-[720px] flex items-center">
+    <div className="relative bg-secondary overflow-hidden min-h-[600px] lg:min-h-[720px] flex items-center">
       
       {/* Background decoration: Eiffel Tower outline */}
 
       {/* Lime green decorative circle on the right edge */}
-      <div className="absolute -right-[10%] bottom-[-10%] w-[500px] h-[500px] bg-accent rounded-full z-0"></div>
+      <div className="absolute -right-[10%] bottom-[-10%] w-[500px] h-[500px] bg-secondary rounded-full z-0"></div>
 
       <div className="w-full h-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center px-8 md:px-16 py-16">
         
@@ -22,13 +22,13 @@ const Hero: React.FC = () => {
           </h1>
           
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8">
-            <button className="group flex items-center gap-3 px-9 py-4 rounded-full border border-white/40 text-white font-semibold hover:bg-white hover:text-[#013D2F] transition-all duration-300">
+            <button className="group flex items-center gap-3 px-9 py-4 rounded-full border border-white/40 text-white font-semibold hover:bg-white hover:text-secondary transition-all duration-300">
               Read More
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </button>
             
             <button className="flex items-center gap-4 group cursor-pointer">
-              <div className="w-14 h-14 bg-[#0A4F3F] rounded-full flex items-center justify-center group-hover:bg-accent transition-colors duration-300 shadow-lg border border-white/10">
+              <div className="w-14 h-14 bg-secondary/80 rounded-full flex items-center justify-center group-hover:bg- primary transition-colors duration-300 shadow-lg border border-white/10">
                 <Play size={20} className="text-white fill-white ml-1" />
               </div>
               <span className="text-white font-medium text-lg">Watch Our Videos</span>
@@ -47,7 +47,7 @@ const Hero: React.FC = () => {
                   className="w-full h-full object-cover"
                 />
                 {/* Overlay gradient */}
-                <div className="absolute inset-0 gradient-to-t from-[#013D2F]/40 to-transparent"></div>
+                <div className="absolute inset-0 gradient-to-t from-secondary/40 to-transparent"></div>
             </div>
         </div>
       </div>
