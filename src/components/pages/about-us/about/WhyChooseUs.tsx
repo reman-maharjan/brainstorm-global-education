@@ -3,22 +3,22 @@ import { Check, ArrowRight, Phone, MoveUpRight, Map } from 'lucide-react';
 import Image from 'next/image';
 // Simple Logo components for the brand strip
 const LogoStrip = () => (
-  <div className="flex flex-wrap justify-between items-center gap-8 mt-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-    <span className="text-xl font-bold flex items-center gap-2"><div className="w-6 h-6 bg-secondary rounded-full"></div> Segment</span>
-    <span className="text-xl font-bold flex items-center gap-1">splunk<span className="text-primary">&gt;</span></span>
-    <span className="text-xl font-bold flex items-center gap-2">HubSpot</span>
-    <span className="text-xl font-bold flex items-center gap-2"><div className="w-3 h-3 bg-[#e91e63] rounded-full"></div> asana</span>
-    <span className="text-xl font-bold flex items-center gap-2 font-serif italic">Airtasker</span>
+  <div className="flex flex-wrap justify-center sm:justify-between items-center gap-4 sm:gap-6 lg:gap-8 mt-12 sm:mt-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+    <span className="text-base sm:text-lg lg:text-xl font-bold flex items-center gap-2"><div className="w-5 h-5 sm:w-6 sm:h-6 bg-secondary rounded-full"></div> Segment</span>
+    <span className="text-base sm:text-lg lg:text-xl font-bold flex items-center gap-1">splunk<span className="text-primary">&gt;</span></span>
+    <span className="text-base sm:text-lg lg:text-xl font-bold flex items-center gap-2">HubSpot</span>
+    <span className="text-base sm:text-lg lg:text-xl font-bold flex items-center gap-2"><div className="w-3 h-3 bg-[#e91e63] rounded-full"></div> asana</span>
+    <span className="text-base sm:text-lg lg:text-xl font-bold flex items-center gap-2 font-serif italic">Airtasker</span>
   </div>
 );
 
 const WhyChooseUs: React.FC = () => {
   return (
-    <div className="p-18">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
+    <div className="px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-18">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center mb-12 sm:mb-16">
         {/* Left Side Images */}
         <div className="relative">
-          <div className="rounded-[40px] overflow-hidden h-[500px] lg:h-[600px] w-full relative group">
+          <div className="rounded-3xl sm:rounded-[40px] overflow-hidden h-[400px] sm:h-[500px] lg:h-[600px] w-full relative group">
             <Image
               src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=2874&auto=format&fit=crop" 
               alt="Traveler with backpack" 
@@ -30,9 +30,9 @@ const WhyChooseUs: React.FC = () => {
           </div>
           
           {/* Badge */}
-          <div className="absolute top-8 right-8 bg-primary text-white p-6 rounded-2xl w-32 h-32 flex flex-col items-center justify-center text-center shadow-lg transform rotate-3 hover:rotate-0 transition-transform cursor-default">
-            <span className="text-4xl font-extrabold block leading-none">25</span>
-            <span className="text-xs font-medium leading-tight mt-1">Years Of experience</span>
+          <div className="absolute top-6 right-6 sm:top-8 sm:right-8 bg-primary text-white p-4 sm:p-5 lg:p-6 rounded-xl sm:rounded-2xl w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 flex flex-col items-center justify-center text-center shadow-lg transform rotate-3 hover:rotate-0 transition-transform cursor-default">
+            <span className="text-3xl sm:text-4xl font-extrabold block leading-none">25</span>
+            <span className="text-[10px] sm:text-xs font-medium leading-tight mt-1">Years Of experience</span>
           </div>
 
           {/* Floating Circle Stamp */}
@@ -56,16 +56,16 @@ const WhyChooseUs: React.FC = () => {
           <div className="flex items-center gap-2 text-gray-500 font-semibold text-xs tracking-widest uppercase">
             <Map size={16} /> WHY CHOOSE US
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-secondary leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-secondary leading-tight">
             Where Wanderlust Meets <br/>
             <span className="text-secondary">Dream Destinations</span>
           </h2>
-          <p className="text-gray-500 leading-relaxed">
+          <p className="text-sm sm:text-base text-gray-500 leading-relaxed">
             Et purus duis sollicitudin dignissim habitant. Egestas nulla quis venenatis cras sed eu massa Et purus duis sollicitudin dignissim habitant. Egestas nulla quis venenatis cras sed eu massa Et purus duis sollicitudin dignissim habitant. Egestas nulla
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="bg-[#F4F6F5] p-6 rounded-2xl hover:bg-white hover:shadow-md transition-all">
+            <div className="bg-[#F4F6F5] p-5 sm:p-6 rounded-xl sm:rounded-2xl hover:bg-white hover:shadow-md transition-all">
               <div className="flex items-center gap-3 mb-4">
                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
@@ -73,16 +73,16 @@ const WhyChooseUs: React.FC = () => {
                  <h4 className="font-bold text-secondary">Passport Plus</h4>
               </div>
               <ul className="space-y-2">
-                <li className="flex items-center gap-2 text-xs text-gray-600">
+                <li className="flex items-center gap-2 text-xs sm:text-sm text-gray-600">
                     <Check size={14} className="text-primary" /> Beyond Border Immigration
                 </li>
-                <li className="flex items-center gap-2 text-xs text-gray-600">
+                <li className="flex items-center gap-2 text-xs sm:text-sm text-gray-600">
                     <Check size={14} className="text-primary" /> Worldwide Visa Assistance
                 </li>
               </ul>
             </div>
 
-            <div className="bg-[#F4F6F5] p-6 rounded-2xl hover:bg-white hover:shadow-md transition-all">
+            <div className="bg-[#F4F6F5] p-5 sm:p-6 rounded-xl sm:rounded-2xl hover:bg-white hover:shadow-md transition-all">
               <div className="flex items-center gap-3 mb-4">
                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
@@ -90,27 +90,27 @@ const WhyChooseUs: React.FC = () => {
                  <h4 className="font-bold text-secondary">Global Entry</h4>
               </div>
               <ul className="space-y-2">
-                <li className="flex items-center gap-2 text-xs text-gray-600">
+                <li className="flex items-center gap-2 text-xs sm:text-sm text-gray-600">
                     <Check size={14} className="text-primary" /> GlobeTrot Visa Services
                 </li>
-                <li className="flex items-center gap-2 text-xs text-gray-600">
+                <li className="flex items-center gap-2 text-xs sm:text-sm text-gray-600">
                     <Check size={14} className="text-primary" /> Infinity Visa Solutions
                 </li>
               </ul>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-6 pt-4">
-            <button className="flex items-center gap-2 px-8 py-3 rounded-full border border-gray-300 text-secondary font-bold hover:bg-secondary hover:text-white transition-colors">
+          <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-4 sm:gap-6 pt-4">
+            <button className="flex items-center gap-2 px-6 sm:px-8 py-3 rounded-full border border-gray-300 text-secondary font-bold hover:bg-secondary hover:text-white transition-colors text-sm sm:text-base">
                 Read More <ArrowRight size={16} />
             </button>
-            <div className="flex items-center gap-3 pl-4 border-l border-gray-200">
+            <div className="flex items-center gap-3 pl-0 sm:pl-4 border-l-0 sm:border-l border-gray-200">
                 <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white shadow-lg shadow-primary/30 animate-pulse">
                     <Phone size={20} />
                 </div>
                 <div>
-                  <div className="text-[10px] text-gray-500 uppercase font-bold">Need help?</div>
-                  <div className="text-sm font-bold text-secondary">(808) 555-0111</div>
+                  <div className="text-[10px] sm:text-xs text-gray-500 uppercase font-bold">Need help?</div>
+                  <div className="text-xs sm:text-sm font-bold text-secondary">(808) 555-0111</div>
                 </div>
             </div>
           </div>

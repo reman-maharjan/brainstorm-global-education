@@ -21,10 +21,10 @@ const Features: React.FC = () => {
   ];
 
   return (
-    <div className="p-18">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div className="px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-18">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {features.map((feature, index) => (
-          <div key={index} className="bg-[#F4F6F5] rounded-[32px] p-8 md:p-10 hover:-translate-y-2 transition-transform duration-300 ease-out group">
+          <div key={index} className="bg-[#F4F6F5] rounded-2xl sm:rounded-3xl lg:rounded-[32px] p-6 md:p-8 lg:p-10 hover:-translate-y-2 transition-transform duration-300 ease-out group">
             <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
               <feature.icon size={32} className="text-white" strokeWidth={1.5} />
             </div>

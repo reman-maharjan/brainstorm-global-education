@@ -43,10 +43,10 @@ const Blog: React.FC = () => {
         <h2 className="text-4xl font-bold text-gray-900 mb-4">Latest Blog Posts</h2>
         <p className="text-gray-500 mb-12">Stay updated with our newest articles and insights.</p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
             {posts.map((post) => (
                 <Card key={post.id} className="text-left group cursor-pointer border-none shadow-sm hover:shadow-md transition-shadow">
-                    <div className="w-full h-64 bg-gray-200 rounded-t-2xl overflow-hidden">
+                    <div className="w-full h-48 sm:h-56 md:h-64 bg-gray-200 rounded-t-2xl overflow-hidden">
                          <Image
                             src={`https://picsum.photos/400/300?random=${post.id + 50}`} 
                             alt={post.title} 

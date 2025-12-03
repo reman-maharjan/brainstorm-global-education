@@ -49,7 +49,7 @@ export default function TestimonialsPage() {
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 items-stretch">
         
         {/* Left Column: Large Portrait Image */}
-        <div className="relative h-[400px] lg:h-auto lg:min-h-[500px] lg:col-span-5 overflow-hidden rounded-[40px]">
+        <div className="relative h-[350px] sm:h-[400px] lg:h-auto lg:min-h-[500px] lg:col-span-5 overflow-hidden rounded-3xl sm:rounded-[40px]">
           <Image
             src={activeTestimonial.image}
             alt={activeTestimonial.name}
@@ -60,7 +60,7 @@ export default function TestimonialsPage() {
         </div>
 
         {/* Right Column: Content Card */}
-        <div className="relative flex flex-col justify-between rounded-[40px] bg-primary p-8 md:p-14 lg:col-span-7 text-white overflow-hidden">
+        <div className="relative flex flex-col justify-between rounded-3xl sm:rounded-[40px] bg-primary p-6 sm:p-8 md:p-14 lg:col-span-7 text-white overflow-hidden">
           
           {/* Decorative Circle (Top Right) */}
           <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-white/10 blur-sm pointer-events-none"></div>
@@ -68,7 +68,7 @@ export default function TestimonialsPage() {
           {/* Quote Content */}
           <div className="relative z-10">
             <Quote className="mb-8 h-12 w-12 fill-white text-white opacity-90" />
-            <p className="text-xl md:text-3xl font-medium leading-relaxed tracking-wide">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium leading-relaxed tracking-wide">
               {activeTestimonial.comment}
             </p>
           </div>
@@ -93,17 +93,17 @@ export default function TestimonialsPage() {
             </div>
 
             {/* Navigation Buttons */}
-            <div className="flex gap-3">
+            <div className="flex gap-2 sm:gap-3">
               <button
                 onClick={handlePrev}
-                className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-secondary transition-transform hover:scale-105 active:scale-95"
+                className="flex h-14 w-14 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white text-secondary transition-transform hover:scale-105 active:scale-95"
                 aria-label="Previous"
               >
                 <ArrowLeft size={20} />
               </button>
               <button
                 onClick={handleNext}
-                className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-secondary transition-transform hover:scale-105 active:scale-95"
+                className="flex h-14 w-14 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white text-secondary transition-transform hover:scale-105 active:scale-95"
                 aria-label="Next"
               >
                 <ArrowRight size={20} />

@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-secondary text-white pt-20 relative mt-20">
       {/* Green Floating CTA Bar */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] md:w-[80%] bg-secondary/80 rounded-full p-8 md:p-12 flex flex-col md:flex-row items-center justify-between shadow-2xl border border-white/10">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] bg-secondary/80 rounded-3xl sm:rounded-full p-6 sm:p-8 md:p-12 flex flex-col md:flex-row items-center justify-between shadow-2xl border border-white/10 gap-6">
         <div className="flex items-center gap-4 mb-4 md:mb-0">
           <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-secondary">
             <svg
@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
             </svg>
           </div>
-          <h3 className="text-xl md:text-2xl font-bold">
+          <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-center md:text-left">
             Need Any Support For <br /> Tour And Visa?
           </h3>
         </div>
@@ -47,13 +47,13 @@ const Footer: React.FC = () => {
               <polyline points="22 4 12 14.01 9 11.01"></polyline>
             </svg>
           </div>
-          <h3 className="text-xl md:text-2xl font-bold">
+          <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-center md:text-left">
             Are You Ready For Get <br /> Started Travelling?
           </h3>
         </div>
       </div>
 
-      <div className="px-4 sm:px-6 lg:px-12 pt-24 pb-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 border-b border-white/10">
+      <div className="px-4 sm:px-6 lg:px-12 pt-20 sm:pt-24 pb-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 border-b border-white/10">
         {/* Brand Column */}
         <div className="space-y-6">
           <div className="flex items-center gap-2.5">
@@ -68,14 +68,14 @@ const Footer: React.FC = () => {
             Corporate business typically refers to large-scale mansola it
             enterprises or organizat
           </p>
-          <div className="flex gap-4">
+          <div className="flex gap-3 sm:gap-4">
             {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
               <a
                 key={i}
                 href="#"
-                className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-secondary transition-colors"
+                className="w-10 h-10 sm:w-8 sm:h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:text-secondary transition-colors"
               >
-                <Icon size={14} />
+                <Icon size={16} className="sm:w-3.5 sm:h-3.5" />
               </a>
             ))}
           </div>
@@ -140,7 +140,7 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      <div className="px-4 sm:px-6 lg:px-12 py-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+      <div className="px-4 sm:px-6 lg:px-12 py-6 sm:py-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 gap-4">
         <p>© Yoursitename 2024 | All Rights Reserved</p>
         <div className="flex gap-8 mt-4 md:mt-0">
           <a href="#" className="hover:text-white">

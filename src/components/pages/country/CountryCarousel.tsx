@@ -71,7 +71,7 @@ const CountryCarousel: React.FC = () => {
   }, []);
 
   return (
-    <div className="bg-secondary py-20 rounded-[48px] mx-4 sm:mx-8 relative overflow-hidden">
+    <div className="bg-secondary py-16 sm:py-20 rounded-3xl sm:rounded-[40px] lg:rounded-[48px] mx-2 sm:mx-4 lg:mx-8 relative overflow-hidden">
       {/* Background Decorative Lines */}
       <div className="absolute inset-0 opacity-5 pointer-events-none">
         <svg width="100%" height="100%">
@@ -94,30 +94,29 @@ const CountryCarousel: React.FC = () => {
         </svg>
       </div>
 
-      <div className="px-6 md:px-12 relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+      <div className="px-4 sm:px-6 md:px-12 relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 sm:mb-12 gap-4 sm:gap-6">
           <div className="space-y-4">
             <div className="flex items-center gap-2 text-accent font-semibold text-xs tracking-widest uppercase">
               <Map size={16} /> OUR COUNTRIES
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
-              Making Memories Around <br />
-              World Unforgettable
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
+              Making Memories Around World Unforgettable
             </h2>
           </div>
 
-          <div className="flex gap-4">
+          <div className="flex gap-3 sm:gap-4">
             <button
               onClick={prevSlide}
-              className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-accent hover:border-accent transition-all"
+              className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-accent hover:border-accent transition-all"
             >
-              <ArrowLeft size={20} />
+              <ArrowLeft size={18} className="sm:w-5 sm:h-5" />
             </button>
             <button
               onClick={nextSlide}
-              className="w-12 h-12 rounded-full border bg-accent border-accent flex items-center justify-center text-secondary hover:bg-white hover:text-secondary transition-all"
+              className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border bg-accent border-accent flex items-center justify-center text-secondary hover:bg-white hover:text-secondary transition-all"
             >
-              <ArrowRight size={20} />
+              <ArrowRight size={18} className="sm:w-5 sm:h-5" />
             </button>
           </div>
         </div>
