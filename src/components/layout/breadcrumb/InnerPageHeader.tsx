@@ -39,7 +39,7 @@ export const InnerPageHeader = ({ title, currentPage }: InnerPageHeaderProps) =>
               Home
             </Link>
             <ChevronRight
-              className="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4 md:h-5 md:w-5 text-accent"
+              className="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4 md:h-5 md:w-5 text-gray-500"
             />
             <span className="wrap-break-word capitalize">{currentPage}</span>
           </div>
