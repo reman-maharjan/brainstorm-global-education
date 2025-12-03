@@ -28,10 +28,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
-      <body className="bg-white">
+      <body className="bg-white ">
         <Navbar />
         <ConditionalPageHeader />
+        <div className="max-w-7xl mx-auto">
         {children}
+        </div>
         <Footer />
       </body>
     </html>

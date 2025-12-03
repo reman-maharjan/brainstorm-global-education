@@ -60,7 +60,7 @@ export default function TestimonialsPage() {
         </div>
 
         {/* Right Column: Content Card */}
-        <div className="relative flex flex-col justify-between rounded-[40px] bg-[#10947e] p-8 md:p-14 lg:col-span-7 text-white overflow-hidden">
+        <div className="relative flex flex-col justify-between rounded-[40px] bg-accent p-8 md:p-14 lg:col-span-7 text-white overflow-hidden">
           
           {/* Decorative Circle (Top Right) */}
           <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-white/10 blur-sm pointer-events-none"></div>

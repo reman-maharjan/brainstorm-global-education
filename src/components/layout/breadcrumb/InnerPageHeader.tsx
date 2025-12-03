@@ -14,7 +14,7 @@ export const InnerPageHeader = ({ title, currentPage }: InnerPageHeaderProps) =>
       <div
         className="relative mx-auto flex min-h-[200px] w-full flex-col justify-center overflow-hidden py-8 sm:h-[200px] sm:py-10 md:h-[250px] md:py-12 lg:h-[300px]"
         style={{
-          backgroundColor: "#2d5a4e", // primary color
+          backgroundColor: "#5fb985", // primary color
         }}
       >
         {/* Optional: Subtle background decorative circle */}
@@ -39,7 +39,7 @@ export const InnerPageHeader = ({ title, currentPage }: InnerPageHeaderProps) =>
               Home
             </Link>
             <ChevronRight
-              className="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4 md:h-5 md:w-5 text-gray-500"
+              className="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4 md:h-5 md:w-5 text-[#0854ee]"
             />
             <span className="wrap-break-word capitalize">{currentPage}</span>
           </div>

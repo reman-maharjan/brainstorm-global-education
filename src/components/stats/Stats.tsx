@@ -31,7 +31,7 @@ const Stats: React.FC = () => {
               <div className="flex flex-col justify-center">
                 {/* Icon */}
                 <div className="mb-4 sm:mb-6">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary sm:h-18 sm:w-18 md:h-20 md:w-20">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-accent sm:h-18 sm:w-18 md:h-20 md:w-20">
                     <Globe className="h-8 w-8 text-white sm:h-9 sm:w-9 md:h-10 md:w-10" strokeWidth={1.5} />
                   </div>
                 </div>
@@ -48,7 +48,7 @@ const Stats: React.FC = () => {
 
                 {/* Button */}
                 <div>
-                  <Button variant="outline" className="inline-flex items-center gap-2 border-gray-200 hover:bg-primary hover:text-white hover:border-primary">
+                  <Button variant="outline" className="inline-flex items-center  gap-2 border-gray-200 hover:bg-accent text-white cursor-pointer">
                     Contact us <Globe size={16} />
                   </Button>
                 </div>
@@ -66,7 +66,7 @@ const Stats: React.FC = () => {
             </div>
 
             {/* Bottom Section: Statistics */}
-            <Card className="bg-primary rounded-2xl shadow-xl text-white border-none sm:rounded-3xl md:rounded-[2.5rem]">
+            <Card className="bg-accent rounded-2xl shadow-xl text-white border-none sm:rounded-3xl md:rounded-[2.5rem]">
               <CardContent className="px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10">
                 <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4 md:gap-8">
                   <div className="text-center">

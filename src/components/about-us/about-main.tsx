@@ -1,6 +1,5 @@
 'use client';
 
-import Team from "../team-member/Team";
 import WhyChooseUs from "./about/WhyChooseUs";
 import { ServicesSection } from "../services/services-section";
 import { FeaturedContent } from "./about/FeaturedContent";
@@ -13,7 +12,6 @@ export function AboutMain() {
             <WhyChooseUs/>
             <FeaturedContent/>
             <ServicesSection/>
-            <Team/>
             <AboutUs/>
             <Stats/>
         </div>
