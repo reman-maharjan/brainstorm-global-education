@@ -48,7 +48,7 @@ export default function SimpleContactForm() {
           {/* Image Section */}
           <div className="flex items-center justify-center order-2 lg:order-1">
             <Image
-              src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=800&auto=format&fit=crop"
+              src="/contact.png"
               alt="Happy traveler"
               width={800}
               height={800}
