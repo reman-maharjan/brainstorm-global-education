@@ -4,8 +4,7 @@ import React, { useState } from "react";
 import { ArrowRight, Menu, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { AppointmentForm3 } from "@/components/appointment/appointmentDialog";
+import { AppointmentFormWithDialog } from "@/components/appointment/appointmentDialog";
 
 const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -20,8 +19,8 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <div className="sticky  z-50 top-0 bg-white border-b border-slate-200">
-      <nav className="flex  items-center justify-between py-4 px-4 sm:px-6 lg:px-8  max-w-7xl mx-auto">
+    <div className="sticky z-50 top-0 bg-white border-b border-slate-200">
+      <nav className="flex items-center justify-between py-4 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         {/* Logo Section */}
         <div className="flex items-center gap-2.5 z-50">
           <Link href="/">
@@ -36,31 +35,19 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden xl:flex items-center gap-4">
+        <div className="hidden xl:flex items-center gap-6">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-foreground hover:text-primary font-medium transition-colors"
+              className="text-foreground hover:text-primary font-medium transition-colors text-sm"
             >
               {link.label}
             </Link>
           ))}
 
-          {/* CTA Button */}
-          <Dialog>
-            <DialogTrigger asChild>
-              <button className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground pl-7 pr-5 py-3.5 rounded-full text-sm font-bold transition-all shadow-sm group">
-                Get An Appointment
-                <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors">
-                  <ArrowRight size={14} strokeWidth={3} />
-                </div>
-              </button>
-            </DialogTrigger>
-            <DialogContent className="max-w-4xl p-0 border-none bg-transparent shadow-none">
-              <AppointmentForm3 />
-            </DialogContent>
-          </Dialog>
+          {/* CTA Button - Use AppointmentFormWithDialog directly */}
+          <AppointmentFormWithDialog />
         </div>
 
         {/* Mobile Menu Button */}
@@ -92,12 +79,12 @@ const Navbar: React.FC = () => {
         >
           <div className="flex flex-col h-full pt-20 px-6">
             {/* Mobile Navigation Links */}
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-foreground hover:text-primary font-medium text-lg py-2 border-b border-gray-100 transition-colors"
+                  className="text-foreground hover:text-primary font-medium text-base py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.label}
@@ -106,20 +93,9 @@ const Navbar: React.FC = () => {
             </div>
 
             {/* Mobile CTA Button */}
-            <Dialog>
-              <DialogTrigger asChild>
-                <button
-                  className="mt-8 flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-4 rounded-full text-sm font-bold transition-all shadow-sm"
-                  style={{ cursor: "pointer" }}
-                >
-                  Get An Appointment
-                  <ArrowRight size={16} strokeWidth={3} />
-                </button>
-              </DialogTrigger>
-              <DialogContent className="max-w-4xl p-0 border-none bg-transparent shadow-none">
-                <AppointmentForm3 />
-              </DialogContent>
-            </Dialog>
+            <div className="mt-8 px-2">
+              <AppointmentFormWithDialog />
+            </div>
           </div>
         </div>
       </nav>

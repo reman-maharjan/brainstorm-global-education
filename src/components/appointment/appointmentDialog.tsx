@@ -11,6 +11,14 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
   Calendar,
   Clock,
   User,
@@ -18,16 +26,17 @@ import {
   Phone,
   MessageSquare,
   Loader2,
-  Sparkles,
+  CalendarIcon,
+  CheckCircle2,
 } from "lucide-react";
 import { AppointmentFormData } from "@/types/pages/appointment";
 import {
   useSubmitAppointmentForm,
   useGetAppointmentReasons,
 } from "@/hooks/pages/use-appointment";
+import { format } from "date-fns";
 
-
-export const AppointmentForm3= () => {
+export const AppointmentFormWithDialog = () => {
   const [formData, setFormData] = useState<AppointmentFormData>({
     full_name: "",
     email: "",
@@ -38,6 +47,7 @@ export const AppointmentForm3= () => {
     reason_id: undefined,
   });
 
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { data: reasonsData } = useGetAppointmentReasons();
   const submitAppointment = useSubmitAppointmentForm();
 
@@ -45,234 +55,310 @@ export const AppointmentForm3= () => {
     e.preventDefault();
 
     submitAppointment.mutate(formData, {
-        onSuccess: () => {
-          setFormData({
-            full_name: "",
-            email: "",
-            phone: "",
-            message: "",
-            date: "",
-            time: "",
-            reason_id: undefined,
-          });
-        },
-      });
+      onSuccess: () => {
+        // Reset form
+        setFormData({
+          full_name: "",
+          email: "",
+          phone: "",
+          message: "",
+          date: "",
+          time: "",
+          reason_id: undefined,
+        });
+        // Keep dialog open to show success state
+      },
+      onError: () => {
+        // Handle error if needed
+      },
+    });
   };
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSelectChange = (name: string, value: string) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
       [name]: name === "reason_id" ? parseInt(value, 10) : value,
     }));
   };
 
+  const handleDialogOpenChange = (open: boolean) => {
+    setIsDialogOpen(open);
+    if (!open && !submitAppointment.isPending) {
+      // Reset form when dialog closes (except during submission)
+      setFormData({
+        full_name: "",
+        email: "",
+        phone: "",
+        message: "",
+        date: "",
+        time: "",
+        reason_id: undefined,
+      });
+    }
+  };
+
+  const getSelectedReasonName = () => {
+    if (!formData.reason_id || !reasonsData) return "";
+    const reason = reasonsData.find((r) => r.id === formData.reason_id);
+    return reason?.name || "";
+  };
+
   return (
-    <div className="mx-auto max-w-4xl">
-      <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-primary/5 via-white to-secondary/5 p-1 shadow-2xl">
-        <div className="relative rounded-2xl bg-white p-8 md:p-12">
-          {/* Decorative Elements */}
-          <div className="absolute top-0 right-0 h-40 w-40 translate-x-16 -translate-y-16 rounded-full bg-linear-to-br from-primary to-secondary opacity-10 blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 h-40 w-40 -translate-x-16 translate-y-16 rounded-full bg-linear-to-tr from-secondary to-primary opacity-10 blur-3xl"></div>
+    <Dialog open={isDialogOpen} onOpenChange={handleDialogOpenChange}>
+      <DialogTrigger asChild>
+        <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all">
+          <CalendarIcon className="mr-2 h-5 w-5" />
+          Book Appointment
+        </Button>
+      </DialogTrigger>
 
-          {/* Header */}
-          <div className="relative mb-8 text-center">
-            <div className="mb-4 inline-flex items-center justify-center rounded-full bg-primary/10 p-3">
-              <Sparkles className="h-6 w-6 text-primary" />
+      <DialogContent className="sm:max-w-[500px] p-0 overflow-hidden">
+        {/* Success State */}
+        {submitAppointment.isSuccess ? (
+          <div className="p-8 text-center">
+            <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
+              <CheckCircle2 className="h-12 w-12 text-green-600" />
             </div>
-            <h3 className="mb-2 text-3xl font-bold text-secondary">
-              Schedule Your Visit
-            </h3>
-            <p className="text-muted-foreground">
-              Fill in your details and we&apos;ll get back to you shortly
-            </p>
-          </div>
+            <DialogHeader>
+              <DialogTitle className="text-2xl font-bold text-gray-900">
+                Appointment Booked Successfully!
+              </DialogTitle>
+              <DialogDescription className="mt-4 text-gray-600">
+                We&apos;ve received your appointment request and will contact
+                you shortly to confirm.
+              </DialogDescription>
+            </DialogHeader>
 
-          <form onSubmit={handleSubmit} className="relative space-y-6">
-            {/* Full Name */}
-            <div className="group">
-              <Label
-                htmlFor="full_name"
-                className="mb-2 flex items-center gap-2 text-sm font-medium text-secondary"
-              >
-                <User className="h-4 w-4 text-primary" />
-                Full Name <span className="text-destructive">*</span>
-              </Label>
-              <Input
-                id="full_name"
-                name="full_name"
-                type="text"
-                value={formData.full_name}
-                onChange={handleInputChange}
-                required
-                className="border-input transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
-                placeholder="John Doe"
-              />
-            </div>
-
-            {/* Email & Phone Row */}
-            <div className="grid gap-6 md:grid-cols-2">
-              <div className="group">
-                <Label
-                  htmlFor="email"
-                  className="mb-2 flex items-center gap-2 text-sm font-medium text-secondary"
-                >
-                  <Mail className="h-4 w-4 text-primary" />
-                  Email <span className="text-destructive">*</span>
-                </Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className="border-input transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
-                  placeholder="john@example.com"
-                />
-              </div>
-
-              <div className="group">
-                <Label
-                  htmlFor="phone"
-                  className="mb-2 flex items-center gap-2 text-sm font-medium text-secondary"
-                >
-                  <Phone className="h-4 w-4 text-primary" />
-                  Phone <span className="text-destructive">*</span>
-                </Label>
-                <Input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  required
-                  className="border-input transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
-                  placeholder="+1 (555) 123-4567"
-                />
-              </div>
-            </div>
-
-            {/* Date & Time Row */}
-            <div className="grid gap-6 md:grid-cols-2">
-              <div className="group">
-                <Label
-                  htmlFor="date"
-                  className="mb-2 flex items-center gap-2 text-sm font-medium text-secondary"
-                >
-                  <Calendar className="h-4 w-4 text-primary" />
-                  Preferred Date
-                </Label>
-                <Input
-                  id="date"
-                  name="date"
-                  type="date"
-                  value={formData.date || ""}
-                  onChange={handleInputChange}
-                  className="border-input transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
-                />
-              </div>
-
-              <div className="group">
-                <Label
-                  htmlFor="time"
-                  className="mb-2 flex items-center gap-2 text-sm font-medium text-secondary"
-                >
-                  <Clock className="h-4 w-4 text-primary" />
-                  Preferred Time
-                </Label>
-                <Input
-                  id="time"
-                  name="time"
-                  type="time"
-                  value={formData.time || ""}
-                  onChange={handleInputChange}
-                  className="border-input transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
-                />
-              </div>
-            </div>
-
-            {/* Reason */}
-            {reasonsData && reasonsData.length > 0 && (
-              <div className="group">
-                <Label
-                  htmlFor="reason"
-                  className="mb-2 flex items-center gap-2 text-sm font-medium text-secondary"
-                >
-                  <MessageSquare className="h-4 w-4 text-primary" />
-                  Reason for Visit
-                </Label>
-                <Select
-                  value={formData.reason_id?.toString() || ""}
-                  onValueChange={value =>
-                    handleSelectChange("reason_id", value)
-                  }
-                >
-                  <SelectTrigger className="border-input transition-all focus:border-primary focus:ring-2 focus:ring-primary/20">
-                    <SelectValue placeholder="Select a reason" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {reasonsData.map(reason => (
-                      <SelectItem key={reason.id} value={reason.id.toString()}>
-                        {reason.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-            )}
-
-            {/* Message */}
-            <div className="group">
-              <Label
-                htmlFor="message"
-                className="mb-2 flex items-center gap-2 text-sm font-medium text-secondary"
-              >
-                <MessageSquare className="h-4 w-4 text-primary" />
-                Additional Notes
-              </Label>
-              <Textarea
-                id="message"
-                name="message"
-                value={formData.message || ""}
-                onChange={handleInputChange}
-                className="min-h-[100px] border-input transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
-                placeholder="Tell us anything else you'd like us to know..."
-              />
-            </div>
-
-            {/* Submit Button */}
             <Button
-              type="submit"
-              disabled={submitAppointment.isPending }
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-lg font-semibold shadow-lg cursor-pointer transition-all hover:shadow-xl"
+              onClick={() => setIsDialogOpen(false)}
+              className="mt-8 w-full bg-primary hover:bg-primary/90"
             >
-              {submitAppointment.isPending ? (
-                <>
-                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                  Booking Your Appointment...
-                </>
-              ) : (
-                <>
-                  <Calendar className="mr-2  h-5 w-5" />
-                  Book Your Appointment
-                </>
-              )}
+              Close
             </Button>
+          </div>
+        ) : (
+          // Form State
+          <>
+            <DialogHeader className="border-b p-6">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+                  <CalendarIcon className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <DialogTitle className="text-xl font-bold text-gray-900">
+                    Schedule Appointment
+                  </DialogTitle>
+                  <DialogDescription className="text-gray-600">
+                    Fill in your details and we&apos;ll get back to you shortly
+                  </DialogDescription>
+                </div>
+              </div>
+            </DialogHeader>
 
-            {/* Trust Badge */}
-            <p className="text-center text-sm text-muted-foreground">
-              🔒 Your information is secure and will never be shared
-            </p>
-          </form>
-        </div>
-      </div>
-    </div>
+            <form onSubmit={handleSubmit} className="p-6">
+              <div className="space-y-5">
+                {/* Full Name */}
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="full_name"
+                    className="text-sm font-medium text-gray-700"
+                  >
+                    Full Name <span className="text-destructive">*</span>
+                  </Label>
+                  <div className="relative">
+                    <User className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                    <Input
+                      id="full_name"
+                      name="full_name"
+                      type="text"
+                      value={formData.full_name}
+                      onChange={handleInputChange}
+                      required
+                      className="pl-10 border-gray-300 focus:border-primary focus:ring-primary/20"
+                      placeholder="John Doe"
+                    />
+                  </div>
+                </div>
+
+                {/* Email & Phone Row */}
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="email"
+                      className="text-sm font-medium text-gray-700"
+                    >
+                      Email <span className="text-destructive">*</span>
+                    </Label>
+                    <div className="relative">
+                      <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        className="pl-10 border-gray-300 focus:border-primary focus:ring-primary/20"
+                        placeholder="john@example.com"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="phone"
+                      className="text-sm font-medium text-gray-700"
+                    >
+                      Phone <span className="text-destructive">*</span>
+                    </Label>
+                    <div className="relative">
+                      <Phone className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                      <Input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        required
+                        className="pl-10 border-gray-300 focus:border-primary focus:ring-primary/20"
+                        placeholder="+1 (555) 123-4567"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Date & Time Row */}
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="date"
+                      className="text-sm font-medium text-gray-700"
+                    >
+                      Preferred Date
+                    </Label>
+                    <div className="relative">
+                      <Calendar className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                      <Input
+                        id="date"
+                        name="date"
+                        type="date"
+                        value={formData.date || ""}
+                        onChange={handleInputChange}
+                        className="pl-10 border-gray-300 focus:border-primary focus:ring-primary/20"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="time"
+                      className="text-sm font-medium text-gray-700"
+                    >
+                      Preferred Time
+                    </Label>
+                    <div className="relative">
+                      <Clock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                      <Input
+                        id="time"
+                        name="time"
+                        type="time"
+                        value={formData.time || ""}
+                        onChange={handleInputChange}
+                        className="pl-10 border-gray-300 focus:border-primary focus:ring-primary/20"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Reason */}
+                {reasonsData && reasonsData.length > 0 && (
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="reason"
+                      className="text-sm font-medium text-gray-700"
+                    >
+                      Reason for Visit
+                    </Label>
+                    <div className="relative">
+                      <MessageSquare className="absolute left-3 top-1/2 z-10 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                      <Select
+                        value={formData.reason_id?.toString() || ""}
+                        onValueChange={(value) =>
+                          handleSelectChange("reason_id", value)
+                        }
+                      >
+                        <SelectTrigger className="pl-10 border-gray-300 focus:border-primary focus:ring-primary/20">
+                          <SelectValue placeholder="Select a reason" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {reasonsData.map((reason) => (
+                            <SelectItem
+                              key={reason.id}
+                              value={reason.id.toString()}
+                            >
+                              {reason.name}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+                )}
+
+                {/* Message */}
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="message"
+                    className="text-sm font-medium text-gray-700"
+                  >
+                    Additional Notes
+                  </Label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={formData.message || ""}
+                    onChange={handleInputChange}
+                    className="min-h-[100px] border-gray-300 focus:border-primary focus:ring-primary/20"
+                    placeholder="Tell us anything else you'd like us to know..."
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <Button
+                  type="submit"
+                  disabled={submitAppointment.isPending}
+                  className="w-full bg-primary hover:bg-primary/90 text-white py-6 font-semibold"
+                >
+                  {submitAppointment.isPending ? (
+                    <>
+                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                      Booking Your Appointment...
+                    </>
+                  ) : (
+                    <>
+                      <CalendarIcon className="mr-2 h-5 w-5" />
+                      Confirm Appointment
+                    </>
+                  )}
+                </Button>
+
+                {/* Privacy Note */}
+                <p className="text-center text-xs text-gray-500">
+                  🔒 Your information is secure and will never be shared with
+                  third parties
+                </p>
+              </div>
+            </form>
+          </>
+        )}
+      </DialogContent>
+    </Dialog>
   );
 };
