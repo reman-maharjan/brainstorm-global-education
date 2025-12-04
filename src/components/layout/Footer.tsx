@@ -1,8 +1,29 @@
-import React from "react";
-import { Facebook, Twitter, Instagram, Linkedin, Send } from "lucide-react";
+"use client";
+import React, { useState } from "react";
+import {
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+  Send,
+  Loader2,
+} from "lucide-react";
 import Image from "next/image";
+import { useNewsletter } from "@/hooks/use-newsletter";
 
 const Footer: React.FC = () => {
+  const [email, setEmail] = useState("");
+  const { mutate: subscribe, isPending } = useNewsletter();
+
+  const handleSubscribe = () => {
+    if (!email) return;
+    subscribe(email, {
+      onSuccess: () => {
+        setEmail("");
+      },
+    });
+  };
+
   return (
     <div className="bg-secondary">
       <footer className="text-white pt-20 relative mt-20 max-w-7xl mx-auto">
@@ -127,10 +148,20 @@ const Footer: React.FC = () => {
               <input
                 type="email"
                 placeholder="Enter Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full bg-secondary/80 border border-white/10 rounded-full py-3 px-4 text-sm text-white focus:outline-none focus:border-primary"
               />
-              <button className="absolute right-1 top-1 w-10 h-10 bg-primary rounded-full flex items-center justify-center text-secondary hover:bg-white transition-colors">
-                <Send size={16} />
+              <button
+                onClick={handleSubscribe}
+                disabled={isPending}
+                className="absolute right-1 top-1 w-10 h-10 bg-primary rounded-full flex items-center justify-center text-secondary hover:bg-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isPending ? (
+                  <Loader2 size={16} className="animate-spin" />
+                ) : (
+                  <Send size={16} />
+                )}
               </button>
             </div>
           </div>

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React, { useState } from "react";
 import { Send, Phone, Mail, Loader2, User } from "lucide-react";
 import Image from "next/image";
@@ -22,7 +22,7 @@ export default function SimpleContactForm() {
       toast.error("Please fill in all required fields");
       return;
     }
-    
+
     submitContact(formData, {
       onSuccess: () => {
         setFormData({
@@ -31,20 +31,21 @@ export default function SimpleContactForm() {
           phone_number: "",
           message: "",
         });
-      }
+      },
     });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
     <div className="min-h-screen px-4 py-12">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-16">
-          
           {/* Image Section */}
           <div className="flex items-center justify-center order-2 lg:order-1">
             <Image
@@ -52,7 +53,7 @@ export default function SimpleContactForm() {
               alt="Happy traveler"
               width={800}
               height={800}
-              className="w-full max-w-md rounded-3xl shadow-lg"
+              className="w-full max-w-md rounded-3xl "
             />
           </div>
 
@@ -61,7 +62,10 @@ export default function SimpleContactForm() {
             <div className="mb-6">
               <div className="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-500">
                 <span>Contact Information</span>
-                <Send size={12} className="rotate-45 fill-primary text-primary" />
+                <Send
+                  size={12}
+                  className="rotate-45 fill-primary text-primary"
+                />
               </div>
               <h1 className="text-4xl font-bold text-secondary lg:text-5xl">
                 Let Your Wanderlust Guide You
@@ -70,7 +74,6 @@ export default function SimpleContactForm() {
 
             <div className="rounded-3xl bg-primary/10 p-8">
               <div className="space-y-5">
-                
                 {/* Name */}
                 <div>
                   <label className="mb-2 block text-sm font-medium text-secondary">
@@ -85,7 +88,10 @@ export default function SimpleContactForm() {
                       onChange={handleChange}
                       className="w-full rounded-full border-0 bg-white px-5 py-3 pr-10 text-sm focus:ring-2 focus:ring-primary"
                     />
-                    <User size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-secondary" />
+                    <User
+                      size={16}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-secondary"
+                    />
                   </div>
                 </div>
 
@@ -104,7 +110,10 @@ export default function SimpleContactForm() {
                         onChange={handleChange}
                         className="w-full rounded-full border-0 bg-white px-5 py-3 pr-10 text-sm focus:ring-2 focus:ring-primary"
                       />
-                      <Send size={16} className="absolute right-4 top-1/2 -translate-y-1/2 rotate-45 text-secondary" />
+                      <Send
+                        size={16}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 rotate-45 text-secondary"
+                      />
                     </div>
                   </div>
 
@@ -121,7 +130,10 @@ export default function SimpleContactForm() {
                         onChange={handleChange}
                         className="w-full rounded-full border-0 bg-white px-5 py-3 pr-10 text-sm focus:ring-2 focus:ring-primary"
                       />
-                      <Phone size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-secondary" />
+                      <Phone
+                        size={16}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 text-secondary"
+                      />
                     </div>
                   </div>
                 </div>
@@ -140,7 +152,10 @@ export default function SimpleContactForm() {
                       rows={4}
                       className="w-full resize-none rounded-3xl border-0 bg-white px-5 py-4 pr-10 text-sm focus:ring-2 focus:ring-primary"
                     />
-                    <Mail size={16} className="absolute right-4 top-5 text-secondary" />
+                    <Mail
+                      size={16}
+                      className="absolute right-4 top-5 text-secondary"
+                    />
                   </div>
                 </div>
 

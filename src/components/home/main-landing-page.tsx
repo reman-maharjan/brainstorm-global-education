@@ -17,10 +17,10 @@ export function LandingPage() {
         <Hero />
         <Videos />
         <Features />
+        <Testimonials />
         <WhyChooseUs />
         <VisaCategory />
         <Stats />
-        <Testimonials />
         <Blog />
         <SimpleContactForm />
       </div>

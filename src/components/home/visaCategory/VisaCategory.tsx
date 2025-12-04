@@ -46,7 +46,7 @@ const VisaCategory: React.FC = () => {
         {categories.map((cat, idx) => (
           <div
             key={idx}
-            className="bg-[#F4F6F5] p-6 md:p-8 rounded-2xl sm:rounded-3xl flex flex-col md:flex-row items-start md:items-center gap-4 sm:gap-6 group hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-100"
+            className="bg-[#F4F6F5] p-6 md:p-8 rounded-2xl sm:rounded-3xl flex flex-col md:flex-row items-start md:items-center gap-4 sm:gap-6 group hover:bg-white  transition-all duration-300 border border-transparent hover:border-gray-100"
           >
             <div className="w-20 h-20 md:w-24 md:h-24 bg-gray-200 rounded-xl overflow-hidden shrink-0">
               {/* Placeholder for category image */}
@@ -61,7 +61,7 @@ const VisaCategory: React.FC = () => {
                 {cat.desc}
               </p>
               <div className="flex justify-between items-center">
-                <div className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-colors">
+                <div className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                   <ArrowUpRight size={18} />
                 </div>
                 <cat.icon
