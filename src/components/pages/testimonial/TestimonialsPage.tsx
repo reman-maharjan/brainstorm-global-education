@@ -1,66 +1,79 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image"; // Ensure you have next/image configured
+import Image from "next/image";
 import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
-
-// 1. Simple Data Structure
-const TESTIMONIALS = [
-  {
-    id: 1,
-    name: "Albert Flores",
-    designation: "Web Designer",
-    comment:
-      "We have been operating for over a decade, providing top-notch services to our clients and building a strong track record in the industry.",
-    image:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=2864&auto=format&fit=crop",
-  },
-  {
-    id: 2,
-    name: "Jane Cooper",
-    designation: "Product Manager",
-    comment:
-      "The team exceeded our expectations. The attention to detail and creative solutions provided were exactly what we needed for our launch.",
-    image:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=2459&auto=format&fit=crop",
-  },
-  
-];
+import { useTestimonials } from "@/hooks/pages/use-testimonial";
 
 export default function TestimonialsPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  const activeTestimonial = TESTIMONIALS[currentIndex];
+  const { data: testimonials, isLoading, error } = useTestimonials();
 
   const handlePrev = () => {
+    if (!testimonials || testimonials.length === 0) return;
     setCurrentIndex((prev) =>
-      prev === 0 ? TESTIMONIALS.length - 1 : prev - 1
+      prev === 0 ? testimonials.length - 1 : prev - 1
     );
   };
 
   const handleNext = () => {
+    if (!testimonials || testimonials.length === 0) return;
     setCurrentIndex((prev) =>
-      prev === TESTIMONIALS.length - 1 ? 0 : prev + 1
+      prev === testimonials.length - 1 ? 0 : prev + 1
     );
   };
+
+  if (isLoading) {
+    return (
+      <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
+        <div className="text-center">
+          <p className="text-gray-500">Loading testimonials...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
+        <div className="text-center">
+          <p className="text-red-500">Failed to load testimonials. Please try again later.</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!testimonials || testimonials.length === 0) {
+    return (
+      <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
+        <div className="text-center">
+          <p className="text-gray-500">No testimonials available.</p>
+        </div>
+      </div>
+    );
+  }
+
+  const activeTestimonial = testimonials[currentIndex];
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 items-stretch">
         
         {/* Left Column: Large Portrait Image */}
-        <div className="relative h-[350px] sm:h-[400px] lg:h-auto lg:min-h-[500px] lg:col-span-5 overflow-hidden rounded-3xl sm:rounded-[40px]">
-          <Image
-            src={activeTestimonial.image}
-            alt={activeTestimonial.name}
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
+        {activeTestimonial.image && (
+          <div className="relative h-[350px] sm:h-[400px] lg:h-auto lg:min-h-[500px] lg:col-span-5 overflow-hidden rounded-3xl sm:rounded-[40px]">
+            <Image
+              src={activeTestimonial.image}
+              alt={activeTestimonial.name}
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        )}
 
         {/* Right Column: Content Card */}
-        <div className="relative flex flex-col justify-between rounded-3xl sm:rounded-[40px] bg-primary p-6 sm:p-8 md:p-14 lg:col-span-7 text-white overflow-hidden">
+        <div className={`relative flex flex-col justify-between rounded-3xl sm:rounded-[40px] bg-primary p-6 sm:p-8 md:p-14 ${activeTestimonial.image ? 'lg:col-span-7' : 'lg:col-span-12'} text-white overflow-hidden`}>
           
           {/* Decorative Circle (Top Right) */}
           <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-white/10 blur-sm pointer-events-none"></div>
@@ -78,14 +91,16 @@ export default function TestimonialsPage() {
             
             {/* Author Info */}
             <div className="flex items-center gap-4">
-              <div className="relative h-14 w-14 overflow-hidden rounded-full border-2 border-white/20">
-                <Image
-                  src={activeTestimonial.image}
-                  alt={activeTestimonial.name}
-                  fill
-                  className="object-cover"
-                />
-              </div>
+              {activeTestimonial.image && (
+                <div className="relative h-14 w-14 overflow-hidden rounded-full border-2 border-white/20">
+                  <Image
+                    src={activeTestimonial.image}
+                    alt={activeTestimonial.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              )}
               <div>
                 <h4 className="text-lg font-bold">{activeTestimonial.name}</h4>
                 <p className="text-sm text-white/80">{activeTestimonial.designation}</p>
@@ -98,6 +113,7 @@ export default function TestimonialsPage() {
                 onClick={handlePrev}
                 className="flex h-14 w-14 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white text-secondary transition-transform hover:scale-105 active:scale-95"
                 aria-label="Previous"
+                disabled={testimonials.length <= 1}
               >
                 <ArrowLeft size={20} />
               </button>
@@ -105,6 +121,7 @@ export default function TestimonialsPage() {
                 onClick={handleNext}
                 className="flex h-14 w-14 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-white text-secondary transition-transform hover:scale-105 active:scale-95"
                 aria-label="Next"
+                disabled={testimonials.length <= 1}
               >
                 <ArrowRight size={20} />
               </button>

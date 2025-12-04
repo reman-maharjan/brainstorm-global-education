@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { ConditionalPageHeader } from "@/components/layout/breadcrumb/ConditionalPageHeader";
+import { Providers } from "@/components/providers";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -29,12 +30,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
       <body className="bg-white ">
-        <Navbar />
-        <ConditionalPageHeader />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {children}
-        </div>
-        <Footer />
+        <Providers>
+          <Navbar />
+          <ConditionalPageHeader />
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {children}
+          </div>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

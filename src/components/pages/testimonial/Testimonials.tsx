@@ -1,33 +1,49 @@
+"use client";
+
 import React from 'react';
 import Image from 'next/image';
-import { Testimonial } from '@/types';
 import { Card, CardContent } from '@/components/ui/card';
-
-const testimonials: Testimonial[] = [
-  {
-    id: 1,
-    name: "Albert Flores",
-    role: "Web Designer",
-    image: "https://picsum.photos/id/342/200/200",
-    quote: "We have been operating for over a decade, providing top-notch services to our clients and building a strong track record in the industry."
-  },
-  {
-    id: 2,
-    name: "Theresa Webb",
-    role: "Product Manager",
-    image: "https://picsum.photos/id/338/200/200",
-    quote: "The team guided our entire relocation—incredibly smooth and professional. Their expertise made every step stress-free."
-  },
-  {
-    id: 3,
-    name: "Courtney Henry",
-    role: "Entrepreneur",
-    image: "https://picsum.photos/id/64/200/200",
-    quote: "I loved the personalized approach. They listened carefully, tailored the solution, and delivered faster than we expected."
-  }
-];
+import { useTestimonials } from '@/hooks/pages/use-testimonial';
 
 const Testimonials: React.FC = () => {
+  const { data: testimonials, isLoading, error } = useTestimonials();
+
+  if (isLoading) {
+    return (
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="text-gray-500">Loading testimonials...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="text-red-500">Failed to load testimonials. Please try again later.</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (!testimonials || testimonials.length === 0) {
+    return (
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <p className="text-gray-500">No testimonials available.</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,26 +59,28 @@ const Testimonials: React.FC = () => {
                   className="group cursor-pointer rounded-3xl bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                 >
                     <CardContent className="p-8 text-center sm:p-12">
-                        <div className="mb-6 flex justify-center">
-                            <div className="relative h-32 w-32 overflow-hidden rounded-full">
-                                <Image
-                                    src={testimonial.image}
-                                    alt={testimonial.name}
-                                    fill
-                                    className="object-cover"
-                                />
-                            </div>
-                        </div>
+                        {testimonial.image && (
+                          <div className="mb-6 flex justify-center">
+                              <div className="relative h-32 w-32 overflow-hidden rounded-full">
+                                  <Image
+                                      src={testimonial.image}
+                                      alt={testimonial.name}
+                                      fill
+                                      className="object-cover"
+                                  />
+                              </div>
+                          </div>
+                        )}
 
                         <h3 className="mb-2 text-3xl font-bold text-gray-900">
                             {testimonial.name}
                         </h3>
 
-                        <p className="mb-4 text-lg text-gray-600">{testimonial.role}</p>
+                        <p className="mb-4 text-lg text-gray-600">{testimonial.designation}</p>
 
                         <div className="relative">
                             <blockquote className="relative z-10 text-lg leading-relaxed font-medium text-gray-800">
-                                &quot;{testimonial.quote}&quot;
+                                &quot;{testimonial.comment}&quot;
                             </blockquote>
                         </div>
                     </CardContent>

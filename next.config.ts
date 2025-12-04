@@ -16,6 +16,14 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "upload.wikimedia.org",
       },
+      {
+        protocol: "https",
+        hostname: "brainstorm-global-education.nepdora.baliyoventures.com",
+      },
+      {
+        protocol: "http",
+        hostname: "brainstorm-global-education.nepdora.baliyoventures.com",
+      },
     ],
   },
 };
