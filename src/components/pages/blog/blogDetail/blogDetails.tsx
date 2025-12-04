@@ -5,13 +5,7 @@ import Link from "next/link";
 import { useBlog, useBlogs } from "@/hooks/pages/use-blog";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import {
-  AlertCircle,
-  CalendarDays,
-  User,
-  Clock,
-  Tag,
-} from "lucide-react";
+import { AlertCircle, CalendarDays, User, Clock, Tag } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
 
@@ -21,15 +15,16 @@ interface BlogDetailProps {
 
 export const BlogDetail: React.FC<BlogDetailProps> = ({ slug }) => {
   const { data: blog, isLoading, error } = useBlog(slug);
-  
+
   // Fetch recent blogs for the sidebar
   const { data: recentBlogsData } = useBlogs({
     page_size: 5,
-    ordering: '-created_at',
-    is_published: true
+    ordering: "-created_at",
+    is_published: true,
   });
 
-  const recentBlogs = recentBlogsData?.results.filter(b => b.slug !== slug).slice(0, 3) || [];
+  const recentBlogs =
+    recentBlogsData?.results.filter((b) => b.slug !== slug).slice(0, 3) || [];
 
   // Default fallback image
   const defaultImage =
@@ -37,7 +32,7 @@ export const BlogDetail: React.FC<BlogDetailProps> = ({ slug }) => {
 
   if (isLoading) {
     return (
-      <div className="bg-background">
+      <div className="bg-white">
         <div className="container mx-auto px-4 py-8">
           {/* Breadcrumb skeleton */}
           <div className="mb-6">
@@ -66,7 +61,6 @@ export const BlogDetail: React.FC<BlogDetailProps> = ({ slug }) => {
     return (
       <div className="bg-background">
         <div className="container mx-auto px-4 py-8">
-
           <Alert variant="destructive">
             <AlertCircle className="h-4 w-4" />
             <AlertTitle>Error</AlertTitle>
@@ -83,9 +77,8 @@ export const BlogDetail: React.FC<BlogDetailProps> = ({ slug }) => {
   const blogImage = blog.thumbnail_image || defaultImage;
 
   return (
-    <div >
+    <div>
       <div className="container mx-auto max-w-7xl px-4 py-8 md:py-16">
-
         <div className="grid gap-8 md:grid-cols-3 lg:gap-16">
           <div className="md:col-span-2">
             <h1 className="text-foreground mb-4 text-3xl font-bold md:text-5xl">
@@ -117,7 +110,7 @@ export const BlogDetail: React.FC<BlogDetailProps> = ({ slug }) => {
                 alt={blog.thumbnail_image_alt_description || blog.title}
                 fill
                 className="object-cover"
-                onError={e => {
+                onError={(e) => {
                   const target = e.currentTarget as HTMLImageElement;
                   target.src = defaultImage;
                 }}
@@ -132,7 +125,7 @@ export const BlogDetail: React.FC<BlogDetailProps> = ({ slug }) => {
             {blog.tags && blog.tags.length > 0 && (
               <div className="mt-8 flex flex-wrap items-center gap-2">
                 <span className="text-foreground font-semibold">Tags:</span>
-                {blog.tags.map(tag => (
+                {blog.tags.map((tag) => (
                   <Badge key={tag.id} variant="outline">
                     <Tag className="mr-1 h-3 w-3" />
                     {tag.name}
@@ -181,27 +174,24 @@ export const BlogDetail: React.FC<BlogDetailProps> = ({ slug }) => {
                 <ul className="space-y-4">
                   {recentBlogs.map((post) => (
                     <li key={post.id} className="group">
-                      <Link
-                        href={`/blog/${post.slug}`}
-                        className="flex gap-3"
-                      >
-                         {post.thumbnail_image && (
-                            <div className="relative w-20 h-16 shrink-0 rounded-md overflow-hidden">
-                              <Image 
-                                src={post.thumbnail_image} 
-                                alt={post.title}
-                                fill
-                                className="object-cover"
-                              />
-                            </div>
-                         )}
+                      <Link href={`/blog/${post.slug}`} className="flex gap-3">
+                        {post.thumbnail_image && (
+                          <div className="relative w-20 h-16 shrink-0 rounded-md overflow-hidden">
+                            <Image
+                              src={post.thumbnail_image}
+                              alt={post.title}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                        )}
                         <div>
-                            <h4 className="text-sm font-medium text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                          <h4 className="text-sm font-medium text-foreground group-hover:text-primary transition-colors line-clamp-2">
                             {post.title}
-                            </h4>
-                            <p className="text-xs text-muted-foreground mt-1">
-                                {format(new Date(post.created_at), "dd MMM yyyy")}
-                            </p>
+                          </h4>
+                          <p className="text-xs text-muted-foreground mt-1">
+                            {format(new Date(post.created_at), "dd MMM yyyy")}
+                          </p>
                         </div>
                       </Link>
                     </li>
