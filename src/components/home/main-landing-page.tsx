@@ -8,12 +8,14 @@ import Features from "./features/features";
 import VisaCategory from "./visaCategory/VisaCategory";
 import Testimonials from "../pages/testimonial/Testimonials";
 import SimpleContactForm from "../pages/contact/contact-us";
+import Videos from "@/components/videos/videos";
 
 export function LandingPage() {
   return (
     <>
       <div>
         <Hero />
+        <Videos />
         <Features />
         <WhyChooseUs />
         <VisaCategory />
