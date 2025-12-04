@@ -34,9 +34,7 @@ export default function RootLayout({
         <Providers>
           <Navbar />
           <ConditionalPageHeader />
-          <div className="sm:px-6 lg:px-8">
-          {children}
-          </div>
+          <div>{children}</div>
           <Footer />
           <Toaster />
         </Providers>
