@@ -1,26 +1,38 @@
 'use client';
 import React, { useState } from "react";
-import { Send, Phone, MapPin, Mail, Loader2 } from "lucide-react";
+import { Send, Phone, Mail, Loader2, User } from "lucide-react";
 import Image from "next/image";
+import { useSubmitContactForm } from "@/hooks/pages/use-contact";
+import { ContactFormData } from "@/types/pages/contact";
+
+import { toast } from "sonner";
 
 export default function SimpleContactForm() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<ContactFormData>({
+    name: "",
     email: "",
-    phone: "",
-    address: "",
+    phone_number: "",
     message: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const { mutate: submitContact, isPending } = useSubmitContactForm();
 
   const handleSubmit = () => {
-    setIsSubmitting(true);
+    if (!formData.name || !formData.message) {
+      toast.error("Please fill in all required fields");
+      return;
+    }
     
-    // Simulate form submission
-    setTimeout(() => {
-      alert("Message sent successfully!");
-      setFormData({ email: "", phone: "", address: "", message: "" });
-      setIsSubmitting(false);
-    }, 1500);
+    submitContact(formData, {
+      onSuccess: () => {
+        setFormData({
+          name: "",
+          email: "",
+          phone_number: "",
+          message: "",
+        });
+      }
+    });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -59,11 +71,29 @@ export default function SimpleContactForm() {
             <div className="rounded-3xl bg-primary/10 p-8">
               <div className="space-y-5">
                 
+                {/* Name */}
+                <div>
+                  <label className="mb-2 block text-sm font-medium text-secondary">
+                    Your Name *
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Your Name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="w-full rounded-full border-0 bg-white px-5 py-3 pr-10 text-sm focus:ring-2 focus:ring-primary"
+                    />
+                    <User size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-secondary" />
+                  </div>
+                </div>
+
                 {/* Email and Phone Row */}
                 <div className="grid gap-5 md:grid-cols-2">
                   <div>
                     <label className="mb-2 block text-sm font-medium text-secondary">
-                      Your Email *
+                      Your Email
                     </label>
                     <div className="relative">
                       <input
@@ -85,32 +115,14 @@ export default function SimpleContactForm() {
                     <div className="relative">
                       <input
                         type="tel"
-                        name="phone"
+                        name="phone_number"
                         placeholder="Your Phone"
-                        value={formData.phone}
+                        value={formData.phone_number}
                         onChange={handleChange}
                         className="w-full rounded-full border-0 bg-white px-5 py-3 pr-10 text-sm focus:ring-2 focus:ring-primary"
                       />
                       <Phone size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-secondary" />
                     </div>
-                  </div>
-                </div>
-
-                {/* Address */}
-                <div>
-                  <label className="mb-2 block text-sm font-medium text-secondary">
-                    Your Address
-                  </label>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      name="address"
-                      placeholder="Your Address"
-                      value={formData.address}
-                      onChange={handleChange}
-                      className="w-full rounded-full border-0 bg-white px-5 py-3 pr-10 text-sm focus:ring-2 focus:ring-primary"
-                    />
-                    <MapPin size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-secondary" />
                   </div>
                 </div>
 
@@ -135,10 +147,10 @@ export default function SimpleContactForm() {
                 {/* Submit Button */}
                 <button
                   onClick={handleSubmit}
-                  disabled={isSubmitting}
+                  disabled={isPending}
                   className="w-full rounded-full bg-primary py-4 font-semibold text-white transition hover:bg-primary/90 disabled:opacity-50"
                 >
-                  {isSubmitting ? (
+                  {isPending ? (
                     <span className="flex items-center justify-center">
                       <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                       Sending...

@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { ArrowRight, Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { AppointmentForm3 } from "@/components/layout/appointment/appointmentDialog";
 
 const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -47,12 +49,19 @@ const Navbar: React.FC = () => {
         ))}
 
         {/* CTA Button */}
-        <button className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground pl-7 pr-5 py-3.5 rounded-full text-sm font-bold transition-all shadow-sm group">
-          Get An Appointment
-          <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors">
-            <ArrowRight size={14} strokeWidth={3} />
-          </div>
-        </button>
+        <Dialog>
+          <DialogTrigger asChild>
+            <button className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground pl-7 pr-5 py-3.5 rounded-full text-sm font-bold transition-all shadow-sm group">
+              Get An Appointment
+              <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors">
+                <ArrowRight size={14} strokeWidth={3} />
+              </div>
+            </button>
+          </DialogTrigger>
+          <DialogContent className="max-w-4xl p-0 border-none bg-transparent shadow-none">
+            <AppointmentForm3 />
+          </DialogContent>
+        </Dialog>
       </div>
 
       {/* Mobile Menu Button */}
@@ -96,12 +105,22 @@ const Navbar: React.FC = () => {
               </Link>
             ))}
           </div>
-
+              
           {/* Mobile CTA Button */}
-          <button className="mt-8 flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-4 rounded-full text-sm font-bold transition-all shadow-sm">
-            Get An Appointment
-            <ArrowRight size={16} strokeWidth={3} />
-          </button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <button 
+                className="mt-8 flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-4 rounded-full text-sm font-bold transition-all shadow-sm"
+                style={{ cursor: 'pointer' }}
+              >
+                Get An Appointment
+                <ArrowRight size={16} strokeWidth={3} />
+              </button>
+            </DialogTrigger>
+            <DialogContent className="max-w-4xl p-0 border-none bg-transparent shadow-none">
+              <AppointmentForm3 />
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
     </nav>
