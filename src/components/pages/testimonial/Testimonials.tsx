@@ -3,6 +3,13 @@
 import React from "react";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { useTestimonials } from "@/hooks/pages/use-testimonial";
 
 const Testimonials: React.FC = () => {
@@ -46,49 +53,63 @@ const Testimonials: React.FC = () => {
     );
   }
 
+  const displayedTestimonials = testimonials.slice(0, 3);
+
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="p-10 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial) => (
-            <Card
-              key={testimonial.id}
-              className="group cursor-pointer rounded-3xl bg-white transition-all duration-300 hover:-translate-y-1 shadow-none border-none"
-            >
-              <CardContent className="p-8 text-center sm:p-12">
-                {testimonial.image && (
-                  <div className="mb-6 flex justify-center">
-                    <div className="relative h-82 w-82 overflow-hidden ">
-                      <Image
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                )}
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          className="w-full"
+        >
+          <CarouselContent>
+            {displayedTestimonials.map((testimonial) => (
+              <CarouselItem key={testimonial.id} className="md:basis-1/2 lg:basis-1/3">
+                <div className="p-1">
+                  <Card className="group cursor-pointer rounded-3xl bg-white transition-all duration-300 hover:-translate-y-1 shadow-none border-none">
+                    <CardContent className="text-center">
+                      {testimonial.image && (
+                        <div className="mb-6 flex justify-center">
+                          <div className="relative h-82 w-82 overflow-hidden">
+                            <Image
+                              src={testimonial.image}
+                              alt={testimonial.name}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                        </div>
+                      )}
 
-                <h3 className="mb-2 text-3xl font-bold text-gray-900">
-                  {testimonial.name}
-                </h3>
+                      <h3 className="mb-2 text-3xl font-bold text-gray-900">
+                        {testimonial.name}
+                      </h3>
 
-                <p className="mb-4 text-lg text-gray-600">
-                  {testimonial.designation}
-                </p>
+                      <p className="mb-4 text-lg text-gray-600">
+                        {testimonial.designation}
+                      </p>
 
-                <div className="relative">
-                  <blockquote className="relative z-10 text-lg leading-relaxed font-medium text-gray-800">
-                    &quot;{testimonial.comment}&quot;
-                  </blockquote>
+                      <div className="relative">
+                        <blockquote className="relative z-10 text-lg leading-relaxed font-medium text-gray-800">
+                          &quot;{testimonial.comment}&quot;
+                        </blockquote>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </div>
     </section>
   );
 };
 
 export default Testimonials;
+

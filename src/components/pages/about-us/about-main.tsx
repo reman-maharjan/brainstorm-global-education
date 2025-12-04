@@ -5,6 +5,7 @@ import { ServicesSection } from "../services/services-section";
 import { FeaturedContent } from "./about/FeaturedContent";
 import { AboutUs } from "./about/about-us";
 import Stats from "../stats/Stats";
+import { TeamMembers } from "../team-member/team-member";
 
 export function AboutMain() {
     return (
@@ -13,6 +14,7 @@ export function AboutMain() {
             <FeaturedContent/>
             <ServicesSection/>
             <AboutUs/>
+            <TeamMembers/>
             <Stats/>
             
         </div>
