@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-secondary text-white pt-20 relative mt-20">
       {/* Green Floating CTA Bar */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] bg-secondary/80 rounded-3xl sm:rounded-full p-6 sm:p-8 md:p-12 flex flex-col md:flex-row items-center justify-between shadow-2xl border border-white/10 gap-6">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] sm:w-[90%] md:w-[85%] lg:w-[80%] bg-secondary rounded-3xl sm:rounded-full p-6 sm:p-8 md:p-12 flex flex-col md:flex-row items-center justify-between shadow-2xl border border-white/10 gap-6">
         <div className="flex items-center gap-4 mb-4 md:mb-0">
           <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-secondary">
             <svg

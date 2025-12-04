@@ -20,7 +20,7 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav className="flex items-center justify-between py-5 px-4 sm:px-6 lg:px-8 relative">
+    <nav className="flex sticky bg-white z-50 top-0 left-0 right-0 items-center justify-between py-5 px-4 sm:px-6 lg:px-8">
       {/* Logo Section */}
       <div className="flex items-center gap-2.5 z-50">
         <Link href="/">
