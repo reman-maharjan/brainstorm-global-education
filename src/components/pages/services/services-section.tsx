@@ -1,16 +1,18 @@
 "use client";
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useServices } from '@/hooks/pages/use-services';
-import { Loader2 } from 'lucide-react';
+import { Loader2, ArrowRight } from 'lucide-react';
 
 interface ServiceCardProps {
   image: string;
   title: string;
   description: string;
+  slug: string;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ image, title, description }) => (
+const ServiceCard: React.FC<ServiceCardProps> = ({ image, title, description, slug }) => (
   <div className= "p-6 rounded-2rem shadow-lg border  border-slate-50 flex flex-col items-center text-center hover:shadow-xl transition-shadow duration-300 h-full">
     <div className="mb-6 relative">
       <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-md">
@@ -20,9 +22,17 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ image, title, description }) 
     
     <h3 className="text-xl font-bold text-primary mb-4 px-4">{title}</h3>
     <div 
-      className="text-slate-500 text-sm leading-relaxed mb-4"
+      className="text-slate-500 text-sm leading-relaxed mb-4 grow"
       dangerouslySetInnerHTML={{ __html: description }}
     />
+    
+    <Link 
+      href={`/services/${slug}`}
+      className="mt-4 inline-flex items-center gap-2 px-6 py-2.5 bg-primary text-white rounded-full font-medium hover:bg-primary/90 transition-colors group"
+    >
+      Learn More
+      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+    </Link>
   </div>
 );
 
@@ -71,6 +81,7 @@ export const ServicesSection: React.FC = () => {
              title={svc.title}
              description={svc.description}
              image={svc.thumbnail_image || "https://picsum.photos/seed/edu/300/300"} 
+             slug={svc.slug}
            />
         ))}
       </div>
