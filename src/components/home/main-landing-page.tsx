@@ -7,7 +7,7 @@ import Blog from "../pages/blog/Blog"
 import Features from "./features/features";
 import CountryCarousel from "../pages/country/CountryCarousel";
 import VisaCategory from "./visaCategory/VisaCategory";
-import TestimonialsPage from "../pages/testimonial/TestimonialsPage";
+import Testimonials from "../pages/testimonial/Testimonials";
 import SimpleContactForm from "../pages/contact/contact-us";
 
 export function LandingPage(){
@@ -20,7 +20,7 @@ export function LandingPage(){
         <CountryCarousel />
         <VisaCategory />
         <Stats />
-        <TestimonialsPage />
+        <Testimonials />
         <Blog />
         <SimpleContactForm />
         </div>

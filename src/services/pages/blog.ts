@@ -1,4 +1,7 @@
+import { siteConfig } from "@/config/site";
 import { BlogFilters, BlogPost, PaginatedBlogResponse } from "@/types/pages/blog";
+
+const API_BASE_URL=siteConfig.backendUrl
 
 export const blogApi = {
   getBlogs: async (filters?: BlogFilters): Promise<PaginatedBlogResponse> => {
@@ -18,7 +21,7 @@ export const blogApi = {
       }
     }
 
-    const url = `/api/blogs${queryParams.toString() ? `?${queryParams.toString()}` : ""}`;
+    const url = `${API_BASE_URL}/api/blogs${queryParams.toString() ? `?${queryParams.toString()}` : ""}`;
     const response = await fetch(url, {
       method: "GET",
     });
@@ -31,7 +34,7 @@ export const blogApi = {
   },
 
   getBlogBySlug: async (slug: string): Promise<BlogPost> => {
-    const response = await fetch(`/api/blogs/${slug}`, {
+    const response = await fetch(`${API_BASE_URL}/api/blogs/${slug}`, {
       method: "GET",
     });
 

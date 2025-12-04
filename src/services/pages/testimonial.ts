@@ -3,8 +3,17 @@ import {  TestimonialResponse } from "@/types/pages/testimonial";
 export const testimonialsApi = {
   // Get all testimonials
   getAll: async (): Promise<TestimonialResponse> => {
-    const response = await fetch('/api/testimonials', {
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+    
+    if (!backendUrl) {
+      throw new Error('Backend URL not configured');
+    }
+
+    const response = await fetch(`${backendUrl}/api/testimonial/`, {
       method: "GET",
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
 
     if (!response.ok) {
