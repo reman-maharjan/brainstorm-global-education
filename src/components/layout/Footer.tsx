@@ -1,12 +1,12 @@
 import React from "react";
 import {
-  Plane,
   Facebook,
   Twitter,
   Instagram,
   Linkedin,
   Send,
 } from "lucide-react";
+import Image from "next/image";
 
 const Footer: React.FC = () => {
   return (
@@ -57,12 +57,9 @@ const Footer: React.FC = () => {
         {/* Brand Column */}
         <div className="space-y-6">
           <div className="flex items-center gap-2.5">
-            <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-secondary">
-              <Plane size={20} className="-rotate-45" fill="currentColor" />
-            </div>
-            <span className="text-2xl font-extrabold tracking-tight">
-              RouteX
-            </span>
+            <div className="w-50 h-20 rounded-full flex items-center justify-center text-secondary">
+            <Image src="/white-logo-svg.svg" alt="Logo" width={300} height={50} className="w-[200px] sm:w-[250px] lg:w-[300px] h-auto" />
+          </div>
           </div>
           <p className="text-gray-400 text-sm leading-relaxed">
             Corporate business typically refers to large-scale mansola it
