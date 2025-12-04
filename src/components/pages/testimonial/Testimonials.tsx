@@ -61,7 +61,7 @@ const Testimonials: React.FC = () => {
                     <CardContent className="p-8 text-center sm:p-12">
                         {testimonial.image && (
                           <div className="mb-6 flex justify-center">
-                              <div className="relative h-32 w-32 overflow-hidden rounded-full">
+                              <div className="relative h-82 w-82 overflow-hidden ">
                                   <Image
                                       src={testimonial.image}
                                       alt={testimonial.name}
