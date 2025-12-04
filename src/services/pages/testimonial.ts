@@ -1,4 +1,4 @@
-import {  TestimonialResponse } from "@/types/testimonial";
+import {  TestimonialResponse } from "@/types/pages/testimonial";
 
 export const testimonialsApi = {
   // Get all testimonials

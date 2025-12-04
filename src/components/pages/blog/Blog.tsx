@@ -1,41 +1,53 @@
+"use client";
+
 import React from 'react';
 import { ArrowRight, Calendar, User } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Image from 'next/image';
+import { useBlogs } from '@/hooks/pages/use-blog';
+import { format } from 'date-fns';
+import { stripHtml, truncateText } from '@/lib/text-utils';
 
 const Blog: React.FC = () => {
-  const posts = [
-    {
-      id: 1,
-      title: "Choosing the Right Course & Country",
-      excerpt: "Selecting the right course and country is the most...",
-      date: "30 Nov 2025",
-      author: "By Admin"
-    },
-    {
-      id: 2,
-      title: "Top Scholarships Available for International Students",
-      excerpt: "Many students believe studying abroad is...",
-      date: "30 Nov 2025",
-      author: "By Admin"
-    },
-    {
-      id: 3,
-      title: "Step-by-Step Guide to Applying for an International",
-      excerpt: "The application process for studying abroad may look...",
-      date: "30 Nov 2025",
-      author: "By Admin"
-    },
-    {
-      id: 4,
-      title: "Why Studying Abroad Can Transform Your Future",
-      excerpt: "Studying abroad is one of the most life-changing...",
-      date: "30 Nov 2025",
-      author: "By Admin"
-    }
-  ];
+  const { data, isLoading, error } = useBlogs({ 
+    is_published: true,
+    page_size: 4,
+    ordering: '-created_at'
+  });
+
+  if (isLoading) {
+    return (
+      <section className="py-20 bg-white" id="blog">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-gray-500">Loading blog posts...</p>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="py-20 bg-white" id="blog">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-red-500">Failed to load blog posts. Please try again later.</p>
+        </div>
+      </section>
+    );
+  }
+
+  const posts = data?.results || [];
+
+  if (posts.length === 0) {
+    return (
+      <section className="py-20 bg-white" id="blog">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-gray-500">No blog posts available.</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-20 bg-white" id="blog">
@@ -47,28 +59,36 @@ const Blog: React.FC = () => {
             {posts.map((post) => (
                 <Card key={post.id} className="text-left group cursor-pointer border-none shadow-sm hover:shadow-md transition-shadow">
                     <div className="w-full h-48 sm:h-56 md:h-64 bg-gray-200 rounded-t-2xl overflow-hidden">
-                         <Image
-                            src={`https://picsum.photos/400/300?random=${post.id + 50}`} 
-                            alt={post.title} 
-                            width={400}
-                            height={300}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                         />
+                         {post.thumbnail_image ? (
+                           <Image
+                              src={post.thumbnail_image} 
+                              alt={post.thumbnail_image_alt_description || post.title} 
+                              width={400}
+                              height={300}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                           />
+                         ) : (
+                           <div className="w-full h-full flex items-center justify-center bg-gray-300">
+                             <span className="text-gray-500">No image</span>
+                           </div>
+                         )}
                     </div>
                     <CardContent className="p-6">
                         <div className="flex items-center gap-4 mb-3">
                             <Badge variant="secondary" className="flex items-center gap-1 text-xs">
-                                <Calendar size={12}/> {post.date}
+                                <Calendar size={12}/> {format(new Date(post.created_at), 'dd MMM yyyy')}
                             </Badge>
-                            <Badge variant="secondary" className="flex items-center gap-1 text-xs">
-                                <User size={12}/> {post.author}
-                            </Badge>
+                            {post.author && (
+                              <Badge variant="secondary" className="flex items-center gap-1 text-xs">
+                                  <User size={12}/> {post.author.first_name || post.author.username}
+                              </Badge>
+                            )}
                         </div>
                         <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight group-hover:text-primary transition-colors">
                             {post.title}
                         </h3>
                         <p className="text-sm text-gray-500 mb-4 line-clamp-2">
-                            {post.excerpt}
+                            {truncateText(stripHtml(post.meta_description || post.content), 100)}
                         </p>
                         <Button variant="ghost" className="text-sm font-bold p-0 h-auto hover:bg-transparent">
                             Read More <ArrowRight size={14} className="ml-2" />
