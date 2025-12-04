@@ -8,7 +8,7 @@ interface PricingCardProps {
 
 export const PricingCard: React.FC<PricingCardProps> = ({ pricing }) => {
   return (
-    <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 shadow-sm hover:shadow-md bg-white duration-300 relative">
+    <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200  bg-white duration-300 relative">
       {pricing.is_popular && (
         <div className="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
           POPULAR
