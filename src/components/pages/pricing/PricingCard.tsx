@@ -16,8 +16,8 @@ export const PricingCard: React.FC<PricingCardProps> = ({ pricing }) => {
       )}
 
       {/* Header Section */}
-      <div className="w-full flex items-center justify-center py-16 bg-primary/10">
-        <h3 className="text-4xl font-semibold text-black tracking-tight">
+      <div className="w-full flex items-center justify-center py-12 bg-primary/10">
+        <h3 className="text-3xl font-semibold text-gray-700 tracking-tight">
           {pricing.name}
         </h3>
       </div>
@@ -26,7 +26,7 @@ export const PricingCard: React.FC<PricingCardProps> = ({ pricing }) => {
       <div className="flex flex-col px-10 pb-10 pt-12 h-full">
         {/* Price */}
         <div className="mb-10 text-center">
-          <span className="text-5xl font-bold text-primary">
+          <span className="text-4xl font-bold text-primary">
             Rs. {pricing.price}
           </span>
           <span className="ml-1 text-xl font-semibold text-primary">/mo</span>

@@ -1,32 +1,47 @@
-import React, { useState } from 'react';
-import { ChevronRight, ChevronUp } from 'lucide-react';
-import Image from 'next/image';
+"use client";
 
-const faqs = [
-  {
-    id: 1,
-    question: "What services does your consultancy provide?",
-    answer: "We offer educational counseling, course and university selection, application processing, documentation guidance, visa assistance, test preparation, and pre-departure support."
-  },
-  {
-    id: 2,
-    question: "Which countries do you help students apply to?",
-    answer: "We primarily assist with applications to the USA, UK, Canada, Australia, New Zealand, and various European countries."
-  },
-  {
-    id: 3,
-    question: "Is there a consultation fee?",
-    answer: "Our initial consultation is completely free. We charge for specific application processing services depending on the complexity of the case."
-  },
-  {
-    id: 4,
-    question: "Do you assist with scholarship opportunities?",
-    answer: "Yes, we help identify scholarship opportunities that match your profile and assist with the application essays and requirements."
-  }
-];
+import React, { useState, useEffect } from 'react';
+import { ChevronRight, ChevronUp, Loader2 } from 'lucide-react';
+import Image from 'next/image';
+import { useFAQs } from '@/hooks/pages/use-faq';
 
 const FAQ: React.FC = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(faqs.length > 0 ? faqs[0].id : null);
+  const { data: faqs, isLoading, isError } = useFAQs();
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const initializedRef = React.useRef(false);
+
+  useEffect(() => {
+    if (faqs && faqs.length > 0 && !initializedRef.current) {
+      const timer = setTimeout(() => {
+        setOpenIndex(faqs[0].id);
+        initializedRef.current = true;
+      }, 0);
+      return () => clearTimeout(timer);
+    }
+  }, [faqs]);
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center py-20">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="text-center py-20 text-red-500">
+        Failed to load FAQs. Please try again later.
+      </div>
+    );
+  }
+
+  const faqList = faqs || [];
+
+  if (faqList.length === 0) {
+    return null;
+  }
 
   return (
     <section className="py-20 bg-white" id="faq">
@@ -103,7 +118,7 @@ const FAQ: React.FC = () => {
             </div>
 
             <div className="space-y-4">
-              {faqs.map(faq => {
+              {faqList.map(faq => {
                 const isOpen = openIndex === faq.id;
                 return (
                   <div

@@ -1,83 +1,77 @@
 "use client";
 
-import React, { useState } from "react";
-import { ChevronRight, ChevronUp } from "lucide-react";
-
-// 1. Define the data structure locally
-interface FAQItem {
-  question: string;
-  answer: string;
-}
-
-// 2. Sample data matching your image
-const faqData: FAQItem[] = [
-  {
-    question: "What services does your consultancy provide?",
-    answer: "We offer educational counseling, course and university selection, application processing, documentation guidance, visa assistance, test preparation, and pre-departure support."
-  },
-  {
-    question: "What documents are required to start the application process?",
-    answer: "Typically, you will need your academic transcripts, a valid passport, English proficiency test scores (IELTS/TOEFL), recommendation letters, and a statement of purpose."
-  },
-  {
-    question: "Which countries do you help students apply to?",
-    answer: "We assist students in applying to universities in the USA, UK, Canada, Australia, and various European countries."
-  },
-  {
-    question: "How long does the application and visa process usually take?",
-    answer: "The process varies by country and university, but it generally takes 3 to 6 months from application submission to visa approval."
-  },
-  {
-    question: "Is there a consultation fee?",
-    answer: "Our initial counseling session is completely free. We do charge a nominal fee for processing applications and visa guidance depending on the destination."
-  },
-  {
-    question: "Can I apply without English proficiency scores?",
-    answer: "Some universities offer conditional admission or waivers depending on your academic background, but most top institutions require valid test scores."
-  },
-  {
-    question: "Do you assist with scholarship opportunities?",
-    answer: "Yes, we help identify scholarship opportunities based on your academic merit and assist you in drafting the scholarship application essays."
-  },
-  {
-    question: "How can I book an appointment or counseling session?",
-    answer: "You can book a session through our website's booking form, call our office directly, or visit us in person during business hours."
-  }
-];
+import React, { useState, useEffect } from "react";
+import { ChevronRight, ChevronUp, Loader2 } from "lucide-react";
+import { useFAQs } from "@/hooks/pages/use-faq";
+import { FAQ } from "@/types/pages/faq";
 
 export default function Faqs() {
-  // State to track which item is open (defaulting to 0, the first one)
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const { data: faqs, isLoading, isError } = useFAQs();
+  // State to track which item is open (defaulting to null initially)
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const initializedRef = React.useRef(false);
+
+  useEffect(() => {
+    if (faqs && faqs.length > 0 && !initializedRef.current) {
+      const timer = setTimeout(() => {
+        setOpenIndex(faqs[0].id);
+        initializedRef.current = true;
+      }, 0);
+      return () => clearTimeout(timer);
+    }
+  }, [faqs]);
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center py-20">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="text-center py-20 text-red-500">
+        Failed to load FAQs. Please try again later.
+      </div>
+    );
+  }
+
+  const faqList = faqs || [];
+
+  if (faqList.length === 0) {
+    return null;
+  }
 
   // Split data into two columns
-  const midPoint = Math.ceil(faqData.length / 2);
-  const leftFaqs = faqData.slice(0, midPoint);
-  const rightFaqs = faqData.slice(midPoint);
+  const midPoint = Math.ceil(faqList.length / 2);
+  const leftFaqs = faqList.slice(0, midPoint);
+  const rightFaqs = faqList.slice(midPoint);
 
   // Helper to calculate the actual index based on column position
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
+  const toggleFAQ = (id: number) => {
+    setOpenIndex(openIndex === id ? null : id);
   };
 
-  const renderFaqList = (items: FAQItem[], startIndex: number) => {
-    return items.map((faq, i) => {
-      const actualIndex = startIndex + i;
-      const isOpen = openIndex === actualIndex;
+  const renderFaqList = (items: FAQ[]) => {
+    return items.map((faq) => {
+      const isOpen = openIndex === faq.id;
 
       return (
         <div
-          key={actualIndex}
+          key={faq.id}
           className={`group overflow-hidden rounded-2xl transition-all duration-300 ${
             isOpen ? "bg-gray-50" : "bg-white"
           }`}
         >
           <button
-            onClick={() => toggleFAQ(actualIndex)}
+            onClick={() => toggleFAQ(faq.id)}
             className="flex w-full items-center justify-between p-6 text-left"
           >
             <span
               className={`text-lg font-medium transition-colors duration-300 ${
-                isOpen ? "text-[#008f7a]" : "text-gray-900"
+                isOpen ? "text-primary" : "text-gray-900"
               }`}
             >
               {faq.question}
@@ -85,8 +79,8 @@ export default function Faqs() {
             <span
               className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition-colors duration-300 ${
                 isOpen
-                  ? "bg-[#0f5132] text-white" // Dark Green bg, White Icon (Active)
-                  : "bg-gray-100 text-gray-600 group-hover:bg-gray-200" // Gray bg, Gray Icon (Inactive)
+                  ? "bg-primary text-white" 
+                  : "bg-gray-100 text-gray-600 group-hover:bg-gray-200" 
               }`}
             >
               {isOpen ? (
@@ -119,7 +113,7 @@ export default function Faqs() {
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-4xl font-bold tracking-tight text-[#008f7a] md:text-5xl">
+          <h2 className="mb-4 text-4xl font-bold tracking-tight text-primary md:text-5xl">
             Frequently Asked Questions
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-gray-600">
@@ -130,10 +124,10 @@ export default function Faqs() {
         {/* 2-Column Grid */}
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 items-start">
           <div className="flex flex-col gap-4">
-            {renderFaqList(leftFaqs, 0)}
+            {renderFaqList(leftFaqs)}
           </div>
           <div className="flex flex-col gap-4">
-            {renderFaqList(rightFaqs, midPoint)}
+            {renderFaqList(rightFaqs)}
           </div>
         </div>
       </div>
