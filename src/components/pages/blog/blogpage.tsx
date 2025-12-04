@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 import { Search, User, Calendar, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { useBlogs } from "@/hooks/pages/use-blog";
@@ -13,48 +14,50 @@ const BlogCard = ({ blog }: { blog: BlogPost }) => {
   
   return (
     <article className="border-b border-gray-200 pb-8 mb-8 last:border-0">
-      {/* Image */}
-      {blog.thumbnail_image && (
-        <div className="w-full h-98 bg-gray-200 rounded-lg mb-4 overflow-hidden">
-          <Image
-            src={blog.thumbnail_image} 
-            alt={blog.thumbnail_image_alt_description || blog.title}
-            width={800}
-            height={700}
-            className="w-full h-full object-cover"
-          />
-        </div>
-      )}
-
-      {/* Meta Info */}
-      <div className="flex gap-6 text-sm text-gray-600 mb-3">
-        {blog.author && (
-          <div className="flex items-center gap-2">
-            <User className="w-4 h-4" />
-            <span>{blog.author.first_name || blog.author.username}</span>
+      <Link href={`/blog/${blog.slug}`} className="block">
+        {/* Image */}
+        {blog.thumbnail_image && (
+          <div className="w-full h-98 bg-gray-200 rounded-lg mb-4 overflow-hidden">
+            <Image
+              src={blog.thumbnail_image} 
+              alt={blog.thumbnail_image_alt_description || blog.title}
+              width={800}
+              height={700}
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+            />
           </div>
         )}
-        <div className="flex items-center gap-2">
-          <Calendar className="w-4 h-4" />
-          <span>{format(new Date(blog.created_at), 'dd MMM yyyy')}</span>
+
+        {/* Meta Info */}
+        <div className="flex gap-6 text-sm text-gray-600 mb-3">
+          {blog.author && (
+            <div className="flex items-center gap-2">
+              <User className="w-4 h-4" />
+              <span>{blog.author.first_name || blog.author.username}</span>
+            </div>
+          )}
+          <div className="flex items-center gap-2">
+            <Calendar className="w-4 h-4" />
+            <span>{format(new Date(blog.created_at), 'dd MMM yyyy')}</span>
+          </div>
         </div>
-      </div>
 
-      {/* Title */}
-      <h2 className="text-2xl font-bold text-gray-900 mb-3">
-        {blog.title}
-      </h2>
+        {/* Title */}
+        <h2 className="text-2xl font-bold text-gray-900 mb-3 hover:text-primary transition-colors">
+          {blog.title}
+        </h2>
 
-      {/* Content */}
-      <p className="text-gray-600 mb-4 leading-relaxed whitespace-pre-line">
-        {cleanContent}
-      </p>
+        {/* Content */}
+        <p className="text-gray-600 mb-4 leading-relaxed whitespace-pre-line">
+          {cleanContent}
+        </p>
 
-      {/* Button */}
-      <button className="flex items-center gap-2 bg-primary text-white px-6 py-2 rounded-full hover:bg-primary-dark transition-colors">
-        <span className="font-semibold">Learn More</span>
-        <ArrowRight className="w-4 h-4" />
-      </button>
+        {/* Button */}
+        <div className="flex items-center gap-2 bg-primary text-white px-6 py-2 rounded-full hover:bg-primary-dark transition-colors w-fit">
+          <span className="font-semibold">Learn More</span>
+          <ArrowRight className="w-4 h-4" />
+        </div>
+      </Link>
     </article>
   );
 };
