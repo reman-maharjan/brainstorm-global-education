@@ -37,7 +37,7 @@ const OurClients = () => {
             {marqueeItems.map((client, index) => (
               <div
                 key={`${client.id}-${index}`}
-                className="logo-item flex-shrink-0 cursor-pointer opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+                className="logo-item shrink-0 cursor-pointer opacity-60 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
               >
                 <a
                   href={client.url ?? undefined}
