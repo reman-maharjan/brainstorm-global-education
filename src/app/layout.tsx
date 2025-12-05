@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import { ConditionalPageHeader } from "@/components/layout/breadcrumb/ConditionalPageHeader";
 import { Providers } from "@/components/providers";
 import { Toaster } from "@/components/ui/sonner";
+import OurClients from "@/components/our-clients/our-clients";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -35,6 +36,7 @@ export default function RootLayout({
           <Navbar />
           <ConditionalPageHeader />
           <div>{children}</div>
+          <OurClients />
           <Footer />
           <Toaster />
         </Providers>

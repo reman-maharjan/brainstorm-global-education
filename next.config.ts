@@ -21,9 +21,10 @@ const nextConfig: NextConfig = {
         hostname: "brainstorm-global-education.nepdora.baliyoventures.com",
       },
       {
-        protocol: "http",
-        hostname: "brainstorm-global-education.nepdora.baliyoventures.com",
+        protocol: "https",
+        hostname: "via.placeholder.com",
       },
+
     ],
   },
 };
