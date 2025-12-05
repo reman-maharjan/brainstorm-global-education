@@ -19,7 +19,7 @@ export const InnerPageHeader = ({
   breadcrumbs,
 }: InnerPageHeaderProps) => {
   return (
-    <div className="bg-background w-full">
+    <div className="bg-secondary w-full">
       <div className="relative mx-auto flex min-h-[150px] w-full flex-col justify-center overflow-hidden py-8 sm:h-[150px] sm:py-10 md:h-[200px] md:py-12 lg:h-[250px]">
         {/* Optional: Subtle background decorative circle */}
         <div className="pointer-events-none absolute top-0 right-0 h-32 w-32 translate-x-1/2 -translate-y-1/2 rounded-full bg-white opacity-5 blur-3xl sm:h-48 sm:w-48 md:h-64 md:w-64"></div>
