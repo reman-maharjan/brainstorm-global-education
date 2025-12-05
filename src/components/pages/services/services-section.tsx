@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useServices } from '@/hooks/pages/use-services';
 import { Loader2, ArrowRight } from 'lucide-react';
+import { stripHtml, truncateText } from '@/lib/text-utils';
 
 interface ServiceCardProps {
   image: string;
@@ -12,29 +13,33 @@ interface ServiceCardProps {
   slug: string;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ image, title, description, slug }) => (
-  <div className= "p-6 rounded-2rem shadow-lg border  border-slate-50 flex flex-col items-center text-center hover:shadow-xl transition-shadow duration-300 h-full">
-    <div className="mb-6 relative">
-      <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-md">
-        <Image src={image} alt={title} width={128} height={128} className="w-full h-full object-cover" />
+const ServiceCard: React.FC<ServiceCardProps> = ({ image, title, description, slug }) => {
+  const cleanDescription = stripHtml(description);
+  const truncatedDescription = truncateText(cleanDescription, 150);
+  
+  return (
+    <div className= "p-6 rounded-2rem shadow-lg border  border-slate-50 flex flex-col items-center text-center hover:shadow-xl transition-shadow duration-300 h-full">
+      <div className="mb-6 relative">
+        <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-md">
+          <Image src={image} alt={title} width={128} height={128} className="w-full h-full object-cover" />
+        </div>
       </div>
+      
+      <h3 className="text-xl font-bold text-primary mb-4 px-4">{title}</h3>
+      <p className="text-slate-500 text-sm leading-relaxed mb-4 grow">
+        {truncatedDescription}
+      </p>
+      
+      <Link 
+        href={`/services/${slug}`}
+        className="mt-4 inline-flex items-center gap-2 px-6 py-2.5 bg-primary text-white rounded-full font-medium hover:bg-primary/90 transition-colors group"
+      >
+        Learn More
+        <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+      </Link>
     </div>
-    
-    <h3 className="text-xl font-bold text-primary mb-4 px-4">{title}</h3>
-    <div 
-      className="text-slate-500 text-sm leading-relaxed mb-4 grow"
-      dangerouslySetInnerHTML={{ __html: description }}
-    />
-    
-    <Link 
-      href={`/services/${slug}`}
-      className="mt-4 inline-flex items-center gap-2 px-6 py-2.5 bg-primary text-white rounded-full font-medium hover:bg-primary/90 transition-colors group"
-    >
-      Learn More
-      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-    </Link>
-  </div>
-);
+  );
+};
 
 export const ServicesSection: React.FC = () => {
   const { data, isLoading, isError } = useServices();

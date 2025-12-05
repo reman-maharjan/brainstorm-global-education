@@ -6,11 +6,12 @@ import Image from "next/image";
 import { useBlogs } from "@/hooks/pages/use-blog";
 import { format } from "date-fns";
 import { BlogPost } from "@/types/pages/blog";
-import { stripHtml } from "@/lib/text-utils";
+import { stripHtml, truncateText } from "@/lib/text-utils";
 
 // Single Blog Card Component
 const BlogCard = ({ blog }: { blog: BlogPost }) => {
   const cleanContent = stripHtml(blog.meta_description || blog.content);
+  const truncatedContent = truncateText(cleanContent, 200);
   
   return (
     <article className="border-b border-gray-200 pb-8 mb-8 last:border-0">
@@ -49,7 +50,7 @@ const BlogCard = ({ blog }: { blog: BlogPost }) => {
 
         {/* Content */}
         <p className="text-gray-600 mb-4 leading-relaxed whitespace-pre-line">
-          {cleanContent}
+          {truncatedContent}
         </p>
 
         {/* Button */}
