@@ -1,4 +1,6 @@
 import { Shield, Users, Clock, Award, HeartHandshake, Globe } from "lucide-react";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 const features = [
   {
@@ -40,9 +42,9 @@ const WhyChooseUsSection = () => {
         {/* Header */}
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
           <div>
-            <span className="inline-block text-sm font-semibold text-primary tracking-wider uppercase mb-3">
+            <Badge variant="outline" className="text-sm font-semibold text-primary tracking-wider uppercase mb-3 border-primary/20">
               Why Choose Us
-            </span>
+            </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Nepal&apos;s Most Trusted Education Consultancy
             </h2>
@@ -55,34 +57,38 @@ const WhyChooseUsSection = () => {
           
           {/* Trust Badges */}
           <div className="flex flex-wrap gap-4 lg:justify-end">
-            <div className=" border-2 border-border px-6 py-4 text-center">
+            <Card className="px-6 py-4 text-center rounded-lg shadow-sm">
               <div className="text-2xl font-bold text-primary">2009</div>
               <div className="text-xs text-muted-foreground uppercase tracking-wide">Established</div>
-            </div>
-            <div className=" border-2 border-border px-6 py-4 text-center">
+            </Card>
+            <Card className="px-6 py-4 text-center rounded-lg shadow-sm">
               <div className="text-2xl font-bold text-primary">A+</div>
               <div className="text-xs text-muted-foreground uppercase tracking-wide">Rating</div>
-            </div>
-            <div className="border-2 border-border px-6 py-4 text-center">
+            </Card>
+            <Card className="px-6 py-4 text-center rounded-lg shadow-sm">
               <div className="text-2xl font-bold text-primary">Licensed</div>
               <div className="text-xs text-muted-foreground uppercase tracking-wide">By Govt.</div>
-            </div>
+            </Card>
           </div>
         </div>
 
         {/* Features Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature) => (
-            <div
+            <Card
               key={feature.title}
-              className="group p-6 border-2 border-border bg-card hover:border-primary transition-colors"
+              className="group border-2 hover:border-primary transition-colors duration-300"
             >
-              <div className="w-12 h-12 bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
-                <feature.icon className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors" />
-              </div>
-              <h3 className="font-bold text-lg mb-2">{feature.title}</h3>
-              <p className="text-sm text-muted-foreground">{feature.description}</p>
-            </div>
+              <CardHeader>
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-0 group-hover:bg-primary transition-colors">
+                  <feature.icon className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors" />
+                </div>
+                <CardTitle className="text-lg pt-4">{feature.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-sm">{feature.description}</CardDescription>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>

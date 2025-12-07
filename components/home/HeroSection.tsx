@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import heroImage from "@/components/assets/hero-students.jpg";
 import Image from "next/image";
@@ -19,13 +20,13 @@ const HeroSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="animate-fade-in">
-            <div className="inline-block bg-accent text-accent-foreground px-4 py-1 text-sm font-medium mb-6">
+            <Badge variant="secondary" className="px-4 py-1 text-sm font-medium mb-6 bg-accent text-accent-foreground rounded-full">
               🇳🇵 Nepal&apos;s Trusted Education Partner
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              Your Gateway to{" "}
-              <span className="text-primary">World-Class</span>{" "}
-              Education
+            </Badge>
+            <h1 className="text-4xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">
+              Best study destination {" "}
+              <span className="text-primary">Consultancy</span>{" "}<br/>
+              In Nepal
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
               Expert guidance for studying in USA, UK, Australia, Canada & New Zealand. 
@@ -66,7 +67,7 @@ const HeroSection = () => {
               width={1000}
               height={600}
               alt="International students celebrating graduation with global landmarks"
-              className="w-full h-auto rounded-lg shadow-lg"
+              className="w-full h-auto rounded-2xl shadow-lg"
             />
           </div>
         </div>

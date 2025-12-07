@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, Phone, Mail, MapPin } from "lucide-react";
 
 const CTASection = () => {
@@ -29,11 +30,13 @@ const CTASection = () => {
             </div>
           </div>
 
-          <div className="bg-primary-foreground/10 border-2 border-primary-foreground/30 p-6 md:p-8">
-            <h3 className="font-bold text-xl mb-6">Visit Our Office</h3>
-            <div className="space-y-4">
+          <Card className="bg-primary-foreground/10 border-2 border-primary-foreground/30 border-none shadow-none">
+            <CardHeader>
+              <CardTitle className="text-xl">Visit Our Office</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-primary-foreground/20 flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 bg-primary-foreground/20 rounded-lg flex items-center justify-center shrink-0">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
@@ -42,7 +45,7 @@ const CTASection = () => {
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-primary-foreground/20 flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 bg-primary-foreground/20 rounded-lg flex items-center justify-center shrink-0">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
@@ -51,7 +54,7 @@ const CTASection = () => {
                 </div>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-primary-foreground/20 flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 bg-primary-foreground/20 rounded-lg flex items-center justify-center shrink-0">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
@@ -59,13 +62,13 @@ const CTASection = () => {
                   <p className="text-sm opacity-80">info@brainstormglobal.edu.np</p>
                 </div>
               </div>
-            </div>
-            <div className="mt-6 pt-6 border-t-2 border-primary-foreground/30">
-              <p className="text-sm opacity-80">
-                <span className="font-medium">Office Hours:</span> Sun - Fri, 9:00 AM - 6:00 PM
-              </p>
-            </div>
-          </div>
+              <div className="mt-6 pt-6 border-t-2 border-primary-foreground/30">
+                <p className="text-sm opacity-80">
+                  <span className="font-medium">Office Hours:</span> Sun - Fri, 9:00 AM - 6:00 PM
+                </p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>

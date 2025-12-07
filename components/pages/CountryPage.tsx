@@ -4,6 +4,14 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
 import InquiryModal from "@/components/InquiryModal";
 import { 
   GraduationCap, DollarSign, Briefcase, Clock, 
@@ -471,7 +479,7 @@ const CountryPage = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
+      <section className="relative h-[60vh] min-h-[500px] overflow-hidden rounded-b-2xl">
         <Image
           src={data.image}
           alt={`Study in ${data.name}`}
@@ -527,10 +535,10 @@ const CountryPage = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="flex flex-wrap gap-3 justify-center">
             {data.highlights.map((highlight, index) => (
-              <div key={index} className="flex items-center gap-2 bg-card border-2 border-border px-4 py-2">
+              <Badge key={index} variant="secondary" className="px-4 py-2 text-sm font-medium gap-2 h-auto text-wrap text-left">
                 <CheckCircle className="w-4 h-4 text-primary shrink-0" />
-                <span className="text-sm font-medium">{highlight}</span>
-              </div>
+                {highlight}
+              </Badge>
             ))}
           </div>
         </div>
@@ -553,13 +561,17 @@ const CountryPage = () => {
             </div>
             <div className="grid grid-cols-2 gap-4">
               {data.whyStudy.map((item, index) => (
-                <div key={index} className="bg-card border-2 border-border p-5 hover:border-primary transition-colors">
-                  <div className="w-10 h-10 bg-primary/10 flex items-center justify-center mb-3">
-                    <item.icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <h3 className="font-bold mb-1">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground">{item.description}</p>
-                </div>
+                <Card key={index} className="hover:border-primary transition-colors">
+                  <CardHeader>
+                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-2">
+                      <item.icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <CardTitle className="text-base">{item.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground">{item.description}</p>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
@@ -583,16 +595,20 @@ const CountryPage = () => {
           </div>
           <div className="grid md:grid-cols-2 gap-4">
             {data.universities.map((uni, index) => (
-              <div key={index} className="flex items-center justify-between bg-card border-2 border-border p-5 hover:border-primary transition-colors">
-                <div>
-                  <span className="font-bold text-lg">{uni.name}</span>
-                  <div className="flex items-center gap-2 mt-1">
-                    <MapPin className="w-3 h-3 text-muted-foreground" />
-                    <span className="text-sm text-muted-foreground">{uni.location}</span>
+              <Card key={index} className="hover:border-primary transition-colors">
+                <CardContent className="flex items-center justify-between p-5">
+                  <div>
+                    <span className="font-bold text-lg">{uni.name}</span>
+                    <div className="flex items-center gap-2 mt-1">
+                      <MapPin className="w-3 h-3 text-muted-foreground" />
+                      <span className="text-sm text-muted-foreground">{uni.location}</span>
+                    </div>
                   </div>
-                </div>
-                <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1">{uni.ranking}</span>
-              </div>
+                  <Badge variant="secondary" className="text-primary bg-primary/10 hover:bg-primary/20">
+                    {uni.ranking}
+                  </Badge>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
@@ -603,134 +619,162 @@ const CountryPage = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Requirements */}
-            <div className="lg:col-span-2">
-              <div className="bg-card border-2 border-border p-8 mb-8">
-                <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                  <GraduationCap className="w-6 h-6 text-primary" />
-                  Entry Requirements
-                </h2>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {data.requirements.map((req, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                      <span>{req}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+            <div className="lg:col-span-2 space-y-8">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-2xl flex items-center gap-2">
+                    <GraduationCap className="w-6 h-6 text-primary" />
+                    Entry Requirements
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    {data.requirements.map((req, index) => (
+                      <div key={index} className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                        <span>{req}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
 
               {/* Work Rights */}
-              <div className="bg-card border-2 border-border p-8 mb-8">
-                <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                  <Briefcase className="w-6 h-6 text-primary" />
-                  Work Rights &amp; Opportunities
-                </h2>
-                <p className="text-muted-foreground mb-4">{data.workRights}</p>
-                <div className="grid sm:grid-cols-2 gap-3">
-                  {data.workRightsDetails.map((detail, index) => (
-                    <div key={index} className="flex items-start gap-2  p-3 border border-border">
-                      <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                      <span className="text-sm">{detail}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-2xl flex items-center gap-2">
+                    <Briefcase className="w-6 h-6 text-primary" />
+                    Work Rights & Opportunities
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground mb-4">{data.workRights}</p>
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    {data.workRightsDetails.map((detail, index) => (
+                      <div key={index} className="flex items-start gap-2 p-3 border rounded-lg border-border">
+                        <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                        <span className="text-sm">{detail}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
 
               {/* Visa Information */}
-              <div className="bg-card border-2 border-border p-8 mb-8">
-                <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                  <Plane className="w-6 h-6 text-primary" />
-                  Visa Information
-                </h2>
-                <p className="text-muted-foreground mb-4">{data.visaInfo}</p>
-                <div className="grid sm:grid-cols-2 gap-3">
-                  {data.visaDetails.map((detail, index) => (
-                    <div key={index} className="flex items-start gap-2  p-3 border border-border">
-                      <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                      <span className="text-sm">{detail}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-2xl flex items-center gap-2">
+                    <Plane className="w-6 h-6 text-primary" />
+                    Visa Information
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground mb-4">{data.visaInfo}</p>
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    {data.visaDetails.map((detail, index) => (
+                      <div key={index} className="flex items-start gap-2 p-3 border rounded-lg border-border">
+                        <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                        <span className="text-sm">{detail}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
 
               {/* Scholarships */}
-              <div className="bg-card border-2 border-border p-8">
-                <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                  <Star className="w-6 h-6 text-primary" />
-                  Scholarships Available
-                </h2>
-                <div className="grid sm:grid-cols-2 gap-4">
-                  {data.scholarships.map((scholarship, index) => (
-                    <div key={index} className=" border border-border p-4">
-                      <h3 className="font-bold mb-1">{scholarship.name}</h3>
-                      <span className="text-sm text-primary font-medium">{scholarship.amount}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-2xl flex items-center gap-2">
+                    <Star className="w-6 h-6 text-primary" />
+                    Scholarships Available
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    {data.scholarships.map((scholarship, index) => (
+                      <div key={index} className="border rounded-lg border-border p-4">
+                        <h3 className="font-bold mb-1">{scholarship.name}</h3>
+                        <span className="text-sm text-primary font-medium">{scholarship.amount}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
             </div>
 
             {/* Sidebar */}
             <div className="lg:col-span-1">
               <div className="space-y-6">
                 {/* Popular Courses - Not Sticky */}
-                <div className="bg-card border-2 border-border p-6">
-                  <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
-                    <Award className="w-5 h-5 text-primary" />
-                    Popular Courses
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {data.popularCourses.map((course, index) => (
-                      <span key={index} className=" border border-border px-3 py-1 text-sm font-medium">
-                        {course}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <Award className="w-5 h-5 text-primary" />
+                      Popular Courses
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-wrap gap-2">
+                      {data.popularCourses.map((course, index) => (
+                          <Badge key={index} variant="outline">
+                            {course}
+                          </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
 
                 {/* Student Life - Not Sticky */}
-                <div className="bg-card border-2 border-border p-6">
-                  <h3 className="font-bold text-lg mb-4 flex items-center gap-2">
-                    <Heart className="w-5 h-5 text-primary" />
-                    Student Life
-                  </h3>
-                  <ul className="space-y-3">
-                    {data.studentLife.map((item, index) => (
-                      <li key={index} className="flex items-start gap-2 text-sm">
-                        <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <Heart className="w-5 h-5 text-primary" />
+                      Student Life
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-3">
+                      {data.studentLife.map((item, index) => (
+                        <li key={index} className="flex items-start gap-2 text-sm">
+                          <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
 
                 {/* Sticky CTA Card */}
-                <div className="sticky top-24">
-                  <div className=" text-black border-2 border-border p-6 mb-4">
-                    <h3 className="font-bold text-lg mb-4">Quick Information</h3>
-                    
-                    <div className="space-y-4">
-                      <div className="flex items-start gap-3 pb-3 border-b border-primary-foreground/20">
+                <div className="sticky top-24 space-y-4">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="text-lg">Quick Information</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="flex items-start gap-3">
                         <DollarSign className="w-5 h-5 shrink-0 text-primary opacity-80" />
-                        <div>
+                        <div className="w-full">
                           <p className="font-medium text-sm opacity-80">Tuition Fees</p>
                           <p className="text-sm">{data.costs.tuition}</p>
                         </div>
                       </div>
-                      <div className="flex items-start gap-3 pb-3 border-b border-primary-foreground/20">
+                      <Separator />
+                      <div className="flex items-start gap-3">
                         <Globe className="w-5 h-5 shrink-0 text-primary opacity-80" />
-                        <div>
+                        <div className="w-full">
                           <p className="font-medium text-sm opacity-80">Living Costs</p>
                           <p className="text-sm">{data.costs.living}</p>
                         </div>
                       </div>
-                      <div className="flex items-start gap-3 pb-3 border-b border-primary-foreground/20">
+                      <Separator />
+                      <div className="flex items-start gap-3">
                         <Calendar className="w-5 h-5 shrink-0 text-primary opacity-80" />
-                        <div>
+                        <div className="w-full">
                           <p className="font-medium text-sm opacity-80">Intakes</p>
                           <p className="text-sm">{data.intakes.join(" • ")}</p>
                         </div>
                       </div>
+                      <Separator />
                       <div className="flex items-start gap-3">
                         <DollarSign className="w-5 h-5 shrink-0 text-primary opacity-80" />
                         <div>
@@ -738,28 +782,32 @@ const CountryPage = () => {
                           <p className="font-bold">{data.costs.total}</p>
                         </div>
                       </div>
-                    </div>
-                  </div>
+                    </CardContent>
+                  </Card>
 
-                  <div className="bg-card border-2 border-border p-6">
-                    <h3 className="font-bold mb-4 text-center">Ready to Apply?</h3>
-                    <InquiryModal 
-                      country={country}
-                      trigger={
-                        <Button className="w-full mb-3">
-                          Apply Now <ArrowRight className="ml-2 w-4 h-4" />
-                        </Button>
-                      }
-                    />
-                    <Button variant="outline" className="w-full" asChild>
-                      <a href="tel:+977-1-XXXXXXX">
-                        <Phone className="mr-2 w-4 h-4" /> Call Us
-                      </a>
-                    </Button>
-                    <p className="text-xs text-center text-muted-foreground mt-4">
-                      Free consultation • No commitment
-                    </p>
-                  </div>
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="text-center">Ready to Apply?</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <InquiryModal 
+                        country={country}
+                        trigger={
+                          <Button className="w-full">
+                            Apply Now <ArrowRight className="ml-2 w-4 h-4" />
+                          </Button>
+                        }
+                      />
+                      <Button variant="outline" className="w-full" asChild>
+                        <a href="tel:+977-1-XXXXXXX">
+                          <Phone className="mr-2 w-4 h-4" /> Call Us
+                        </a>
+                      </Button>
+                      <p className="text-xs text-center text-muted-foreground">
+                        Free consultation • No commitment
+                      </p>
+                    </CardContent>
+                  </Card>
                 </div>
               </div>
             </div>

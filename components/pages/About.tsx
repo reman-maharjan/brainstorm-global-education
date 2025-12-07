@@ -86,7 +86,7 @@ const About = () => {
       <section className="py-16 md:py-24 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-card border-2 border-border p-8">
+            <div className="bg-card border-2 border-border p-8 rounded-lg">
               <div className="w-12 h-12 bg-primary flex items-center justify-center mb-4">
                 <Target className="w-6 h-6 text-primary-foreground" />
               </div>
@@ -97,7 +97,7 @@ const About = () => {
                 successfully achieve their educational and career goals.
               </p>
             </div>
-            <div className="bg-card border-2 border-border p-8">
+            <div className="bg-card border-2 border-border p-8 rounded-lg">
               <div className="w-12 h-12 bg-primary flex items-center justify-center mb-4">
                 <Eye className="w-6 h-6 text-primary-foreground" />
               </div>
@@ -141,19 +141,19 @@ const About = () => {
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-card border-2 border-border p-6 text-center">
+              <div className="bg-card border-2 border-border p-6 text-center rounded-lg">
                 <p className="text-4xl font-bold text-primary mb-2">2015</p>
                 <p className="text-sm text-muted-foreground">Year Founded</p>
               </div>
-              <div className="bg-card border-2 border-border p-6 text-center">
+              <div className="bg-card border-2 border-border p-6 text-center rounded-lg">
                 <p className="text-4xl font-bold text-primary mb-2">5000+</p>
                 <p className="text-sm text-muted-foreground">Students Placed</p>
               </div>
-              <div className="bg-card border-2 border-border p-6 text-center">
+              <div className="bg-card border-2 border-border p-6 text-center rounded-lg">
                 <p className="text-4xl font-bold text-primary mb-2">100+</p>
                 <p className="text-sm text-muted-foreground">Partner Universities</p>
               </div>
-              <div className="bg-card border-2 border-border p-6 text-center">
+              <div className="bg-card border-2 border-border p-6 text-center rounded-lg">
                 <p className="text-4xl font-bold text-primary mb-2">98%</p>
                 <p className="text-sm text-muted-foreground">Visa Success Rate</p>
               </div>
@@ -166,14 +166,14 @@ const About = () => {
       <section className="py-16 md:py-24 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
-            <span className="inline-block bg-secondary text-secondary-foreground px-4 py-1 text-sm font-medium mb-4">
+            <span className="inline-block bg-gray-100 text-gray-900 px-4 py-1 text-sm font-medium mb-4">
               Our Values
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">What We Stand For</h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => (
-              <div key={index} className="bg-card border-2 border-border p-6 text-center">
+              <div key={index} className="bg-card border-2 border-border p-6 text-center rounded-lg">
                 <div className="w-12 h-12 bg-primary flex items-center justify-center mx-auto mb-4">
                   <value.icon className="w-6 h-6 text-primary-foreground" />
                 </div>
@@ -197,9 +197,9 @@ const About = () => {
               Our team of experienced counselors and trainers are dedicated to helping you succeed.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 ">
             {teamMembers.map((member, index) => (
-              <div key={index} className="bg-card border-2 border-border overflow-hidden group">
+              <div key={index} className="bg-card border-2 border-border overflow-hidden group rounded-lg">
                 <div className="aspect-square  p-8">
                   <Image
                     src={member.image}

@@ -1,4 +1,6 @@
 import { ArrowRight, FileText, Search, Plane, GraduationCap, CheckCircle, MessageSquare } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 const steps = [
   {
@@ -45,9 +47,9 @@ const ProcessSection = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <span className="inline-block text-sm font-semibold text-primary tracking-wider uppercase mb-3">
+          <Badge variant="outline" className="text-sm font-semibold text-primary tracking-wider uppercase mb-3 border-primary/20">
             How It Works
-          </span>
+          </Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Your Journey to Study Abroad
           </h2>
@@ -59,24 +61,24 @@ const ProcessSection = () => {
         {/* Steps Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {steps.map((step, index) => (
-            <div
-              key={step.number}
-              className="group relative bg-card border-2 border-border p-6 transition-all duration-300 hover:border-primary"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              {/* Step Number Badge */}
-              <div className="absolute -top-3 -left-3 w-10 h-10 bg-primary text-primary-foreground flex items-center justify-center font-bold text-sm">
-                {step.number}
-              </div>
-              
-              {/* Icon */}
-              <div className="w-12 h-12 border-2 border-border flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-colors">
-                <step.icon className="w-5 h-5" />
-              </div>
+            <div key={step.number} className="relative group" style={{ animationDelay: `${index * 100}ms` }}>
+              <Card className="h-full border-2 hover:border-primary transition-all duration-300">
+                <CardContent className="p-6 pt-8">
+                  {/* Step Number Badge */}
+                  <div className="absolute -top-3 -left-3 w-10 h-10 bg-primary text-primary-foreground flex items-center justify-center font-bold text-sm rounded-full shadow-md z-10">
+                    {step.number}
+                  </div>
+                  
+                  {/* Icon */}
+                  <div className="w-12 h-12 border-2 border-border rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-colors">
+                    <step.icon className="w-5 h-5" />
+                  </div>
 
-              {/* Content */}
-              <h3 className="text-lg font-bold mb-2">{step.title}</h3>
-              <p className="text-sm text-muted-foreground">{step.description}</p>
+                  {/* Content */}
+                  <h3 className="text-lg font-bold mb-2">{step.title}</h3>
+                  <p className="text-sm text-muted-foreground">{step.description}</p>
+                </CardContent>
+              </Card>
 
               {/* Arrow for non-last items */}
               {index < steps.length - 1 && index !== 2 && (

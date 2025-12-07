@@ -1,4 +1,6 @@
 import { Play, Heart, MessageCircle, Share2 } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 
 const videos = [
@@ -44,9 +46,9 @@ const VideoFeedSection = () => {
     <section className="py-16 md:py-24 ">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
-          <span className="inline-block bg-accent text-accent-foreground px-4 py-1 text-sm font-medium mb-4">
+          <Badge variant="secondary" className="px-4 py-1 text-sm font-medium mb-4 bg-accent text-accent-foreground">
             📱 Follow Our Journey
-          </span>
+          </Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Student Stories & Tips
           </h2>
@@ -58,52 +60,54 @@ const VideoFeedSection = () => {
         {/* Video Grid - Instagram/TikTok Style */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {videos.map((video) => (
-            <div
+            <Card
               key={video.id}
-              className="group relative aspect-9/16 bg-card border-2 border-border overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+              className="group relative aspect-9/16 border-2 overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-md hover:-translate-y-1 p-0 rounded-xl"
             >
-              <Image
-                src={video.thumbnail}
-                width={400}
-                height={600}
-                alt={video.title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-linear-to-t from-foreground/90 via-transparent to-transparent" />
-              
-              {/* Play Button */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <div className="w-16 h-16 bg-primary-foreground/90 flex items-center justify-center">
-                  <Play className="w-8 h-8 text-foreground fill-foreground" />
+              <CardContent className="p-0 h-full w-full">
+                <Image
+                  src={video.thumbnail}
+                  width={400}
+                  height={600}
+                  alt={video.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-linear-to-t from-foreground/90 via-transparent to-transparent" />
+                
+                {/* Play Button */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="w-16 h-16 bg-primary-foreground/90 rounded-full flex items-center justify-center">
+                    <Play className="w-8 h-8 text-foreground fill-foreground ml-1" />
+                  </div>
                 </div>
-              </div>
 
-              {/* Video Info */}
-              <div className="absolute bottom-0 left-0 right-0 p-3 text-primary-foreground">
-                <p className="font-medium text-sm mb-2 line-clamp-2">{video.title}</p>
-                <div className="flex items-center gap-3 text-xs">
-                  <span className="flex items-center gap-1">
-                    <Heart className="w-3 h-3" /> {video.likes}
-                  </span>
-                  <span>{video.views} views</span>
+                {/* Video Info */}
+                <div className="absolute bottom-0 left-0 right-0 p-3 text-primary-foreground">
+                  <p className="font-medium text-sm mb-2 line-clamp-2 leading-tight">{video.title}</p>
+                  <div className="flex items-center gap-3 text-xs opacity-90">
+                    <span className="flex items-center gap-1">
+                      <Heart className="w-3 h-3" /> {video.likes}
+                    </span>
+                    <span>{video.views} views</span>
+                  </div>
                 </div>
-              </div>
 
-              {/* Social Icons - Right Side */}
-              <div className="absolute right-2 bottom-20 flex flex-col gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                <button className="w-8 h-8 bg-primary-foreground/80 flex items-center justify-center hover:bg-primary-foreground transition-colors">
-                  <Heart className="w-4 h-4 text-foreground" />
-                </button>
-                <button className="w-8 h-8 bg-primary-foreground/80 flex items-center justify-center hover:bg-primary-foreground transition-colors">
-                  <MessageCircle className="w-4 h-4 text-foreground" />
-                </button>
-                <button className="w-8 h-8 bg-primary-foreground/80 flex items-center justify-center hover:bg-primary-foreground transition-colors">
-                  <Share2 className="w-4 h-4 text-foreground" />
-                </button>
-              </div>
-            </div>
+                {/* Social Icons - Right Side */}
+                <div className="absolute right-2 bottom-20 flex flex-col gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <button className="w-8 h-8 bg-primary-foreground/80 rounded-full flex items-center justify-center hover:bg-primary-foreground transition-colors">
+                    <Heart className="w-4 h-4 text-foreground" />
+                  </button>
+                  <button className="w-8 h-8 bg-primary-foreground/80 rounded-full flex items-center justify-center hover:bg-primary-foreground transition-colors">
+                    <MessageCircle className="w-4 h-4 text-foreground" />
+                  </button>
+                  <button className="w-8 h-8 bg-primary-foreground/80 rounded-full flex items-center justify-center hover:bg-primary-foreground transition-colors">
+                    <Share2 className="w-4 h-4 text-foreground" />
+                  </button>
+                </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
 

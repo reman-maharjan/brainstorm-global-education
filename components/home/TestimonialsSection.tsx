@@ -1,4 +1,6 @@
 import { Quote } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 
 const testimonials = [
@@ -68,9 +70,9 @@ const TestimonialsSection = () => {
     <section id="testimonials" className="py-16 md:py-24 bg-background overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-12">
         <div className="text-center">
-          <span className="inline-block bg-secondary text-secondary-foreground px-4 py-1 text-sm font-medium mb-4">
+          <Badge variant="secondary" className="px-4 py-1 text-sm font-medium mb-4 bg-gray-100 text-gray-900 border-none">
             Success Stories
-          </span>
+          </Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Students Who Made It
           </h2>
@@ -113,25 +115,27 @@ const TestimonialsSection = () => {
 };
 
 const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] }) => (
-  <div className="bg-card border-2 border-border p-6 transition-all duration-300 hover:shadow-sm">
-    <Quote className="w-8 h-8 text-primary mb-4" />
-    <p className="text-foreground mb-4">{testimonial.quote}</p>
-    <div className="flex items-center gap-3">
-      <Image
-        src={testimonial.image}
-        alt={testimonial.name}
-        width={100}
-        height={100}
-        className="w-12 h-12 border-2 border-border bg-secondary"
-      />
-      <div>
-        <p className="font-bold">{testimonial.name}</p>
-        <p className="text-sm text-muted-foreground">
-          {testimonial.university}, {testimonial.country}
-        </p>
+  <Card className="border-2 hover:shadow-sm transition-all duration-300 h-full">
+    <CardContent className="p-6">
+      <Quote className="w-8 h-8 text-primary mb-4" />
+      <p className="text-foreground mb-4 leading-relaxed">&quot;{testimonial.quote}&quot;</p>
+      <div className="flex items-center gap-3">
+        <Image
+          src={testimonial.image}
+          alt={testimonial.name}
+          width={100}
+          height={100}
+          className="w-12 h-12 border-2 border-border bg-secondary rounded-full object-cover"
+        />
+        <div>
+          <p className="font-bold text-sm">{testimonial.name}</p>
+          <p className="text-xs text-muted-foreground">
+            {testimonial.university}, {testimonial.country}
+          </p>
+        </div>
       </div>
-    </div>
-  </div>
+    </CardContent>
+  </Card>
 );
 
 export default TestimonialsSection;

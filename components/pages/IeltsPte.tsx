@@ -135,7 +135,7 @@ const IeltsPte = () => {
       <section className="py-16 md:py-24 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
-            <span className="inline-block bg-secondary text-secondary-foreground px-4 py-1 text-sm font-medium mb-4">
+            <span className="inline-block bg-gray-100 text-gray-900 px-4 py-1 text-sm font-medium mb-4">
               Our Courses
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -150,7 +150,7 @@ const IeltsPte = () => {
           <div className="grid md:grid-cols-3 gap-6">
             {courses.map((course, index) => (
               <div key={index} className="bg-card border border-border rounded-lg overflow-hidden group hover:shadow-md hover:-translate-y-1 transition-all">
-                <div className="p-6">
+                <div className="p-6 rounded-lg">
                   <h3 className="text-xl font-bold mb-2">{course.title}</h3>
                   <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
                     <span className="flex items-center gap-1">
@@ -217,7 +217,7 @@ const IeltsPte = () => {
                 </div>
               </div>
             </div>
-            <div className="bg-card border border-border rounded-lg p-8">
+            <div className="bg-card border border-border p-8 rounded-lg">
               <h3 className="text-xl font-bold mb-6">What&apos;s Included</h3>
               <ul className="space-y-4">
                 {features.map((feature, index) => (
@@ -254,7 +254,7 @@ const IeltsPte = () => {
             <Button asChild size="lg" variant="secondary">
               <Link href="/contact">Book Free Demo Class</Link>
             </Button>
-            <Button asChild size="lg" variant="secondary" className=" text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+            <Button asChild size="lg" variant="secondary" >
               <a href="tel:+9771234567890">
                 <Phone className="mr-2 w-5 h-5" /> +977 1234567890
               </a>
