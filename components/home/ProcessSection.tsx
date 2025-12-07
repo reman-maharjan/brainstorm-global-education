@@ -47,9 +47,6 @@ const ProcessSection = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <Badge variant="outline" className="text-sm font-semibold text-primary tracking-wider uppercase mb-3 border-primary/20">
-            How It Works
-          </Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Your Journey to Study Abroad
           </h2>
@@ -62,7 +59,7 @@ const ProcessSection = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {steps.map((step, index) => (
             <div key={step.number} className="relative group" style={{ animationDelay: `${index * 100}ms` }}>
-              <Card className="h-full border-2 hover:border-primary transition-all duration-300">
+              <Card className="h-full transition-all duration-300">
                 <CardContent className="p-6 pt-8">
                   {/* Step Number Badge */}
                   <div className="absolute -top-3 -left-3 w-10 h-10 bg-primary text-primary-foreground flex items-center justify-center font-bold text-sm rounded-full shadow-md z-10">
@@ -70,7 +67,7 @@ const ProcessSection = () => {
                   </div>
                   
                   {/* Icon */}
-                  <div className="w-12 h-12 border-2 border-border rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-colors">
+                  <div className="w-12 h-12 ">
                     <step.icon className="w-5 h-5" />
                   </div>
 
@@ -79,13 +76,6 @@ const ProcessSection = () => {
                   <p className="text-sm text-muted-foreground">{step.description}</p>
                 </CardContent>
               </Card>
-
-              {/* Arrow for non-last items */}
-              {index < steps.length - 1 && index !== 2 && (
-                <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-border z-10">
-                  <ArrowRight className="w-6 h-6" />
-                </div>
-              )}
             </div>
           ))}
         </div>

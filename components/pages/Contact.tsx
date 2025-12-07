@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import { useSubmitContactForm } from "@/hooks/use-contact";
 import { ContactFormData } from "@/types/contact";
@@ -43,57 +43,45 @@ const Contact = () => {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className=" py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="max-w-2xl">
-            <span className="inline-block text-accent-foreground px-4 py-1 text-sm font-medium mb-4">
-              Get In Touch
-            </span>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Let&apos;s Start Your Journey
-            </h1>
-            <p className="text-lg text-muted-foreground">
-              Have questions about studying abroad? Book a free consultation with our expert counselors.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Form & Info */}
-      <section className="py-16 md:py-24">
+      <section className="pt-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
-            {/* Contact Form */}
-            <div className="lg:col-span-2">
-              <div className="p-6 md:p-8">
-                <h2 className="text-2xl font-bold mb-6">Book Free Consultation</h2>
+            {/* Left Column: Hero & Form */}
+            <div className="lg:col-span-2 space-y-12">
+              <div className="max-w-2xl">
+                <h1 className="text-2xl md:text-4xl font-extrabold mb-4">
+                  Let&apos;s Start Your Journey
+                </h1>
+             
+              </div>
+
+              <div>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                        <Label htmlFor="firstName">First Name *</Label>
-                      <Input id="firstName" name="firstName" required placeholder="Your first name" className="border-2" />
+                      <Input id="firstName"  name="firstName" required className="h-15" />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="lastName">Last Name *</Label>
-                      <Input id="lastName" name="lastName" required placeholder="Your last name" className="border-2" />
+                      <Input id="lastName" name="lastName" required className="h-15" />
                     </div>
                   </div>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="email">Email Address *</Label>
-                      <Input id="email" name="email" type="email" required placeholder="your@email.com" className="border-2" />
+                      <Input id="email" name="email" type="email" required className="h-15" />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="phone">Phone Number *</Label>
-                      <Input id="phone" name="phone" type="tel" required placeholder="+977 98XXXXXXXX" className="border-2" />
+                      <Input id="phone" name="phone" type="tel" required className="h-15" />
                     </div>
                   </div>
                   <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
+                    {/* <div className="space-y-2">
                       <Label htmlFor="destination">Preferred Destination</Label>
                       <Select name="destination">
-                        <SelectTrigger className="border-2">
+                        <SelectTrigger className="">
                           <SelectValue placeholder="Select a country" />
                         </SelectTrigger>
                         <SelectContent>
@@ -109,7 +97,7 @@ const Contact = () => {
                     <div className="space-y-2">
                       <Label htmlFor="education">Current Education Level</Label>
                       <Select name="education">
-                        <SelectTrigger className="border-2">
+                        <SelectTrigger className="">
                           <SelectValue placeholder="Select level" />
                         </SelectTrigger>
                         <SelectContent>
@@ -119,16 +107,15 @@ const Contact = () => {
                           <SelectItem value="other">Other</SelectItem>
                         </SelectContent>
                       </Select>
-                    </div>
+                    </div> */}
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="message">Your Message</Label>
                     <Textarea 
                       id="message" 
                       name="message"
-                      placeholder="Tell us about your study abroad goals..."
                       rows={4}
-                      className="border-2"
+                      className=""
                     />
                   </div>
                   <Button type="submit" size="lg" disabled={isPending} className="w-full md:w-auto shadow-sm">
@@ -144,13 +131,13 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Contact Info Sidebar */}
+            {/* Right Column: Contact Info Sidebar */}
             <div className="space-y-6">
-              <div className="bg-card border-2 border-border p-6">
+              <div className="bg-card  border-border rounded-lg pb-6">
                 <h3 className="font-bold text-lg mb-4">Contact Information</h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-primary flex items-center justify-center shrink-0">
+                    <div className="w-10 h-10 bg-primary flex items-center justify-center shrink-0 rounded-full">
                       <MapPin className="w-5 h-5 text-primary-foreground" />
                     </div>
                     <div>
@@ -162,7 +149,7 @@ const Contact = () => {
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-primary flex items-center justify-center shrink-0">
+                    <div className="w-10 h-10 bg-primary flex items-center justify-center shrink-0 rounded-full">
                       <Phone className="w-5 h-5 text-primary-foreground" />
                     </div>
                     <div>
@@ -174,7 +161,7 @@ const Contact = () => {
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-primary flex items-center justify-center shrink-0">
+                    <div className="w-10 h-10 bg-primary flex items-center justify-center shrink-0 rounded-full">
                       <Mail className="w-5 h-5 text-primary-foreground" />
                     </div>
                     <div>
@@ -186,7 +173,7 @@ const Contact = () => {
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-primary flex items-center justify-center shrink-0">
+                    <div className="w-10 h-10 bg-primary flex items-center justify-center shrink-0 rounded-full">
                       <Clock className="w-5 h-5 text-primary-foreground" />
                     </div>
                     <div>
@@ -200,14 +187,14 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="bg-primary text-primary-foreground p-6">
+              <div className="bg-primary text-primary-foreground rounded-lg p-6">
                 <h3 className="font-bold text-lg mb-2">Quick Response</h3>
                 <p className="text-sm opacity-90 mb-4">
                   We typically respond to all inquiries within 24 hours. For urgent matters, please call us directly.
                 </p>
-                <Button asChild  size="sm">
+                <Button asChild  size="sm" className="bg-white text-primary hover:bg-white/90">
                   <a href="tel:+9771234567890">
-                    <Phone className="mr-2 w-4 h-4" /> Call Now
+                    <Phone className="mr-2 w-4 h-4 " /> Call Now
                   </a>
                 </Button>
               </div>
@@ -216,20 +203,25 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className=" border-t-2 border-border">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
-          <div className="bg-card border-2 border-border h-[400px] flex items-center justify-center">
-            <div className="text-center text-muted-foreground">
-              <MapPin className="w-12 h-12 mx-auto mb-4 opacity-50" />
-              <p className="font-medium">Map Location</p>
-              <p className="text-sm">Putalisadak, Kathmandu, Nepal</p>
-            </div>
-          </div>
-        </div>
-      </section>
+
+<section className="border-border pt-20">
+  <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+    <div className="rounded-lg overflow-hidden border border-border h-[400px]">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.8772833596113!2d85.33311257546674!3d27.69018747619243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb199648fa2b4d%3A0xd6c11ac169c74363!2sBrainstorm%20Global%20Education!5e0!3m2!1sen!2snp!4v1765109511579!5m2!1sen!2snp"
+        width="100%"
+        height="100%"
+        style={{ border: 0 }}
+        allowFullScreen
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+      />
+    </div>
+  </div>
+</section>
     </>
   );
 };
 
 export default Contact;
+

@@ -13,7 +13,7 @@ const ServicesSection = () => {
   const services = servicesData?.results || [];
 
   return (
-    <section id="services" className="py-16 md:py-24">
+    <section id="services" className=" md:py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12 md:mb-16">
           <Badge variant="secondary" className="px-4 py-1 text-sm font-medium mb-4 bg-accent text-accent-foreground">

@@ -517,7 +517,7 @@ const CountryPage = () => {
       </section>
 
       {/* Quick Facts Bar */}
-      <section className="bg-primary text-primary-foreground py-6">
+      <section className="bg-primary/10 text-primary py-6">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {data.facts.map((fact, index) => (
@@ -525,20 +525,6 @@ const CountryPage = () => {
                 <div className="text-2xl md:text-3xl font-bold">{fact.value}</div>
                 <div className="text-sm opacity-80">{fact.label}</div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Key Highlights */}
-      <section className="py-8  border-b-2 border-border">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="flex flex-wrap gap-3 justify-center">
-            {data.highlights.map((highlight, index) => (
-              <Badge key={index} variant="secondary" className="px-4 py-2 text-sm font-medium gap-2 h-auto text-wrap text-left">
-                <CheckCircle className="w-4 h-4 text-primary shrink-0" />
-                {highlight}
-              </Badge>
             ))}
           </div>
         </div>
@@ -582,16 +568,9 @@ const CountryPage = () => {
       <section id="universities" className="py-16 md:py-20 ">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
-            <span className="text-sm font-semibold text-primary uppercase tracking-wider mb-2 inline-block">
-              Top Institutions
-            </span>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              <Building className="w-8 h-8 inline mr-2" />
               Top Universities in {data.name}
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              We have partnerships with leading universities to help you secure admission
-            </p>
           </div>
           <div className="grid md:grid-cols-2 gap-4">
             {data.universities.map((uni, index) => (
@@ -706,7 +685,7 @@ const CountryPage = () => {
             <div className="lg:col-span-1">
               <div className="space-y-6">
                 {/* Popular Courses - Not Sticky */}
-                <Card>
+                {/* <Card>
                   <CardHeader>
                     <CardTitle className="text-lg flex items-center gap-2">
                       <Award className="w-5 h-5 text-primary" />
@@ -722,10 +701,10 @@ const CountryPage = () => {
                       ))}
                     </div>
                   </CardContent>
-                </Card>
+                </Card> */}
 
                 {/* Student Life - Not Sticky */}
-                <Card>
+                {/* <Card>
                   <CardHeader>
                     <CardTitle className="text-lg flex items-center gap-2">
                       <Heart className="w-5 h-5 text-primary" />
@@ -742,7 +721,7 @@ const CountryPage = () => {
                       ))}
                     </ul>
                   </CardContent>
-                </Card>
+                </Card> */}
 
                 {/* Sticky CTA Card */}
                 <div className="sticky top-24 space-y-4">
@@ -816,7 +795,7 @@ const CountryPage = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24 bg-secondary text-primary-foreground">
+      {/* <section className="py-16 md:py-24 bg-secondary text-primary-foreground">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Study in {data.name}?
@@ -834,7 +813,7 @@ const CountryPage = () => {
             </Button>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 };

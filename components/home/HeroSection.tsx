@@ -24,7 +24,7 @@ const HeroSection = () => {
               🇳🇵 Nepal&apos;s Trusted Education Partner
             </Badge>
             <h1 className="text-4xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">
-              Best study destination {" "}
+              Best Abroad Study {" "}
               <span className="text-primary">Consultancy</span>{" "}<br/>
               In Nepal
             </h1>
@@ -39,7 +39,7 @@ const HeroSection = () => {
                   Book Free Consultation <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="text-base border-2">
+              <Button asChild variant="outline" size="lg" className="text-base ">
                 <Link href="/about">Learn More About Us</Link>
               </Button>
             </div>

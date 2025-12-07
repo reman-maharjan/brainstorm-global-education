@@ -21,16 +21,16 @@ const Footer = () => {
               Your trusted partner for studying abroad. Turning dreams into reality since 2015.
             </p>
             <div className="flex gap-3">
-              <a href="#" className="w-10 h-10 border-2 border-primary-foreground/30 flex items-center justify-center hover:bg-primary-foreground hover:text-primary transition-colors">
+              <a href="#" className="w-10 h-10  border-primary-foreground/30 flex items-center justify-center hover:bg-primary-foreground hover:text-primary transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 border-2 border-primary-foreground/30 flex items-center justify-center hover:bg-primary-foreground hover:text-primary transition-colors">
+              <a href="#" className="w-10 h-10  border-primary-foreground/30 flex items-center justify-center hover:bg-primary-foreground hover:text-primary transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 border-2 border-primary-foreground/30 flex items-center justify-center hover:bg-primary-foreground hover:text-primary transition-colors">
+              <a href="#" className="w-10 h-10  border-primary-foreground/30 flex items-center justify-center hover:bg-primary-foreground hover:text-primary transition-colors">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 border-2 border-primary-foreground/30 flex items-center justify-center hover:bg-primary-foreground hover:text-primary transition-colors">
+              <a href="#" className="w-10 h-10  border-primary-foreground/30 flex items-center justify-center hover:bg-primary-foreground hover:text-primary transition-colors">
                 <Youtube className="w-5 h-5" />
               </a>
             </div>

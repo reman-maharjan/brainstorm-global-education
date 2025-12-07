@@ -35,35 +35,19 @@ const Blog = () => {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="py-16 md:py-20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center">
-            <span className="inline-block bg-accent text-accent-foreground px-4 py-1 text-sm font-medium rounded mb-4">
-              Resources & Insights
-            </span>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Study Abroad Blog
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Expert tips, guides, and insights to help you navigate your 
-              international education journey.
-            </p>
-          </div>
-        </div>
-      </section>
+
 
       {/* Categories */}
-      <section className="py-8 border-b border-border bg-background">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="flex flex-wrap gap-2 justify-center">
+      <section className="pt-8 bg-background">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex flex-wrap gap-2 justify-start">
             {categories.map((category, index) => (
               <button
                 key={index}
                 className={`px-4 py-2 text-sm font-medium rounded-full transition-colors ${
                   index === 0 
                     ? "bg-primary text-primary-foreground" 
-                    : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                    : "text-black hover:bg-gray-100 cursor-pointer"
                 }`}
               >
                 {category}
@@ -74,7 +58,7 @@ const Blog = () => {
       </section>
 
       {/* Featured Post */}
-      <section className="py-12 md:py-16 bg-background">
+      <section className="py-8 md:py-8 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           {isLoading ? (
             <div className="grid lg:grid-cols-2 gap-8 items-center">
@@ -237,7 +221,7 @@ const Blog = () => {
       </section>
 
       {/* Newsletter CTA */}
-      <section className="py-16 md:py-20 bg-secondary text-primary-foreground">
+      {/* <section className="py-16 md:py-20 bg-secondary text-primary-foreground">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
             Stay Updated with Study Abroad Tips
@@ -257,7 +241,7 @@ const Blog = () => {
             </Button>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 };

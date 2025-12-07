@@ -77,7 +77,7 @@ const WhyChooseUsSection = () => {
           {features.map((feature) => (
             <Card
               key={feature.title}
-              className="group border-2 hover:border-primary transition-colors duration-300"
+              className="group  hover:border-primary transition-colors duration-300"
             >
               <CardHeader>
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-0 group-hover:bg-primary transition-colors">

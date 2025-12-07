@@ -8,9 +8,9 @@ import ieltsImage from "@/components/assets/ielts-class.jpg";
 import Image from "next/image";
 
 const features = [
-  "Expert Trainers with 10+ years experience",
+  "Trainers with 10+ years experience",
   "Small batch sizes (max 15 students)",
-  "Comprehensive study materials included",
+  "Study materials included",
   "Regular mock tests with feedback",
   "Flexible morning & evening batches",
   "Free retake within 3 months",
@@ -66,7 +66,7 @@ const IeltsPte = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className=" py-16 md:py-24">
+      <section className=" py-6 md:py-4 mt-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -94,7 +94,7 @@ const IeltsPte = () => {
                     Enroll Now <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="border-2">
+                <Button asChild variant="outline" size="lg" className="">
                   <a href="tel:+9771234567890">
                     <Phone className="mr-2 w-5 h-5" /> Call for Details
                   </a>
@@ -114,36 +114,19 @@ const IeltsPte = () => {
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-12 bg-background border-y-2 border-border">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mx-auto mb-3">
-                  <stat.icon className="w-6 h-6 text-primary-foreground" />
-                </div>
-                <p className="text-3xl font-bold text-primary">{stat.value}</p>
-                <p className="text-sm text-muted-foreground">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* Course Cards */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-10 md:py-24 bg-background mt-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
-            <span className="inline-block bg-gray-100 text-gray-900 px-4 py-1 text-sm font-medium mb-4">
-              Our Courses
-            </span>
+           
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Choose Your Program
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Whether you need IELTS for university admission or PTE for faster results, 
-              we have the right course for you.
+              Whether you need IELTS for university admission or PTE for faster results.
+            
             </p>
           </div>
 
@@ -179,7 +162,7 @@ const IeltsPte = () => {
       </section>
 
       {/* Schedule */}
-      <section className="py-16 md:py-24">
+      <section className="py-10 md:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -241,7 +224,7 @@ const IeltsPte = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-24 bg-secondary text-primary-foreground">
+      {/* <section className="py-16 md:py-24 bg-secondary text-primary-foreground">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Achieve Your Target Score?
@@ -261,7 +244,7 @@ const IeltsPte = () => {
             </Button>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   );
 };

@@ -17,12 +17,12 @@ const CTASection = () => {
               We&apos;ll help you find the perfect university and guide you through every step.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" variant="secondary" className="shadow-sm hover:shadow-xs transition-all text-base">
+              <Button asChild size="lg" variant="secondary" className="bg-white text-black hover:bg-white/90" >
                 <Link href="/contact">
                   Book Free Consultation <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="secondary">
+              <Button asChild size="lg" variant="secondary" className="bg-white text-black hover:bg-white/90">
                 <a href="tel:+9771234567890">
                   <Phone className="mr-2 w-5 h-5" /> Call Now
                 </a>

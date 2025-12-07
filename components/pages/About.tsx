@@ -66,7 +66,7 @@ const About = () => {
       <section className="py-10 md:py-24 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-card border-2 border-border p-8 rounded-lg">
+            <div className="bg-card  border-border p-8 rounded-lg">
               <div className="w-12 h-12 bg-primary flex items-center justify-center mb-4">
                 <Target className="w-6 h-6 text-primary-foreground" />
               </div>
@@ -77,7 +77,7 @@ const About = () => {
                 successfully achieve their educational and career goals.
               </p>
             </div>
-            <div className="bg-card border-2 border-border p-8 rounded-lg">
+            <div className="bg-card  border-border p-8 rounded-lg">
               <div className="w-12 h-12 bg-primary flex items-center justify-center mb-4">
                 <Eye className="w-6 h-6 text-primary-foreground" />
               </div>
@@ -121,19 +121,19 @@ const About = () => {
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-card border-2 border-border p-6 text-center rounded-lg">
+              <div className="bg-card  border-border p-6 text-center rounded-lg">
                 <p className="text-4xl font-bold text-primary mb-2">2015</p>
                 <p className="text-sm text-muted-foreground">Year Founded</p>
               </div>
-              <div className="bg-card border-2 border-border p-6 text-center rounded-lg">
+              <div className="bg-card  border-border p-6 text-center rounded-lg">
                 <p className="text-4xl font-bold text-primary mb-2">5000+</p>
                 <p className="text-sm text-muted-foreground">Students Placed</p>
               </div>
-              <div className="bg-card border-2 border-border p-6 text-center rounded-lg">
+              <div className="bg-card  border-border p-6 text-center rounded-lg">
                 <p className="text-4xl font-bold text-primary mb-2">100+</p>
                 <p className="text-sm text-muted-foreground">Partner Universities</p>
               </div>
-              <div className="bg-card border-2 border-border p-6 text-center rounded-lg">
+              <div className="bg-card  border-border p-6 text-center rounded-lg">
                 <p className="text-4xl font-bold text-primary mb-2">98%</p>
                 <p className="text-sm text-muted-foreground">Visa Success Rate</p>
               </div>
@@ -153,7 +153,7 @@ const About = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => (
-              <div key={index} className="bg-card border-2 border-border p-6 text-center rounded-lg">
+              <div key={index} className="bg-card  border-border p-6 text-center rounded-lg">
                 <div className="w-12 h-12 bg-primary flex items-center justify-center mx-auto mb-4">
                   <value.icon className="w-6 h-6 text-primary-foreground" />
                 </div>
@@ -180,7 +180,7 @@ const About = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 ">
             {isLoading ? (
               [...Array(4)].map((_, index) => (
-                <div key={index} className="bg-card border-2 border-border overflow-hidden rounded-lg">
+                <div key={index} className="bg-card  border-border overflow-hidden rounded-lg">
                   <div className="aspect-square p-8">
                     <Skeleton className="w-full h-full rounded-full" />
                   </div>
@@ -193,7 +193,7 @@ const About = () => {
               ))
             ) : (
               (teamMembers || []).map((member) => (
-                <div key={member.id} className="bg-card border-2 border-border overflow-hidden group rounded-lg">
+                <div key={member.id} className="bg-card  border-border overflow-hidden group rounded-lg">
                   <div className="aspect-square p-8">
                     {member.photo ? (
                       <Image

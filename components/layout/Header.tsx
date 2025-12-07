@@ -58,20 +58,24 @@ const Header = () => {
             >
               About Us
             </Link>
-            <DropdownMenu>
-              <DropdownMenuTrigger className="px-4 py-2 font-medium transition-colors  flex items-center gap-1 outline-none">
+              <div className="relative group">
+              <button className="px-4 py-2 font-medium transition-colors flex items-center gap-1 outline-none">
                 Study Destinations <ChevronDown className="w-4 h-4" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="border border-border">
-                {countries.map((country) => (
-                  <DropdownMenuItem key={country.path} asChild>
-                    <Link href={country.path} className="cursor-pointer">
+              </button>
+              <div className="absolute left-0 top-full mt-1 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 z-50">
+                <div className="bg-background border border-border rounded-md shadow-lg min-w-[200px] ">
+                  {countries.map((country) => (
+                    <Link
+                      key={country.path}
+                      href={country.path}
+                      className="block px-4 py-2 hover:bg-gray-100 transition-colors cursor-pointer"
+                    >
                       Study in {country.name}
                     </Link>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+                  ))}
+                </div>
+              </div>
+            </div>
             <Link
               href="/ielts-pte"
               className={`px-4 py-2 font-medium transition-colors rounded ${
