@@ -58,15 +58,9 @@ const TestimonialsSection = () => {
     <section id="testimonials" className="py-16 md:py-24 bg-background overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-12">
         <div className="text-center">
-          <span className="inline-block bg-secondary text-secondary-foreground px-4 py-1 text-sm font-medium mb-4 rounded-full">
-            Success Stories
-          </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Students Who Made It
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Join thousands of students who have successfully achieved their study abroad dreams with our guidance.
-          </p>
         </div>
       </div>
 
