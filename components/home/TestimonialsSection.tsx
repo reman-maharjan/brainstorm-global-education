@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { Quote } from "lucide-react";
 import { useTestimonials } from "@/hooks/use-testimonial";
 import { Testimonial } from "@/types/testimonial";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -22,14 +21,13 @@ const TestimonialsSection = () => {
                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 max-w-7xl mx-auto">
                     {[1, 2, 3].map((i) => (
                         <div key={i} className="h-64 rounded-xl border border-border p-6 space-y-4">
-                            <Skeleton className="h-8 w-8" />
-                            <Skeleton className="h-20 w-full" />
-                            <div className="flex gap-4">
-                                <Skeleton className="h-12 w-12 rounded-full" />
-                                <div className="space-y-2">
-                                    <Skeleton className="h-4 w-24" />
-                                    <Skeleton className="h-3 w-32" />
-                                </div>
+                            <div className="flex justify-center mb-4">
+                                <Skeleton className="h-28 w-28 rounded-full" />
+                            </div>
+                            <Skeleton className="h-16 w-full" />
+                            <div className="space-y-2 text-center">
+                                <Skeleton className="h-4 w-24 mx-auto" />
+                                <Skeleton className="h-3 w-32 mx-auto" />
                             </div>
                         </div>
                     ))}
@@ -97,11 +95,12 @@ const TestimonialsSection = () => {
 };
 
 const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
-  <div className="bg-card border border-border p-6 rounded-xl transition-all duration-300 hover:shadow-md h-auto break-inside-avoid">
-    <Quote className="w-8 h-8 text-primary mb-4" />
-    <p className="text-foreground mb-4 leading-relaxed italic">&quot;{testimonial.comment}&quot;</p>
-    <div className="flex items-center gap-3">
-      <div className="relative w-12 h-12 shrink-0 overflow-hidden rounded-full border-2 border-border bg-secondary">
+  <div className="bg-card border border-border p-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:border-primary/20 h-auto break-inside-avoid group">
+    {/* Image at top */}
+    <div className="flex justify-center mb-5">
+      <div className="relative w-68 h-68 shrink-0">
+        <div className="absolute inset-0 rounded-full bg-linear-to-br from-primary/40 via-primary/20 to-transparent blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="relative w-68 h-68 overflow-hidden bg-secondary ring-2 ring-background">
           {testimonial.image ? (
                <Image
                  src={testimonial.image}
@@ -110,17 +109,23 @@ const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
                  className="object-cover"
                />
           ) : (
-             <div className="w-full h-full flex items-center justify-center text-secondary-foreground font-bold">
+             <div className="w-full h-full flex items-center justify-center text-secondary-foreground font-bold text-4xl">
                  {testimonial.name.charAt(0)}
              </div>
           )}
+        </div>
       </div>
-      <div>
-        <p className="font-bold text-foreground">{testimonial.name}</p>
-        <p className="text-sm text-muted-foreground line-clamp-1">
-          {testimonial.designation}
-        </p>
-      </div>
+    </div>
+    
+    {/* Testimonial text - smaller but readable */}
+    <p className="text-foreground/90 mb-4 leading-relaxed italic text-sm text-center">&quot;{testimonial.comment}&quot;</p>
+    
+    {/* Name and designation */}
+    <div className="text-center">
+      <p className="font-bold text-foreground text-base">{testimonial.name}</p>
+      <p className="text-xs text-muted-foreground line-clamp-2 mt-1">
+        {testimonial.designation}
+      </p>
     </div>
   </div>
 );
