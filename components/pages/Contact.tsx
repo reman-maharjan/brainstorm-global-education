@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from "@/components/ui/button";
-import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+import { Phone, MapPin, Send } from "lucide-react";
 import { useSubmitContactForm } from "@/hooks/use-contact";
 import { ContactFormData } from "@/types/contact";
 import { motion, Variants } from "motion/react";
@@ -141,58 +141,65 @@ const Contact = () => {
 
       {/* CONTACT INFO CARDS */}
       <motion.section 
-        className="py-16 md:py-20 bg-muted/20"
+        className="py-16 md:py-24 bg-background"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         variants={fadeInUp}
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-    
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Get in Touch</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Have questions? We&apos;re here to help you every step of the way.
+            </p>
+          </div>
           
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 gap-6">
             {/* Visit Us Card */}
-            <div className="group bg-background p-8 rounded-2xl border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-              <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                <MapPin className="w-7 h-7 text-primary" />
+            <div className="group relative bg-gradient-to-br from-primary/5 to-primary/10 p-8 rounded-2xl border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500" />
+              <div className="relative">
+                <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300">
+                  <MapPin className="w-7 h-7 text-primary" />
+                </div>
+                <h3 className="font-bold text-xl mb-3">Visit Our Office</h3>
+                <p className="text-muted-foreground leading-relaxed mb-2">
+                  Putalisadak, Kathmandu<br />Nepal
+                </p>
+                <p className="text-sm text-muted-foreground/80 mt-4 pt-4 border-t border-border">
+                  <span className="font-semibold text-foreground">Office Hours:</span><br />
+                  Sun - Fri: 9:00 AM - 6:00 PM<br />
+                  Saturday: Closed
+                </p>
               </div>
-              <h3 className="font-semibold text-lg mb-2">Visit Us</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Putalisadak, Kathmandu<br />Nepal
-              </p>
             </div>
 
-            {/* Call Us Card */}
-            <div className="group bg-background p-8 rounded-2xl border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-              <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                <Phone className="w-7 h-7 text-primary" />
+            {/* Contact Us Card */}
+            <div className="group relative bg-gradient-to-br from-primary/5 to-primary/10 p-8 rounded-2xl border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500" />
+              <div className="relative">
+                <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300">
+                  <Phone className="w-7 h-7 text-primary" />
+                </div>
+                <h3 className="font-bold text-xl mb-3">Contact Us</h3>
+                <div className="space-y-3">
+                  <div>
+                    <p className="text-sm font-semibold text-foreground mb-1">Phone</p>
+                    <p className="text-muted-foreground">
+                      +977 1234567890<br />
+                      +977 9876543210
+                    </p>
+                  </div>
+                  <div className="pt-3 border-t border-border">
+                    <p className="text-sm font-semibold text-foreground mb-1">Email</p>
+                    <p className="text-muted-foreground">
+                      info@brainstorm.edu.np<br />
+                      apply@brainstorm.edu.np
+                    </p>
+                  </div>
+                </div>
               </div>
-              <h3 className="font-semibold text-lg mb-2">Call Us</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                +977 1234567890<br />+977 9876543210
-              </p>
-            </div>
-
-            {/* Email Us Card */}
-            <div className="group bg-background p-8 rounded-2xl border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-              <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                <Mail className="w-7 h-7 text-primary" />
-              </div>
-              <h3 className="font-semibold text-lg mb-2">Email Us</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                info@brainstorm.edu.np<br />apply@brainstorm.edu.np
-              </p>
-            </div>
-
-            {/* Office Hours Card */}
-            <div className="group bg-background p-8 rounded-2xl border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-              <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                <Clock className="w-7 h-7 text-primary" />
-              </div>
-              <h3 className="font-semibold text-lg mb-2">Office Hours</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Sun - Fri: 9AM - 6PM<br />Saturday: Closed
-              </p>
             </div>
           </div>
         </div>

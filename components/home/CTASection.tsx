@@ -1,77 +1,91 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, Phone, Mail, MapPin } from "lucide-react";
+import { Phone} from "lucide-react";
+import { motion, Variants } from "motion/react";
+import Image from "next/image";
+
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+};
 
 const CTASection = () => {
   return (
-    <section className="py-16 md:py-24 bg-secondary text-secondary-foreground">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to Start Your Study Abroad Journey?
-            </h2>
-            <p className="text-lg opacity-90 mb-8">
-              Book a free consultation with our expert counselors. 
-              We&apos;ll help you find the perfect university and guide you through every step.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" variant="secondary" className="bg-white text-black hover:bg-white/90" >
-                <Link href="/contact">
-                  Book Free Consultation <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="secondary" className="bg-white text-black hover:bg-white/90">
-                <a href="tel:+9771234567890">
-                  <Phone className="mr-2 w-5 h-5" /> Call Now
-                </a>
-              </Button>
+         <motion.section 
+        className="py-16 md:py-24 bg-background overflow-hidden"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={fadeInUp}
+      >
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="relative bg-primary rounded-3xl overflow-hidden shadow-2xl">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-10 pointer-events-none">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-primary-foreground rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2" />
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-foreground rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2" />
+            </div>
+            
+            <div className="relative grid lg:grid-cols-2 gap-8 items-center">
+              {/* Content */}
+              <div className="p-8 md:p-12 lg:p-16 text-primary-foreground">
+                <span className="inline-block bg-primary-foreground/20 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-medium mb-6">
+                  Free Consultation
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
+                  Ready to Start Your<br />Study Abroad Journey?
+                </h2>
+                <p className="text-primary-foreground/80 text-lg mb-8 max-w-md">
+                  Get personalized guidance from our expert counselors. We&apos;ve helped 2,000+ students achieve their dreams.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button asChild variant="outline" size="lg"  className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary h-12 px-8">
+                    <Link href="/contact">Book Free Consultation</Link>
+                  </Button>
+                  <Button asChild variant="outline" size="lg" className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary h-12 px-8">
+                    <a href="tel:+9771234567890">
+                      <Phone className="mr-2 w-4 h-4" /> Call Now
+                    </a>
+                  </Button>
+                </div>
+                
+                {/* Trust Indicators */}
+                <div className="flex items-center gap-6 mt-10 pt-8 border-t border-primary-foreground/20">
+                  <div>
+                    <div className="text-2xl font-bold">2,000+</div>
+                    <div className="text-sm text-primary-foreground/70">Students Placed</div>
+                  </div>
+                  <div className="w-px h-10 bg-primary-foreground/20" />
+                  <div>
+                    <div className="text-2xl font-bold">98%</div>
+                    <div className="text-sm text-primary-foreground/70">Visa Success</div>
+                  </div>
+                  <div className="w-px h-10 bg-primary-foreground/20" />
+                  <div>
+                    <div className="text-2xl font-bold">5</div>
+                    <div className="text-sm text-primary-foreground/70">Countries</div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Image */}
+              <div className="hidden lg:block relative h-full min-h-[500px]">
+                <Image
+                  src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&h=600&fit=crop"
+                  alt="Students celebrating graduation"
+                  fill
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-linear-to-r from-primary via-primary/50 to-transparent" />
+              </div>
             </div>
           </div>
-
-          <Card className="bg-primary-foreground/10 text-white border-2 border-primary-foreground/30 border-none shadow-none">
-            <CardHeader>
-              <CardTitle className="text-xl">Visit Our Office</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-primary-foreground/20 rounded-lg flex items-center justify-center shrink-0">
-                  <MapPin className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="font-medium">Address</p>
-                  <p className="text-sm opacity-80">Putalisadak, Kathmandu, Nepal</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-primary-foreground/20 rounded-lg flex items-center justify-center shrink-0">
-                  <Phone className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="font-medium">Phone</p>
-                  <p className="text-sm opacity-80">+977 1234567890</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 bg-primary-foreground/20 rounded-lg flex items-center justify-center shrink-0">
-                  <Mail className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="font-medium">Email</p>
-                  <p className="text-sm opacity-80">info@brainstormglobal.edu.np</p>
-                </div>
-              </div>
-              <div className="mt-6 pt-6 border-t-2 border-primary-foreground/30">
-                <p className="text-sm opacity-80">
-                  <span className="font-medium">Office Hours:</span> Sun - Fri, 9:00 AM - 6:00 PM
-                </p>
-              </div>
-            </CardContent>
-          </Card>
         </div>
-      </div>
-    </section>
+      </motion.section>
   );
 };
 

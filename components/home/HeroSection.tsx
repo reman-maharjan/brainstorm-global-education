@@ -1,9 +1,30 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import heroImage from "@/components/assets/hero-students.jpg";
 import Image from "next/image";
+import { motion, Variants } from "motion/react";
+
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+};
+
+const fadeInRight: Variants = {
+  hidden: { opacity: 0, x: 30 },
+  visible: { 
+    opacity: 1, 
+    x: 0,
+    transition: { duration: 0.8, ease: "easeOut", delay: 0.2 }
+  }
+};
 
 const HeroSection = () => {
   return (
@@ -19,7 +40,11 @@ const HeroSection = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24 relative">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <div className="animate-fade-in">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeInUp}
+          >
             <Badge variant="secondary" className="px-4 py-1 text-sm font-medium mb-6 bg-accent text-accent-foreground rounded-full">
               🇳🇵 Nepal&apos;s Trusted Education Partner
             </Badge>
@@ -58,10 +83,15 @@ const HeroSection = () => {
                 100+ Partner Universities
               </span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Image */}
-          <div className="relative animate-scale-in hidden lg:block">
+          <motion.div 
+            className="relative hidden lg:block"
+            initial="hidden"
+            animate="visible"
+            variants={fadeInRight}
+          >
             <Image
               src={heroImage}
               width={1000}
@@ -69,7 +99,7 @@ const HeroSection = () => {
               alt="International students celebrating graduation with global landmarks"
               className="w-full h-auto rounded-2xl shadow-lg"
             />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

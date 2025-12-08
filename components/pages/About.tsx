@@ -13,6 +13,7 @@ import { useTeamMembers } from "@/hooks/use-team-member";
 import { Skeleton } from "@/components/ui/skeleton";
 import { stripHtml, truncateText } from "@/lib/text-utils";
 import { motion, Variants } from "motion/react";
+import CTASection from "../home/CTASection";
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -285,6 +286,7 @@ const About = () => {
           </div>
         </div>
       </motion.section>
+      <CTASection/>
     </>
   );
 };

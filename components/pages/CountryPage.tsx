@@ -28,6 +28,7 @@ import australiaImage from "@/components/assets/australia-study.jpg";
 import canadaImage from "@/components/assets/canada-study.jpg";
 import newzealandImage from "@/components/assets/newzealand-study.jpg";
 import { motion, Variants } from "motion/react";
+import CTASection from "../home/CTASection";
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -834,6 +835,8 @@ const CountryPage = () => {
           </div>
         </div>
       </motion.section>
+
+      <CTASection/>
 
       {/* CTA */}
       {/* <section className="py-16 md:py-24 bg-secondary text-primary-foreground">
