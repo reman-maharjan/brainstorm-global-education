@@ -55,7 +55,7 @@ export const BlogDetail: React.FC<BlogDetailProps> = ({ slug }) => {
                 "Could not load blog post details. Please try again."}
             </AlertDescription>
             <div className="mt-4">
-              <Link href="/blog" className="text-primary underline">
+              <Link href="/latest-updates" className="text-primary underline">
                 Go Back to Latest Updates
               </Link>
             </div>
@@ -81,7 +81,7 @@ export const BlogDetail: React.FC<BlogDetailProps> = ({ slug }) => {
             </li>
             <li className="shrink-0">/</li>
             <li className="shrink-0">
-              <Link href="/blog" className="hover:text-blue-600 font-medium">
+              <Link href="/latest-updates" className="hover:text-blue-600 font-medium">
                 Latest Updates
               </Link>
             </li>

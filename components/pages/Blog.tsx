@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useBlogs } from "@/hooks/use-blog";
@@ -153,7 +152,7 @@ const Blog = () => {
             {others.map((post) => (
               <Link
                 key={post.id}
-                href={`/blog/${post.slug}`}
+                href={`/latest-updates/${post.slug}`}
                 className="group block"
               >
                 <article className="space-y-3 sm:space-y-4 cursor-pointer">
