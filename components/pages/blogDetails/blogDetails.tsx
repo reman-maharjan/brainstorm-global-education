@@ -9,8 +9,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
-import { format } from "date-fns";
-import { Calendar, AlertCircle } from "lucide-react";
+import { AlertCircle } from "lucide-react";
 import CTASection from "@/components/home/CTASection";
 
 interface BlogDetailProps {
@@ -57,7 +56,7 @@ export const BlogDetail: React.FC<BlogDetailProps> = ({ slug }) => {
             </AlertDescription>
             <div className="mt-4">
               <Link href="/blog" className="text-primary underline">
-                Go Back to Blog
+                Go Back to Latest Updates
               </Link>
             </div>
           </Alert>
@@ -74,35 +73,30 @@ export const BlogDetail: React.FC<BlogDetailProps> = ({ slug }) => {
 
         {/* Breadcrumb */}
         <nav className="mb-6">
-          <ol className="flex flex-wrap items-center justify-center gap-2 text-sm text-gray-500">
-            <li>
+          <ol className="flex items-center max-w-4xl mx-auto gap-2 text-sm justify-center text-gray-500 whitespace-nowrap">
+            <li className="shrink-0">
               <Link href="/" className="hover:text-blue-600 font-medium">
                 Home
               </Link>
             </li>
-            <li>/</li>
-            <li>
+            <li className="shrink-0">/</li>
+            <li className="shrink-0">
               <Link href="/blog" className="hover:text-blue-600 font-medium">
-                Blog
+                Latest Updates
               </Link>
             </li>
-            <li>/</li>
-            <li className="text-gray-900 font-medium text-center line-clamp-1">
+            <li className="shrink-0">/</li>
+            <li className="text-gray-900 font-medium truncate max-w-[200px] md:max-w-[400px]">
               {blog.title}
             </li>
           </ol>
         </nav>
 
         {/* Title + Date */}
-        <div className="text-center max-w-4xl mx-auto mb-8">
-          <h1 className="text-3xl md:text-5xl lg:text-4xl font-semibold text-gray-900 leading-[1.15] mb-4">
+        <div className="text-center max-w-xl mx-auto mb-8">
+          <h1 className="text-3xl md:text-2xl lg:text-3xl font-semibold justify-center  text-gray-900 leading-[1.15] mb-4">
             {blog.title}
           </h1>
-
-          <div className="text-sm text-gray-500 flex justify-center items-center gap-2">
-            <Calendar className="w-4 h-4" />
-            {format(new Date(blog.created_at), "MMM d, yyyy")}
-          </div>
         </div>
 
         {/* Main Thumbnail */}

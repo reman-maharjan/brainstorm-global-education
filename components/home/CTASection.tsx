@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Phone} from "lucide-react";
 import { motion, Variants } from "motion/react";
 import Image from "next/image";
+import { ContactDialog } from "@/components/popup/contact";
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -55,9 +55,11 @@ const CTASection = () => {
                     Get personalized guidance from our expert counselors. We&apos;ve helped 2,000+ students achieve their dreams.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <Button asChild variant="outline" size="lg"  className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary h-12 px-8">
-                      <Link href="/contact">Book Free Consultation</Link>
-                    </Button>
+                    <ContactDialog>
+                      <Button variant="outline" size="lg" className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary h-12 px-8">
+                        Book Free Consultation
+                      </Button>
+                    </ContactDialog>
                     <Button asChild variant="outline" size="lg" className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary h-12 px-8">
                       <a href="tel:+9771234567890">
                         <Phone className="mr-2 w-4 h-4" /> Call Now

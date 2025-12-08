@@ -77,7 +77,7 @@ export const ContactDialog = ({ children, triggerText = "Contact Us" }: ContactD
           </Button>
         )}
       </DialogTrigger>
-      <DialogContent className="max-w-3xl! max-h-[85vh] overflow-y-auto p-0 gap-0 border-none sm:rounded-3xl bg-white">  
+      <DialogContent className="max-w-3xl! max-h-[90vh] sm:max-h-[85vh] overflow-y-auto p-0 gap-0 border-none rounded-2xl sm:rounded-3xl bg-white mx-2 sm:mx-auto">  
         <div className="grid md:grid-cols-2 h-full">
           {/* Left side - Image */}
           <div className="hidden md:block relative h-full min-h-[550px]">
@@ -90,16 +90,16 @@ export const ContactDialog = ({ children, triggerText = "Contact Us" }: ContactD
           </div>
 
           {/* Right side - Form */}
-          <div className="p-8 md:p-10 flex flex-col justify-center">
-            <DialogHeader className="mb-6 space-y-1 text-left">
-              <DialogTitle className="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">
-                Book Free <br className="hidden md:block"/> Consultation
+          <div className="p-5 sm:p-8 md:p-10 flex flex-col justify-center">
+            <DialogHeader className="mb-4 sm:mb-6 space-y-1 text-left">
+              <DialogTitle className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900">
+                Book Free <br className="hidden sm:block"/> Consultation
               </DialogTitle>
             </DialogHeader>
 
             <motion.form
               onSubmit={handleSubmit}
-              className="space-y-5"
+              className="space-y-3 sm:space-y-5"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
@@ -111,9 +111,9 @@ export const ContactDialog = ({ children, triggerText = "Contact Us" }: ContactD
                   name="fullName"
                   required
                   placeholder=" "
-                  className="peer w-full px-4 pt-5 pb-2 border border-slate-200 rounded-xl bg-slate-50 focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all duration-200"
+                  className="peer w-full px-3 sm:px-4 pt-5 pb-2 text-sm sm:text-base border border-slate-200 rounded-xl bg-slate-50 focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all duration-200"
                 />
-                <label className="absolute left-4 top-4 text-slate-400 text-sm transition-all duration-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary font-medium pointer-events-none">
+                <label className="absolute left-3 sm:left-4 top-4 text-slate-400 text-xs sm:text-sm transition-all duration-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm sm:peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary font-medium pointer-events-none">
                   Full Name *
                 </label>
               </motion.div>
@@ -125,9 +125,9 @@ export const ContactDialog = ({ children, triggerText = "Contact Us" }: ContactD
                   name="email"
                   required
                   placeholder=" "
-                  className="peer w-full px-4 pt-5 pb-2 border border-slate-200 rounded-xl bg-slate-50 focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all duration-200"
+                  className="peer w-full px-3 sm:px-4 pt-5 pb-2 text-sm sm:text-base border border-slate-200 rounded-xl bg-slate-50 focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all duration-200"
                 />
-                <label className="absolute left-4 top-4 text-slate-400 text-sm transition-all duration-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary font-medium pointer-events-none">
+                <label className="absolute left-3 sm:left-4 top-4 text-slate-400 text-xs sm:text-sm transition-all duration-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm sm:peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary font-medium pointer-events-none">
                   Email Address *
                 </label>
               </motion.div>
@@ -139,9 +139,9 @@ export const ContactDialog = ({ children, triggerText = "Contact Us" }: ContactD
                   name="phone"
                   required
                   placeholder=" "
-                  className="peer w-full px-4 pt-5 pb-2 border border-slate-200 rounded-xl bg-slate-50 focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all duration-200"
+                  className="peer w-full px-3 sm:px-4 pt-5 pb-2 text-sm sm:text-base border border-slate-200 rounded-xl bg-slate-50 focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all duration-200"
                 />
-                <label className="absolute left-4 top-4 text-slate-400 text-sm transition-all duration-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary font-medium pointer-events-none">
+                <label className="absolute left-3 sm:left-4 top-4 text-slate-400 text-xs sm:text-sm transition-all duration-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm sm:peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary font-medium pointer-events-none">
                   Phone Number *
                 </label>
               </motion.div>
@@ -150,26 +150,26 @@ export const ContactDialog = ({ children, triggerText = "Contact Us" }: ContactD
               <motion.div className="relative" variants={itemVariants}>
                 <textarea
                   name="message"
-                  rows={4}
+                  rows={3}
                   placeholder=" "
-                  className="peer w-full px-4 pt-5 pb-2 border border-slate-200 rounded-xl bg-slate-50 focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all duration-200 resize-none"
+                  className="peer w-full px-3 sm:px-4 pt-5 pb-2 text-sm sm:text-base border border-slate-200 rounded-xl bg-slate-50 focus:bg-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all duration-200 resize-none"
                 />
-                <label className="absolute left-4 top-4 text-slate-400 text-sm transition-all duration-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary font-medium pointer-events-none">
+                <label className="absolute left-3 sm:left-4 top-4 text-slate-400 text-xs sm:text-sm transition-all duration-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm sm:peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary font-medium pointer-events-none">
                   Tell us about your goals
                 </label>
               </motion.div>
 
-              <motion.div className="flex gap-4 pt-4" variants={itemVariants}>
+              <motion.div className="flex gap-3 sm:gap-4 pt-2 sm:pt-4" variants={itemVariants}>
                 <Button
                   type="button"
                   variant="outline"
                   onClick={() => setOpen(false)}
-                  className="flex-1 rounded-xl h-12 border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-slate-900 border-2 font-semibold"
+                  className="flex-1 rounded-xl h-10 sm:h-12 border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-slate-900 border-2 font-semibold text-sm sm:text-base"
                 >
                   Cancel
                 </Button>
-                <Button type="submit" disabled={isPending} className="flex-1 rounded-xl h-12 bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg shadow-primary/20">
-                  {isPending ? "Sending..." : <>Submit Inquiry <Send className="ml-2 w-4 h-4" /></>}
+                <Button type="submit" disabled={isPending} className="flex-1 rounded-xl h-10 sm:h-12 bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg shadow-primary/20 text-sm sm:text-base">
+                  {isPending ? "Sending..." : <><span className="hidden sm:inline">Submit Inquiry</span><span className="sm:hidden">Submit</span> <Send className="ml-1 sm:ml-2 w-4 h-4" /></>}
                 </Button>
               </motion.div>
             </motion.form>

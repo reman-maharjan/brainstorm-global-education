@@ -42,10 +42,10 @@ const steps = [
 
 const ProcessSection = () => {
   return (
-    <section className="py-20 md:py-28 ">
+    <section className="py-8 md:py-8 ">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-4">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Your Journey to Study Abroad
           </h2>

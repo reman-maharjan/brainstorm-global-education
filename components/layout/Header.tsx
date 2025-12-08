@@ -38,7 +38,7 @@ const Header = () => {
           <nav className="hidden lg:flex items-center gap-1">
             <Link
               href="/"
-              className={`px-4 py-2 font-medium transition-colors  rounded ${
+              className={`px-4 py-2 text-sm font-medium transition-colors rounded ${
                 isActive("/") ? "" : ""
               }`}
             >
@@ -46,14 +46,14 @@ const Header = () => {
             </Link>
             <Link
               href="/about"
-              className={`px-4 py-2 font-medium transition-colors rounded ${
+              className={`px-4 py-2 text-sm font-medium transition-colors rounded ${
                 isActive("/about") ? "" : ""
               }`}
             >
               About Us
             </Link>
               <div className="relative group">
-              <button className="px-4 py-2 font-medium transition-colors flex items-center gap-1 outline-none">
+              <button className="px-4 py-2 text-sm font-medium transition-colors flex items-center gap-1 outline-none">
                 Study Destinations <ChevronDown className="w-4 h-4" />
               </button>
               <div className="absolute left-0 top-full mt-1 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 z-50">
@@ -62,7 +62,7 @@ const Header = () => {
                     <Link
                       key={country.path}
                       href={country.path}
-                      className="block px-4 py-2 hover:bg-gray-100 transition-colors cursor-pointer"
+                      className="block px-4 py-2 text-sm hover:bg-gray-100 transition-colors cursor-pointer"
                     >
                       Study in {country.name}
                     </Link>
@@ -72,23 +72,23 @@ const Header = () => {
             </div>
             <Link
               href="/ielts-pte"
-              className={`px-4 py-2 font-medium transition-colors rounded ${
+              className={`px-4 py-2 text-sm font-medium transition-colors rounded ${
                 isActive("/ielts-pte") ? "" : ""
               }`}
             >
               IELTS & PTE
             </Link>
             <Link
-              href="/blog"
-              className={`px-4 py-2 font-medium transition-colors rounded ${
-                isActive("/blog") ? "" : ""
+              href="/latest-updates"
+              className={`px-4 py-2 text-sm font-medium transition-colors rounded ${
+                isActive("/latest-updates") ? "" : ""
               }`}
             >
-              Blog
+              Latest Updates
             </Link>
             <Link
               href="/contact"
-              className={`px-4 py-2 font-medium transition-colors rounded ${
+              className={`px-4 py-2 text-sm font-medium transition-colors rounded ${
                 isActive("/contact") ? "" : ""
               }`}
             >
@@ -150,11 +150,11 @@ const Header = () => {
                 IELTS & PTE
               </Link>
               <Link
-                href="/blog"
+                href="/latest-updates"
                 onClick={() => setIsMenuOpen(false)}
                 className="px-4 py-3 font-medium hover:bg-secondary transition-colors rounded"
               >
-                Blog
+                Latest Updates
               </Link>
               <Link
                 href="/contact"

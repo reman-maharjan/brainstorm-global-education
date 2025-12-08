@@ -9,7 +9,7 @@ export default function Videos() {
 
   if (isLoading) {
     return (
-      <div className="py-16">
+      <div className="py-4">
         <div className="max-w-7xl mx-auto px-4">
           <div className="space-y-6">
             {/* Section header skeleton */}
@@ -55,7 +55,7 @@ export default function Videos() {
   }
 
   return (
-    <div className="py-16 ">
+    <div className="py-4 ">
       <div className="max-w-7xl mx-auto px-4">
         <VideosCarousel videos={videos} />
       </div>

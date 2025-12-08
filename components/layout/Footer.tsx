@@ -55,8 +55,8 @@ const Footer = () => {
               <li><Link href="/about" className="opacity-80 hover:opacity-100 transition-opacity">About Us</Link></li>
               <li><Link href="/ielts-pte" className="opacity-80 hover:opacity-100 transition-opacity">IELTS & PTE Classes</Link></li>
               <li><Link href="/contact" className="opacity-80 hover:opacity-100 transition-opacity">Contact Us</Link></li>
-              <li><Link href="/#services" className="opacity-80 hover:opacity-100 transition-opacity">Our Services</Link></li>
-              <li><Link href="/#testimonials" className="opacity-80 hover:opacity-100 transition-opacity">Success Stories</Link></li>
+              <li><Link href="/services" className="opacity-80 hover:opacity-100 transition-opacity">Our Services</Link></li>
+              <li><Link href="/testimonials" className="opacity-80 hover:opacity-100 transition-opacity">Success Stories</Link></li>
             </ul>
           </div>
 

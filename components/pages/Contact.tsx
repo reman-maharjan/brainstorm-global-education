@@ -48,36 +48,34 @@ const Contact = () => {
       {/* HERO */}
 
       <motion.section
-        className="bg-background py-4 md:px-4 md:py-10 space-y-12"
+        className="bg-background px-4 py-8 md:px-4 md:py-10 space-y-8 md:space-y-12"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         variants={fadeInUp}
       >
-        <div className="from-primary to-secondary pointer-events-none absolute top-80 -left-20 z-50 h-40 w-40 rounded-full bg-linear-to-tr opacity-90 blur-3xl"></div>
+        {/* Gradients - hidden on mobile */}
+        <div className="hidden md:block from-primary to-secondary pointer-events-none absolute top-80 -left-20 z-50 h-40 w-40 rounded-full bg-linear-to-tr opacity-90 blur-3xl"></div>
+        <div className="hidden md:block from-primary to-secondary pointer-events-none absolute top-80 -right-20 z-50 h-40 w-40 rounded-full bg-linear-to-tr opacity-90 blur-3xl"></div>
 
-        {/* Top Right */}
-        <div className="from-primary to-secondary pointer-events-none absolute top-80 -right-20 z-50 h-40 w-40 rounded-full bg-linear-to-tr opacity-90 blur-3xl"></div>
-
-
-        <div className="max-w-xl mx-auto text-center">
-          <h1 className="text-3xl md:text-4xl font-bold">
+        <div className="max-w-xl mx-auto text-center px-2">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">
             Let&apos;s Start Your Journey
           </h1>
         </div>
         <div className="max-w-lg mx-auto">
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             {/* NAME FIELDS */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="relative">
                 <input
                   type="text"
                   name="firstName"
                   required
                   placeholder=" "
-                  className="peer w-full px-4 pt-6 pb-2 border-2 border-border rounded-lg bg-background focus:border-primary outline-none transition"
+                  className="peer w-full px-3 sm:px-4 pt-5 sm:pt-6 pb-2 text-sm sm:text-base border-2 border-border rounded-lg bg-background focus:border-primary outline-none transition"
                 />
-                <label className="absolute left-4 top-4 text-muted-foreground text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary">
+                <label className="absolute left-3 sm:left-4 top-4 text-muted-foreground text-xs sm:text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm sm:peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary">
                   First Name *
                 </label>
               </div>
@@ -88,9 +86,9 @@ const Contact = () => {
                   name="lastName"
                   required
                   placeholder=" "
-                  className="peer w-full px-4 pt-6 pb-2 border-2 border-border rounded-lg bg-background focus:border-primary outline-none transition"
+                  className="peer w-full px-3 sm:px-4 pt-5 sm:pt-6 pb-2 text-sm sm:text-base border-2 border-border rounded-lg bg-background focus:border-primary outline-none transition"
                 />
-                <label className="absolute left-4 top-4 text-muted-foreground text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary">
+                <label className="absolute left-3 sm:left-4 top-4 text-muted-foreground text-xs sm:text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm sm:peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary">
                   Last Name *
                 </label>
               </div>
@@ -103,9 +101,9 @@ const Contact = () => {
                 name="email"
                 required
                 placeholder=" "
-                className="peer w-full px-4 pt-6 pb-2 border-2 border-border rounded-lg bg-background focus:border-primary outline-none transition"
+                className="peer w-full px-3 sm:px-4 pt-5 sm:pt-6 pb-2 text-sm sm:text-base border-2 border-border rounded-lg bg-background focus:border-primary outline-none transition"
               />
-              <label className="absolute left-4 top-4 text-muted-foreground text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary">
+              <label className="absolute left-3 sm:left-4 top-4 text-muted-foreground text-xs sm:text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm sm:peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary">
                 Email Address *
               </label>
             </div>
@@ -117,9 +115,9 @@ const Contact = () => {
                 name="phone"
                 required
                 placeholder=" "
-                className="peer w-full px-4 pt-6 pb-2 border-2 border-border rounded-lg bg-background focus:border-primary outline-none transition"
+                className="peer w-full px-3 sm:px-4 pt-5 sm:pt-6 pb-2 text-sm sm:text-base border-2 border-border rounded-lg bg-background focus:border-primary outline-none transition"
               />
-              <label className="absolute left-4 top-4 text-muted-foreground text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary">
+              <label className="absolute left-3 sm:left-4 top-4 text-muted-foreground text-xs sm:text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm sm:peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary">
                 Phone Number *
               </label>
             </div>
@@ -128,11 +126,11 @@ const Contact = () => {
             <div className="relative">
               <textarea
                 name="message"
-                rows={4}
+                rows={3}
                 placeholder=" "
-                className="peer w-full px-4 pt-6 pb-2 border-2 border-border rounded-lg bg-background resize-none focus:border-primary outline-none transition"
+                className="peer w-full px-3 sm:px-4 pt-5 sm:pt-6 pb-2 text-sm sm:text-base border-2 border-border rounded-lg bg-background resize-none focus:border-primary outline-none transition"
               />
-              <label className="absolute left-4 top-4 text-muted-foreground text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary">
+              <label className="absolute left-3 sm:left-4 top-4 text-muted-foreground text-xs sm:text-sm transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm sm:peer-placeholder-shown:text-base peer-focus:top-2 peer-focus:text-xs peer-focus:text-primary">
                 Tell us about your goals
               </label>
             </div>
@@ -141,7 +139,7 @@ const Contact = () => {
               type="submit"
               size="lg"
               disabled={isPending}
-              className="rounded-lg w-full"
+              className="rounded-lg w-full h-11 sm:h-12 text-sm sm:text-base"
             >
               {isPending ? (
                 "Sending..."
@@ -157,37 +155,37 @@ const Contact = () => {
 
       {/* CONTACT INFO CARDS */}
       <motion.section
-        className="py-16 md:py-24 bg-background"
+        className="py-12 md:py-24 bg-background"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
         variants={fadeInUp}
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4">
               Get in Touch
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto">
               Have questions? We&apos;re here to help you every step of the way.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
             {/* Visit Us Card */}
-            <div className="group relative bg-linear-to-br from-primary/5 to-primary/10 p-8 rounded-2xl border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500" />
+            <div className="group relative bg-linear-to-br from-primary/5 to-primary/10 p-5 sm:p-8 rounded-xl sm:rounded-2xl border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden">
+              <div className="hidden sm:block absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500" />
               <div className="relative">
-                <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300">
-                  <MapPin className="w-7 h-7 text-primary" />
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary/20 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-5 group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300">
+                  <MapPin className="w-5 h-5 sm:w-7 sm:h-7 text-primary" />
                 </div>
-                <h3 className="font-bold text-xl mb-3">Visit Our Office</h3>
-                <p className="text-muted-foreground leading-relaxed mb-2">
+                <h3 className="font-bold text-lg sm:text-xl mb-2 sm:mb-3">Visit Our Office</h3>
+                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-2">
                   Putalisadak, Kathmandu
                   <br />
                   Nepal
                 </p>
-                <p className="text-sm text-muted-foreground/80 mt-4 pt-4 border-t border-border">
+                <p className="text-xs sm:text-sm text-muted-foreground/80 mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-border">
                   <span className="font-semibold text-foreground">
                     Office Hours:
                   </span>
@@ -200,29 +198,29 @@ const Contact = () => {
             </div>
 
             {/* Contact Us Card */}
-            <div className="group relative bg-linear-to-br from-primary/5 to-primary/10 p-8 rounded-2xl border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500" />
+            <div className="group relative bg-linear-to-br from-primary/5 to-primary/10 p-5 sm:p-8 rounded-xl sm:rounded-2xl border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden">
+              <div className="hidden sm:block absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500" />
               <div className="relative">
-                <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mb-5 group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300">
-                  <Phone className="w-7 h-7 text-primary" />
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary/20 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-5 group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300">
+                  <Phone className="w-5 h-5 sm:w-7 sm:h-7 text-primary" />
                 </div>
-                <h3 className="font-bold text-xl mb-3">Contact Us</h3>
-                <div className="space-y-3">
+                <h3 className="font-bold text-lg sm:text-xl mb-2 sm:mb-3">Contact Us</h3>
+                <div className="space-y-2 sm:space-y-3">
                   <div>
-                    <p className="text-sm font-semibold text-foreground mb-1">
+                    <p className="text-xs sm:text-sm font-semibold text-foreground mb-1">
                       Phone
                     </p>
-                    <p className="text-muted-foreground">
+                    <p className="text-muted-foreground text-sm sm:text-base">
                       +977 1234567890
                       <br />
                       +977 9876543210
                     </p>
                   </div>
-                  <div className="pt-3 border-t border-border">
-                    <p className="text-sm font-semibold text-foreground mb-1">
+                  <div className="pt-2 sm:pt-3 border-t border-border">
+                    <p className="text-xs sm:text-sm font-semibold text-foreground mb-1">
                       Email
                     </p>
-                    <p className="text-muted-foreground">
+                    <p className="text-muted-foreground text-sm sm:text-base">
                       info@brainstorm.edu.np
                       <br />
                       apply@brainstorm.edu.np
