@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import heroImage from "@/components/assets/hero-students.jpg";
 import Image from "next/image";
@@ -11,20 +10,20 @@ import { ContactDialog } from "@/components/popup/contact";
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" }
-  }
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
 };
 
 const fadeInRight: Variants = {
   hidden: { opacity: 0, x: 30 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     x: 0,
-    transition: { duration: 0.8, ease: "easeOut", delay: 0.2 }
-  }
+    transition: { duration: 0.8, ease: "easeOut", delay: 0.2 },
+  },
 };
 
 const HeroSection = () => {
@@ -32,40 +31,72 @@ const HeroSection = () => {
     <section className="relative  overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 50px, currentColor 50px, currentColor 51px),
-                           repeating-linear-gradient(90deg, transparent, transparent 50px, currentColor 50px, currentColor 51px)`
-        }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 50px, currentColor 50px, currentColor 51px),
+                           repeating-linear-gradient(90deg, transparent, transparent 50px, currentColor 50px, currentColor 51px)`,
+          }}
+        />
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24 relative">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeInUp}
-          >
-            <Badge variant="secondary" className="px-4 py-1 text-sm font-medium mb-6 bg-accent text-accent-foreground rounded-full">
-              🇳🇵 Nepal&apos;s Trusted Education Partner
-            </Badge>
+          <motion.div initial="hidden" animate="visible" variants={fadeInUp}>
+            <div className="flex items-center gap-3 mb-6 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-lg border border-gray-200 w-fit">
+              <div className="flex items-center gap-2">
+                <Image
+                  src="/certifications/education-ministry.jpg"
+                  alt="Ministry of Education Approved"
+                  width={28}
+                  height={28}
+                  className="object-contain"
+                />
+                <span className="text-xs font-medium text-gray-700 whitespace-nowrap">
+                  Approved by Ministry of Education
+                </span>
+              </div>
+              <div className="h-6 w-px bg-gray-300"></div>
+              <div className="flex items-center gap-2">
+                <Image
+                  src="/certifications/titi.jpg"
+                  alt="TITI Certified"
+                  width={28}
+                  height={28}
+                  className="object-contain"
+                />
+                <span className="text-xs font-medium text-gray-700 whitespace-nowrap">
+                  TITI Certified Counselors
+                </span>
+              </div>
+            </div>
             <h1 className="text-4xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">
-              Best Abroad Study {" "}
-              <span className="text-primary">Consultancy</span>{" "}<br/>
+              Best Abroad Study{" "}
+              <span className="text-primary">Consultancy</span> <br />
               In Nepal
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
-              Expert guidance for studying in USA, UK, Australia, Canada & New Zealand. 
-              From course selection to visa processing — we&apos;ve got you covered.
+              Expert guidance for studying in USA, UK, Australia, Canada & New
+              Zealand. From course selection to visa processing — we&apos;ve got
+              you covered.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
-              <ContactDialog triggerText="Book Free Consultation" title="Book Free Consultation">
+              <ContactDialog
+                triggerText="Book Free Consultation"
+                title="Book Free Consultation"
+              >
                 <Button size="lg" className="transition-all text-base">
                   Book Free Consultation <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </ContactDialog>
-              <Button asChild variant="outline" size="lg" className="text-base ">
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="text-base "
+              >
                 <Link href="/about">Learn More About Us</Link>
               </Button>
             </div>
@@ -87,7 +118,7 @@ const HeroSection = () => {
           </motion.div>
 
           {/* Image */}
-          <motion.div 
+          <motion.div
             className="relative hidden lg:block"
             initial="hidden"
             animate="visible"

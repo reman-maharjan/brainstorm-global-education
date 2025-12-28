@@ -1,6 +1,6 @@
 const stats = [
   { value: "10+", label: "Years Experience" },
-  { value: "5000+", label: "Students Placed" },
+  { value: "1000+", label: "Students Placed" },
   { value: "100+", label: "Partner Universities" },
   { value: "98%", label: "Visa Success Rate" },
 ];
@@ -12,7 +12,9 @@ const StatsSection = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
             <div key={index} className="text-center">
-              <p className="text-4xl md:text-5xl font-bold text-primary mb-2">{stat.value}</p>
+              <p className="text-4xl md:text-5xl font-bold text-primary mb-2">
+                {stat.value}
+              </p>
               <p className="text-muted-foreground font-medium">{stat.label}</p>
             </div>
           ))}

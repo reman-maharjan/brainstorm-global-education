@@ -1,7 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { Facebook, Instagram, Loader2 } from "lucide-react";
+import {
+  Facebook,
+  Instagram,
+  Loader2,
+  Mail,
+  Phone,
+  MapPin,
+} from "lucide-react";
 import Image from "next/image";
 import { useNewsletter } from "@/hooks/use-newsletter";
 import { useState } from "react";
@@ -33,7 +40,7 @@ const FooterLink: React.FC<{ href: string; children: React.ReactNode }> = ({
   <li>
     <Link
       href={href}
-      className="opacity-80 hover:opacity-100 transition-opacity duration-200"
+      className="text-primary-foreground/70 hover:text-primary-foreground transition-colors duration-200"
     >
       {children}
     </Link>
@@ -58,11 +65,14 @@ const NewsletterForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex w-full">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col sm:flex-row gap-2 w-full"
+    >
       <input
         type="email"
         placeholder="Enter your email"
-        className="w-full bg-primary-foreground text-primary px-4 py-3 text-sm outline-none placeholder:text-primary/50 rounded-l-sm focus:bg-primary-foreground transition-colors"
+        className="flex-1 bg-white/10 backdrop-blur-sm border border-white/20 text-primary-foreground px-4 py-2.5 text-sm outline-none placeholder:text-primary-foreground/50 rounded-md focus:bg-white/15 focus:border-white/30 transition-all"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
@@ -71,9 +81,9 @@ const NewsletterForm = () => {
       <button
         type="submit"
         disabled={isPending || !email}
-        className="bg-primary-foreground/20 hover:bg-primary-foreground/30 text-primary-foreground px-6 py-3 text-sm font-medium transition-colors duration-200 rounded-r-sm disabled:opacity-70 disabled:cursor-not-allowed whitespace-nowrap min-w-[110px] flex justify-center items-center border-l border-primary/20"
+        className="bg-secondary hover:bg-secondary/90 border border-white/20 text-primary-foreground px-6 py-2.5 text-sm font-medium transition-all duration-200 rounded-md disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap flex justify-center items-center"
       >
-        {isPending ? <Loader2 className="h-5 w-5 animate-spin" /> : "Subscribe"}
+        {isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : "Subscribe"}
       </button>
     </form>
   );
@@ -82,30 +92,31 @@ const NewsletterForm = () => {
 const Footer = () => {
   return (
     <footer className="w-full bg-primary text-primary-foreground">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
           {/* Brand */}
-          <div className="space-y-6 mt-2">
+          <div className="space-y-5">
             <Link href="/" className="inline-block">
               <Image
                 src="/images/white-logo.svg"
                 alt="Brainstorm Global Education"
-                height={70}
-                width={200}
+                height={60}
+                width={180}
                 className="object-contain"
               />
             </Link>
 
-            <p className="text-sm opacity-80 leading-relaxed">
-              Your trusted partner for studying abroad. Turning dreams into reality since 2015.
+            <p className="text-sm text-primary-foreground/80 leading-relaxed">
+              Your trusted partner for studying abroad. Turning dreams into
+              reality since 2015.
             </p>
 
-            <div className="flex gap-3">
+            <div className="flex gap-2.5">
               <Link
                 href="https://www.facebook.com/brainstormglobaleducation/"
                 target="_blank"
-                className="w-10 h-10 rounded-full border border-primary-foreground/30 flex items-center justify-center hover:bg-primary-foreground hover:text-primary transition-colors"
+                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center transition-all duration-200"
+                aria-label="Facebook"
               >
                 <Facebook className="w-4 h-4" />
               </Link>
@@ -113,7 +124,8 @@ const Footer = () => {
               <Link
                 href="https://www.instagram.com/brainstorm_abroad_education/"
                 target="_blank"
-                className="w-10 h-10 rounded-full border border-primary-foreground/30 flex items-center justify-center hover:bg-primary-foreground hover:text-primary transition-colors"
+                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center transition-all duration-200"
+                aria-label="Instagram"
               >
                 <Instagram className="w-4 h-4" />
               </Link>
@@ -121,7 +133,8 @@ const Footer = () => {
               <Link
                 href="https://www.tiktok.com/@brainstorm_education"
                 target="_blank"
-                className="w-10 h-10 rounded-full border border-primary-foreground/30 flex items-center justify-center hover:bg-primary-foreground hover:text-primary transition-colors"
+                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center transition-all duration-200"
+                aria-label="TikTok"
               >
                 <TikTokIcon className="w-4 h-4" />
               </Link>
@@ -130,79 +143,162 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-semibold mb-6">Quick Links</h3>
-            <ul className="space-y-3 text-sm">
+            <h3 className="text-lg font-semibold mb-5 text-primary-foreground">
+              Quick Links
+            </h3>
+            <ul className="space-y-2.5 text-sm">
               <FooterLink href="/countries/usa">Study in USA</FooterLink>
               <FooterLink href="/countries/uk">Study in UK</FooterLink>
-              <FooterLink href="/countries/australia">Study in Australia</FooterLink>
+              <FooterLink href="/countries/australia">
+                Study in Australia
+              </FooterLink>
               <FooterLink href="/countries/canada">Study in Canada</FooterLink>
-              <FooterLink href="/countries/new-zealand">Study in New Zealand</FooterLink>
+              <FooterLink href="/countries/new-zealand">
+                Study in New Zealand
+              </FooterLink>
               <FooterLink href="/about">About Us</FooterLink>
               <FooterLink href="/ielts-pte">IELTS & PTE Classes</FooterLink>
-              <FooterLink href="/services">Our Services</FooterLink>
+              {/* <FooterLink href="/services">Our Services</FooterLink> */}
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-xl font-semibold mb-6">Contact Info</h3>
-            <div className="space-y-6 text-sm">
-              <div className="space-y-1">
-                <p className="font-semibold uppercase text-xs tracking-wider opacity-80">
-                  Address:
-                </p>
-                <p className="opacity-80 leading-relaxed">
-                  Putalisadak, Kathmandu, Nepal
-                </p>
+            <h3 className="text-lg font-semibold mb-5 text-primary-foreground">
+              Contact Info
+            </h3>
+            <div className="space-y-5 text-sm">
+              <div className="space-y-2">
+                <div className="flex items-start gap-2.5">
+                  <MapPin className="w-4 h-4 mt-0.5 text-primary-foreground/70 shrink-0" />
+                  <div>
+                    <p className="text-primary-foreground/70 text-sm font-medium mb-1">
+                      Address
+                    </p>
+                    <p className="text-primary-foreground/80 leading-relaxed">
+                      Baneshwor plaza c block 3rd floor, New Baneshwor,
+                      Kathmandu
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="space-y-1">
-                <p className="font-semibold uppercase text-xs tracking-wider opacity-80">
-                  Email:
-                </p>
-                <Link
-                  href="mailto:info@brainstormglobal.edu.np"
-                  className="opacity-80 hover:opacity-100 transition-opacity"
-                >
-                  info@brainstormglobal.edu.np
-                </Link>
+              <div className="space-y-2">
+                <div className="flex items-start gap-2.5">
+                  <Mail className="w-4 h-4 mt-0.5 text-primary-foreground/70 shrink-0" />
+                  <div className="space-y-1.5">
+                    <p className="text-primary-foreground/70 text-xs font-medium mb-1">
+                      Email
+                    </p>
+                    <div className="space-y-1.5">
+                      <Link
+                        href="mailto:info@brainstorm.edu.np"
+                        className="text-primary-foreground/80 hover:text-primary-foreground transition-colors block text-xs"
+                      >
+                        info@brainstorm.edu.np
+                      </Link>
+                      <Link
+                        href="mailto:apply@brainstorm.edu.np"
+                        className="text-primary-foreground/80 hover:text-primary-foreground transition-colors block text-sm"
+                      >
+                        <span className="text-primary-foreground/60 text-[10px] block">
+                          Europe counselor
+                        </span>
+                        apply@brainstorm.edu.np
+                      </Link>
+                      <Link
+                        href="mailto:admission@brainstorm.edu.np"
+                        className="text-primary-foreground/80 hover:text-primary-foreground transition-colors block text-sm"
+                      >
+                        <span className="text-primary-foreground/60 text-[10px] block">
+                          Aus/canada/NZ/USA
+                        </span>
+                        admission@brainstorm.edu.np
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="space-y-1">
-                <p className="font-semibold uppercase text-xs tracking-wider opacity-80">
-                  Phone:
-                </p>
-                <Link
-                  href="tel:+9771234567890"
-                  className="opacity-80 hover:opacity-100 transition-opacity"
-                >
-                  +977 1234567890
-                </Link>
+              <div className="space-y-2">
+                <div className="flex items-start gap-2.5">
+                  <Phone className="w-4 h-4 mt-0.5 text-primary-foreground/70 shrink-0" />
+                  <div className="space-y-1.5">
+                    <p className="text-primary-foreground/70 text-sm font-medium mb-1">
+                      Phone
+                    </p>
+                    <div className="space-y-1.5">
+                      <Link
+                        href="tel:+977014583807"
+                        className="text-primary-foreground/80 hover:text-primary-foreground transition-colors block text-sm"
+                      >
+                        +977 014583807
+                      </Link>
+                      <Link
+                        href="tel:+9779851192981"
+                        className="text-primary-foreground/80 hover:text-primary-foreground transition-colors block text-sm"
+                      >
+                        +977 9851192981
+                      </Link>
+                      <Link
+                        href="tel:+9779801149881"
+                        className="text-primary-foreground/80 hover:text-primary-foreground transition-colors block text-sm"
+                      >
+                        <span className="text-primary-foreground/60 text-[10px] block">
+                          Europe counselor
+                        </span>
+                        +977 9801149881
+                      </Link>
+                      <Link
+                        href="tel:+9779801149880"
+                        className="text-primary-foreground/80 hover:text-primary-foreground transition-colors block text-sm"
+                      >
+                        <span className="text-primary-foreground/60 text-[10px] block">
+                          Aus/canada/NZ/USA
+                        </span>
+                        +977 9801149880
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Newsletter */}
           <div>
-            <h3 className="text-xl font-semibold mb-6">Newsletter</h3>
-            <p className="text-sm opacity-80 mb-6 leading-relaxed">
+            <h3 className="text-lg font-semibold mb-4 text-primary-foreground">
+              Newsletter
+            </h3>
+            <p className="text-sm text-primary-foreground/80 mb-5 leading-relaxed">
               Join our subscribers list to get latest news and special offers.
             </p>
             <NewsletterForm />
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm opacity-80">
+        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-primary-foreground/70">
           <p className="text-center md:text-left">
             Copyright {new Date().getFullYear()}. All rights reserved by{" "}
-            <span className="font-medium opacity-100">Brainstorm Global Education</span>
+            <span className="font-medium text-primary-foreground">
+              Brainstorm Global Education
+            </span>
           </p>
-          <div className="flex gap-6">
-            <Link href="/terms" className="hover:opacity-100 transition-opacity">
+          <div className="flex gap-5">
+            <Link
+              href="/terms"
+              className="hover:text-primary-foreground transition-colors"
+            >
               Terms
             </Link>
-            <Link href="/privacy" className="hover:opacity-100 transition-opacity">
+            <Link
+              href="/privacy"
+              className="hover:text-primary-foreground transition-colors"
+            >
               Privacy
             </Link>
-            <Link href="/contact" className="hover:opacity-100 transition-opacity">
+            <Link
+              href="/contact"
+              className="hover:text-primary-foreground transition-colors"
+            >
               Support
             </Link>
           </div>

@@ -95,7 +95,7 @@ export default async function Country({ params }: Props) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(countrySchema) }}
         />
       )}
-      <CountryPage countrySlug={country} />
+      <CountryPage key={country} countrySlug={country} />
     </>
   );
 }
