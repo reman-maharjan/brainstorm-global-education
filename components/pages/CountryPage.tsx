@@ -1001,7 +1001,7 @@ const CountryPage = ({ countrySlug }: { countrySlug?: string }) => {
                 <Card>
                   <CardHeader className="pb-3">
                     <CardTitle className="text-lg sm:text-xl">
-                      Checklist for {data.fullName}
+                      Checklist for studying in {data.fullName}
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="p-4 sm:p-6 pt-0">
