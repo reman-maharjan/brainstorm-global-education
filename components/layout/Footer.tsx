@@ -192,7 +192,7 @@ const Footer = () => {
                     <div className="space-y-1.5">
                       <Link
                         href="mailto:info@brainstorm.edu.np"
-                        className="text-primary-foreground/80 hover:text-primary-foreground transition-colors block text-xs"
+                        className="text-primary-foreground/80 hover:text-primary-foreground transition-colors block text-sm"
                       >
                         info@brainstorm.edu.np
                       </Link>
@@ -200,18 +200,12 @@ const Footer = () => {
                         href="mailto:apply@brainstorm.edu.np"
                         className="text-primary-foreground/80 hover:text-primary-foreground transition-colors block text-sm"
                       >
-                        <span className="text-primary-foreground/60 text-[10px] block">
-                          Europe counselor
-                        </span>
                         apply@brainstorm.edu.np
                       </Link>
                       <Link
                         href="mailto:admission@brainstorm.edu.np"
                         className="text-primary-foreground/80 hover:text-primary-foreground transition-colors block text-sm"
                       >
-                        <span className="text-primary-foreground/60 text-[10px] block">
-                          Aus/canada/NZ/USA
-                        </span>
                         admission@brainstorm.edu.np
                       </Link>
                     </div>
@@ -242,18 +236,12 @@ const Footer = () => {
                         href="tel:+9779801149881"
                         className="text-primary-foreground/80 hover:text-primary-foreground transition-colors block text-sm"
                       >
-                        <span className="text-primary-foreground/60 text-[10px] block">
-                          Europe counselor
-                        </span>
                         +977 9801149881
                       </Link>
                       <Link
                         href="tel:+9779801149880"
                         className="text-primary-foreground/80 hover:text-primary-foreground transition-colors block text-sm"
                       >
-                        <span className="text-primary-foreground/60 text-[10px] block">
-                          Aus/canada/NZ/USA
-                        </span>
                         +977 9801149880
                       </Link>
                     </div>

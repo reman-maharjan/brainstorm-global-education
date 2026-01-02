@@ -220,7 +220,6 @@ const Contact = () => {
                         >
                           +977 014583807
                         </Link>
-                        <span className="text-xs opacity-70"> (Landline)</span>
                       </div>
                       <div>
                         <Link
@@ -229,7 +228,6 @@ const Contact = () => {
                         >
                           +977 9851192981
                         </Link>
-                        <span className="text-xs opacity-70"> (CEO)</span>
                       </div>
                       <div>
                         <Link
@@ -238,7 +236,6 @@ const Contact = () => {
                         >
                           +977 9801149881
                         </Link>
-                        <span className="text-xs opacity-70"> (Europe)</span>
                       </div>
                       <div>
                         <Link
@@ -247,10 +244,6 @@ const Contact = () => {
                         >
                           +977 9801149880
                         </Link>
-                        <span className="text-xs opacity-70">
-                          {" "}
-                          (Aus/Canada/NZ/USA)
-                        </span>
                       </div>
                     </div>
                   </div>
@@ -266,7 +259,6 @@ const Contact = () => {
                         >
                           info@brainstorm.edu.np
                         </Link>
-                        <span className="text-xs opacity-70"> (CEO)</span>
                       </div>
                       <div>
                         <Link
@@ -275,7 +267,6 @@ const Contact = () => {
                         >
                           apply@brainstorm.edu.np
                         </Link>
-                        <span className="text-xs opacity-70"> (Europe)</span>
                       </div>
                       <div>
                         <Link
@@ -284,10 +275,6 @@ const Contact = () => {
                         >
                           admission@brainstorm.edu.np
                         </Link>
-                        <span className="text-xs opacity-70">
-                          {" "}
-                          (Aus/Canada/NZ/USA)
-                        </span>
                       </div>
                     </div>
                   </div>
