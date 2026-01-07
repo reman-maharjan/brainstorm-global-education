@@ -244,6 +244,16 @@ const Footer = () => {
                       >
                         +977 9801149880
                       </Link>
+                      <Link
+                        href="tel:+61451133248"
+                        className="text-primary-foreground/80 hover:text-primary-foreground transition-colors block text-sm"
+                      >
+                        <span className="text-primary-foreground/80 text-xs">
+                          (Australia onshore inquiries)
+                        </span>{" "}
+                        <br />
+                        +61 451 133 248
+                      </Link>
                     </div>
                   </div>
                 </div>

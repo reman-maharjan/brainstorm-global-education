@@ -216,7 +216,7 @@ const Contact = () => {
                       <div>
                         <Link
                           href="tel:+977014583807"
-                          className="hover:text-primary transition-colors"
+                          className="hover:text-primary transition-colors text-sm"
                         >
                           +977 014583807
                         </Link>
@@ -224,7 +224,7 @@ const Contact = () => {
                       <div>
                         <Link
                           href="tel:+9779851192981"
-                          className="hover:text-primary transition-colors"
+                          className="hover:text-primary transition-colors text-sm"
                         >
                           +977 9851192981
                         </Link>
@@ -232,7 +232,7 @@ const Contact = () => {
                       <div>
                         <Link
                           href="tel:+9779801149881"
-                          className="hover:text-primary transition-colors"
+                          className="hover:text-primary transition-colors text-sm"
                         >
                           +977 9801149881
                         </Link>
@@ -240,9 +240,20 @@ const Contact = () => {
                       <div>
                         <Link
                           href="tel:+9779801149880"
-                          className="hover:text-primary transition-colors"
+                          className="hover:text-primary transition-colors text-sm"
                         >
                           +977 9801149880
+                        </Link>
+                      </div>
+                      <div>
+                        <span className="text-xs  text-muted-foreground/80 block mb-1">
+                          (Australia onshore inquiries)
+                        </span>
+                        <Link
+                          href="tel:+61451133248"
+                          className="text-muted-foreground hover:text-primary transition-colors text-sm "
+                        >
+                          +61 451 133 248
                         </Link>
                       </div>
                     </div>
@@ -255,7 +266,7 @@ const Contact = () => {
                       <div>
                         <Link
                           href="mailto:info@brainstorm.edu.np"
-                          className="hover:text-primary transition-colors"
+                          className="hover:text-primary transition-colors text-sm"
                         >
                           info@brainstorm.edu.np
                         </Link>
@@ -263,7 +274,7 @@ const Contact = () => {
                       <div>
                         <Link
                           href="mailto:apply@brainstorm.edu.np"
-                          className="hover:text-primary transition-colors"
+                          className="hover:text-primary transition-colors text-sm"
                         >
                           apply@brainstorm.edu.np
                         </Link>
@@ -271,7 +282,7 @@ const Contact = () => {
                       <div>
                         <Link
                           href="mailto:admission@brainstorm.edu.np"
-                          className="hover:text-primary transition-colors"
+                          className="hover:text-primary transition-colors text-sm"
                         >
                           admission@brainstorm.edu.np
                         </Link>
