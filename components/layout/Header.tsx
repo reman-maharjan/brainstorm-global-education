@@ -47,8 +47,8 @@ const Header = () => {
           <div className="flex items-center justify-between py-2 text-xs sm:text-sm">
             <div className="flex-1 text-center sm:text-left">
               <p className="text-primary-foreground/90">
-                Free Consultation Available | Turning dreams into reality since
-                2016
+                Free Consultation Available | Empowering Dreams, Shaping Futures
+                Since 2015
               </p>
             </div>
             <div className="hidden sm:flex items-center gap-2 ml-4">
