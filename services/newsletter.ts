@@ -5,13 +5,14 @@ import {
   NormalizedError,
 } from "@/types/newsletter";
 import { siteConfig } from "@/config/site";
+import { apiFetch } from "./api-clients";
 
 const API_BASE_URL = siteConfig.backendUrl;
 
 export const createNewsletter = async (
-  newsletterData: CreateNewsletterRequest
+  newsletterData: CreateNewsletterRequest,
 ): Promise<Newsletter> => {
-  const response = await fetch(`${API_BASE_URL}/api/newsletter/`, {
+  const response = await apiFetch(`${API_BASE_URL}/api/newsletter/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

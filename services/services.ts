@@ -2,11 +2,12 @@ import { siteConfig } from "@/config/site";
 import {
   ServicesPost,
   PaginatedServicesResponse,
- ServicesFilters,
+  ServicesFilters,
 } from "@/types/services";
+import { apiFetch } from "./api-clients";
 
 export const buildServicesFormData = (
-  data: ServicesPost | Omit<ServicesPost, "id">
+  data: ServicesPost | Omit<ServicesPost, "id">,
 ): FormData => {
   const formData = new FormData();
 
@@ -31,7 +32,7 @@ export const buildServicesFormData = (
 
 export const servicesApi = {
   getServices: async (
-    filters?: ServicesFilters
+    filters?: ServicesFilters,
   ): Promise<PaginatedServicesResponse> => {
     const API_BASE_URL = siteConfig.backendUrl;
     const queryParams = new URLSearchParams();
@@ -45,7 +46,7 @@ export const servicesApi = {
     }
 
     const url = `${API_BASE_URL}/api/service/${queryParams.toString() ? `?${queryParams.toString()}` : ""}`;
-    const response = await fetch(url, {
+    const response = await apiFetch(url, {
       method: "GET",
     });
 
@@ -54,7 +55,7 @@ export const servicesApi = {
 
   getServiceBySlug: async (slug: string): Promise<ServicesPost> => {
     const API_BASE_URL = siteConfig.backendUrl;
-    const response = await fetch(`${API_BASE_URL}/api/service/${slug}/`, {
+    const response = await apiFetch(`${API_BASE_URL}/api/service/${slug}/`, {
       method: "GET",
     });
 

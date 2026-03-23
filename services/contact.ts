@@ -5,10 +5,11 @@ import {
   PaginatedContacts,
   ContactFilters,
 } from "@/types/contact";
+import { apiFetch } from "./api-clients";
 
 export const contactAPI = {
   getContacts: async (
-    filters: ContactFilters = {}
+    filters: ContactFilters = {},
   ): Promise<PaginatedContacts> => {
     const BASE_API_URL = siteConfig.backendUrl;
 
@@ -21,7 +22,7 @@ export const contactAPI = {
     if (search && search.trim()) {
       url.searchParams.append("search", search.trim());
     }
-    const response = await fetch(url.toString(), {
+    const response = await apiFetch(url.toString(), {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +38,7 @@ export const contactAPI = {
 
   createContact: async (contactData: ContactFormData): Promise<Contact> => {
     const BASE_API_URL = siteConfig.backendUrl;
-    const response = await fetch(`${BASE_API_URL}/api/contact/`, {
+    const response = await apiFetch(`${BASE_API_URL}/api/contact/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -1,26 +1,26 @@
-import {  TestimonialResponse } from "@/types/testimonial";
+import { TestimonialResponse } from "@/types/testimonial";
+import { apiFetch } from "./api-clients";
 
 export const testimonialsApi = {
   // Get all testimonials
   getAll: async (): Promise<TestimonialResponse> => {
     const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
-    
+
     if (!backendUrl) {
-      throw new Error('Backend URL not configured');
+      throw new Error("Backend URL not configured");
     }
 
-    const response = await fetch(`${backendUrl}/api/testimonial/`, {
+    const response = await apiFetch(`${backendUrl}/api/testimonial/`, {
       method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     });
 
     if (!response.ok) {
-      throw new Error('Failed to fetch testimonials');
+      throw new Error("Failed to fetch testimonials");
     }
 
     return response.json();
   },
-
-}
+};

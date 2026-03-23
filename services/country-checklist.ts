@@ -1,5 +1,6 @@
 import { siteConfig } from "@/config/site";
 import { CountryChecklistResponse } from "@/types/country-checklist";
+import { apiFetch } from "./api-clients";
 
 export const countryChecklistApi = {
   /**
@@ -17,7 +18,7 @@ export const countryChecklistApi = {
 
     try {
       // Fetch all country checklist entries and then match by name/slug
-      const response = await fetch(
+      const response = await apiFetch(
         `${API_BASE_URL}/api/collections/country-checklist/data/`,
         {
           method: "GET",

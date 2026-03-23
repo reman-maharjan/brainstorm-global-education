@@ -2,6 +2,7 @@
 
 import { siteConfig } from "@/config/site";
 import { TeamMember } from "@/types/team";
+import { apiFetch } from "./api-clients";
 
 export const teamAPI = {
   getTeamMembers: async (): Promise<TeamMember[]> => {
@@ -9,7 +10,7 @@ export const teamAPI = {
       const BASE_API_URL = siteConfig.backendUrl;
       const url = new URL(`${BASE_API_URL}/api/team-member/`);
 
-      const response = await fetch(url.toString(), {
+      const response = await apiFetch(url.toString(), {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

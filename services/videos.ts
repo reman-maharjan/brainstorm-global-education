@@ -1,7 +1,6 @@
 import { siteConfig } from "@/config/site";
-import {
-  Videos,
-} from "@/types/videos";
+import { Videos } from "@/types/videos";
+import { apiFetch } from "./api-clients";
 
 export const videosAPI = {
   // Get all videos
@@ -9,7 +8,7 @@ export const videosAPI = {
     const BASE_API_URL = siteConfig.backendUrl;
     const url = new URL(`${BASE_API_URL}/api/videos/`);
 
-    const response = await fetch(url.toString(), {
+    const response = await apiFetch(url.toString(), {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
@@ -20,5 +19,5 @@ export const videosAPI = {
 
     const data = await response.json();
     return data;
-  }
-}
+  },
+};
